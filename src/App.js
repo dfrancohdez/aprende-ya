@@ -1,6 +1,6 @@
 "use client"
 import logo from './logo.svg';
-import './App.css';
+import './css/app.css';
 import {NavBar} from './components/NavBar'
 import {Banner} from './components/Banner'
 import {Skills} from './components/Skills'

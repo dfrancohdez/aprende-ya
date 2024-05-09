@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
-import headerImg from "../assets/img/header-img.svg"
+import headerImg from "../assets/img/header-img2.svg"
 import 'animate.css'
 import TrackVisibility from 'react-on-screen';
+import background from'../assets/img/banner-bg4.jpg'
 
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0)
@@ -39,7 +40,11 @@ export const Banner = () => {
 
     return (
         <section className="banner" id="home">
-            <Container>
+            
+            <img src={background} className="background"></img>
+            <div className="overlay">
+            <Container className="banner-content">
+            
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
 
@@ -64,7 +69,7 @@ export const Banner = () => {
                     </Col>
                 </Row>
             </Container>
-
+        </div>
         </section>
     )
 }
