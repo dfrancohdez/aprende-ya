@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
-
+import './App2.css';
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

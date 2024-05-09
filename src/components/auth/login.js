@@ -2,67 +2,69 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { auth } from "./firebase";
 import { toast } from "react-toastify";
-import SignInwithGoogle from "./signInWIthGoogle";
+import { Footer } from "../Footer";
+import {FormLogIn} from "../FormLogIn"
+import { NavBar } from "../NavBar";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("User logged in Successfully");
-      window.location.href = "/profile";
-      toast.success("User logged in Successfully", {
-        position: "top-center",
-      });
-    } catch (error) {
-      console.log(error.message);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            setButtonText('Sending')
+            console.log(email)
+            console.log(password)
+            await signInWithEmailAndPassword(auth, email, password);
+            console.log("User logged in Successfully");
+            window.location.href = "/profile";
+            toast.success("User logged in Successfully", {
+                position: "top-center",
+            });
+            setButtonText('Send')
+        } catch (error) {
+            console.log(error.message);
 
-      toast.error(error.message, {
-        position: "bottom-center",
-      });
+            toast.error(error.message, {
+                position: "bottom-center",
+            });
+        }
+        setButtonText('Send')
+    };
+    /*const initialDetails = {
+        email: '',
+        password:''
+
     }
-  };
+    const [formDetails, setFormDetail] = useState(initialDetails)*/
+    const [buttonText, setButtonText] = useState('Send')
+    const onFormUpdate = (event) => {
+        const {name,value,type,checked}=event.target
+        /*setFormDetail(prev => {
+            return {
+                ...prev,
+                [name]: value
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <h3>Login</h3>
-
-      <div className="mb-3">
-        <label>Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label>Password</label>
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </div>
-
-      <div className="d-grid">
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </div>
-      <p className="forgot-password text-right">
-        New user <a href="/register">Register Here</a>
-      </p>
-      <SignInwithGoogle/>
-    </form>
-  );
+            }
+        })*/
+        console.log(email)
+        if(name==="email") 
+            setEmail (value);
+        if(name==="password") 
+            setPassword (value);
+    }
+    return (
+        <div>
+            <NavBar />
+            <FormLogIn
+            handleSubmit={handleSubmit} 
+            email={email} 
+            password={password} 
+            onFormUpdate={onFormUpdate} 
+            buttonText={buttonText}/>
+            <Footer />
+        </div>
+    );
 }
-
 export default Login;
