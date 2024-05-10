@@ -47,7 +47,7 @@ export const FormLogIn = (props) => {
                         <input autocomplete="off" aria-autocomplete="none" name="email" type="email" value={props.email} placeholder="Email Address" onChange={props.onFormUpdate} />
                       </Col>
                       <Col size={12} sm={6} className="px-1">
-                        <input autocomplete="off" aria-autocomplete="none" name="password" type="text" value={props.password} placeholder="Password" onChange={props.onFormUpdate} />
+                        <input autocomplete="off" aria-autocomplete="none" name="password" type="password" value={props.password} placeholder="Password" onChange={props.onFormUpdate} />
                       </Col>
                       <Col size={12} className="px-1">
                         <Row className="align-items">
