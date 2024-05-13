@@ -1,5 +1,3 @@
-@forward 'variables';
-//@forward 'mixins';
-@forward 'normalize';
 @forward 'globales';
-//orden importante
+@forward 'normalize';
+@forward 'variables';

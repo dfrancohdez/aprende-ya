@@ -1,0 +1,48 @@
+@use '../../../scss/base/_variables.scss' as v;
+.home__video{
+    margin-bottom: 1rem;
+    padding:0.7rem;
+    font-weight: 500;
+    //se adapta a su contenedor el display block?
+    font-size: .9rem;
+    cursor: pointer;
+    &__top{
+        margin-bottom: .5rem;
+        position: relative;
+        img{
+            width: 100%;
+        }
+        span{
+            position:absolute;
+            bottom: .3rem;
+            right: .3rem;
+            padding: .2rem;
+            background: #080808ec;
+            border-radius: 3px;
+        }
+    }
+    &__title{
+        margin-bottom: .1rem;
+        color:#fff;
+        @include v.line-clamp(1);
+    }
+    &__details{
+        display: flex;
+        align-items: center;
+    }
+    &__channel{
+        display: flex;
+        align-items: center;
+        margin:.5rem 0;
+        img{
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-right: .5rem;
+            cursor: pointer;
+        }
+        p{
+            margin-bottom: 0;
+        }
+    }
+}

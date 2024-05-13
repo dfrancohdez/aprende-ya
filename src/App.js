@@ -1,6 +1,7 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './css/app.css';
+// import './css/app.css';
+import './scss/app.scss'
 import "react-toastify/dist/ReactToastify.css";
 import {
     BrowserRouter as Router,
@@ -9,10 +10,12 @@ import {
     Navigate,
 } from "react-router-dom";
 
-import Login from "./components/auth/login";
-import SignUp from "./components/auth/signup";
-import GetStart from "./Start";
+
+import Login from "./screens/loginScreen/LoginScreen";
+import SignUp from "./screens/signUpScreen/SignUpScreen";
+import Start from "./screens/start/Start";
 import Profile from "./components/auth/profile";
+import HomeScreen from "./screens/homeScreen/HomeScreen"
 import { ToastContainer } from "react-toastify";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -31,11 +34,12 @@ function App() {
             <Routes>
                 <Route
                     path="/"
-                    element={user ? <Navigate to="/profile" /> : <GetStart />}
+                    element={user ? <Navigate to="/home" /> : <Start />}
                 />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/home" element={<HomeScreen />} />
             </Routes>
             <ToastContainer />
         </Router>

@@ -23,3 +23,21 @@ $telefono:480px;
 $tablet:768px;
 $desktop:992px;
 $desktopXL:1200px;
+
+
+@mixin line-clamp($number){
+    overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: $number;
+        -webkit-box-orient: vertical;
+}
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+$text-color: #b1bdb4;
+$black-primary: #16181b;
+$black-secondary: #121417;
+$border-color:#4c4c4c;
+$breakpoint-medium:1224px;
+$breakpoint-small:520px;

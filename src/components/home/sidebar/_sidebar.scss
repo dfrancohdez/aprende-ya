@@ -1,0 +1,51 @@
+@use '../../../scss/base/variables' as v;
+.home__sidebar{
+    background: v.$fondo1;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 90vh;
+    padding-top:2rem;
+    transition: transform 0.2s ease-in;
+    li{
+        display: flex;
+        align-items: center;
+        padding:0.6rem;
+        margin:.2rem 0;
+        cursor:pointer;
+        span{
+            margin-left: 1rem;
+            font-size:14px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+        }
+        &:hover{
+            background-color: v.$border-color;
+        }
+        
+    }
+    &.open{
+        transform: translate(0);
+    }
+}
+hr{
+    background-color: v.$border-color;
+}
+ @media (max-width:v.$breakpoint-medium){
+    .home__sidebar{
+        width:90px;
+    }
+    li{
+        justify-content: center;
+    }
+    span{
+        display: none;
+    }
+ }
+ @media(max-width:v.$breakpoint-small){
+    .home__sidebar{
+        transform: translate(-100%);
+        position: fixed;
+        z-index: 999;
+    }
+ }

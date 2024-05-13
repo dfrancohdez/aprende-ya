@@ -1,0 +1,29 @@
+@use '../../../scss/base/variables' as v;
+
+.home__categoriesBar{
+    padding: 0.5rem 0;
+    font-size: 0.8rem;
+    display: flex;
+    overflow-x: scroll;
+    color: v.$blanco;
+    &::-webkit-scrollbar{
+        width: 0px;
+    }
+    scrollbar-width: none;
+    span{
+        margin-right: 1rem;
+        padding: 0.5rem;
+        white-space: nowrap;
+        border:1.5px solid v.$blanco;
+        border-radius: 999px;
+        &:hover{
+            background-color: #374a59;
+            border-color: v.$fondo7;
+        }
+        &.active{
+            color:#ffff;
+            background-color: v.$fondo1;
+            border-color: v.$border-color;
+        }
+    }
+}
