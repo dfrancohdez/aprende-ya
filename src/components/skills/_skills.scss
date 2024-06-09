@@ -1,17 +1,23 @@
 
 @use '../../scss/base/variables' as v;
 /************ Skills Css ************/
-.skill {
-    padding: 0 0 50px 0;
-    position: relative;
-    background: linear-gradient(45deg, v.$fondo7, v.$fondo5);
+.skill-content {
+    display: flex;
+    margin-bottom: 150px;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 10px;
+    img{
+      width: 30%;
+      margin: 0 50px;
+      min-width: 200px;
+    }
+    h5{
+      max-width: 500px;
+    }
   }
   .skill-bx {
-    background: v.$negro;
-    border-radius: 64px;
-    text-align: center;
-    padding: 60px 50px;
-    margin-top: -60px;
+    
   }
   .skill h2 {
       font-size: 45px;
@@ -25,9 +31,22 @@
       margin: 14px 0 75px 0;
   }
   .skill-slider {
-    width: 80%;
+    // width: 80%;
     margin: 0 auto;
     position: relative;
+    bottom: 80px;
+    .item{
+      display: flex;
+      background-color: v.$fondo3;
+      height: 400px;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: column;
+      padding: 50px 0;
+      border-radius: 20px;
+      margin:0 60px;
+      overflow: hidden;
+    }
   }
   .skill-slider .item img {
     width: 50%;
@@ -40,4 +59,3 @@
     width: 40%;
     z-index: -4;
   }
-  

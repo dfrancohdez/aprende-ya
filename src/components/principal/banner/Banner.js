@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
-import headerImg from "../../assets/img/header-img2.svg"
+import headerImg from "../../../assets/img/header-img2.svg"
 import 'animate.css'
 import TrackVisibility from 'react-on-screen';
-import background from'../../assets/img/banner-bg4.jpg'
+import background from'../../../assets/img/banner-bg4.jpg'
 import './_banner.scss'
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0)
     const [isDeleting, setIsDeleting] = useState(false)
-    const toRotate = [" hola1", " hola2", " hola3"]
+    const toRotate = ["Aprende", "Construye", "Crea"]
     const [text, setText] = useState('')
     const [delta, setDelta] = useState(300 - Math.random() * 100)
     const period = 2000;
@@ -43,32 +43,33 @@ export const Banner = () => {
             
             <img src={background} className="background"></img>
             <div className="overlay">
-            <Container className="banner-content">
+            <div className="banner-content">
             
-                <Row className="align-items-center">
-                    <Col xs={12} md={6} xl={7}>
+                <div className="container-banner">
+                    <div className="banner-letter">
 
                         <TrackVisibility >
                             {({ isVisible }) =>
                                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                                     <span className="tagline">Bienvenido, aprendeYa</span>
-                                    <h1>{`Construyendo Conocimiento Juntos  `}<span className="txt-rotate" ><span className="wrap">{text}</span></span></h1>
+                                    <h1 className="banner-h1">{`Construyendo conocimiento juntos  `}</h1>
+                                    <h1 className="banner-h1"><span className="txt-rotate" ><span className="wrap">{text}</span></span></h1>
                                     <p>En Aprende Ya, nuestra misión es empoderarte en tu viaje de aprendizaje. Creemos que el conocimiento es la clave para el crecimiento personal y profesional.</p>
-                                    <button onClick={() => console.log("connect")}>Let’s connect <ArrowRightCircle size={25} /></button>
+                                    {/* <button onClick={() => console.log("connect")}>Empecemos <ArrowRightCircle size={25} /></button> */}
                                 </div>
                             }
                         </TrackVisibility>
-                    </Col>
-                    <Col xs={12} md={6} xl={5}>
+                    </div>
+                    <div className="banner-img">
                         <TrackVisibility>
                             {({ isVisible }) =>
                                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                                     <img src={headerImg} alt="Header Img" />
                                 </div>}
                         </TrackVisibility>
-                    </Col>
-                </Row>
-            </Container>
+                    </div>
+                </div>
+            </div>
         </div>
         </section>
     )

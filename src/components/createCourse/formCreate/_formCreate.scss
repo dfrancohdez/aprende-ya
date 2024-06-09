@@ -1,0 +1,16 @@
+.create_contact_form {
+    background: linear-gradient(90.21deg, v.$fondo8 -5.91%, v.$fondo2 111.58%);
+    padding: 200px 0 200px 0;
+    // position: relative;
+  }
+  .question{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  .question label{
+    display: inline-block;
+  }
+  .question input{
+    display: inline-block;
+  }

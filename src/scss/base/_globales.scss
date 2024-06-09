@@ -1,19 +1,19 @@
 
 @use 'variables' as v;
 @font-face {
-	font-family: Centra;
-	src: url('../../assets/font/CentraNo2-Bold.ttf');
-	font-weight: 700;
+	font-family: Inter;
+	src: url('../../assets/font/static//Inter-Light.ttf');
+	font-weight: 300;
 }
 @font-face {
-	font-family: Centra;
-	src: url('../../assets/font/CentraNo2-Medium.ttf');
+	font-family: Inter;
+	src: url('../../assets/font/static/Inter-Medium.ttf');
 	font-weight: 500;
 }
 @font-face {
-	font-family: Centra;
-	src: url('../../assets/font/CentraNo2-Book.ttf');
-	font-weight: 400;
+	font-family: Inter;
+	src: url('../../assets/font/static/Inter-SemiBold.ttf');
+	font-weight: 700;
 }
 /************ Default Css ************/
 * {
@@ -28,20 +28,39 @@
   }
   
   body {
-    font-weight: 400;
+    font-weight: 300;
     overflow-x: hidden;
     position: relative;
     background-color: #121212 !important;
     color: v.$blanco !important;
-    font-family: 'Centra', sans-serif !important;
+    font-family: 'Inter', sans-serif !important;
+    
   }
+
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
     padding: 0;
     line-height: normal;
   }
-  
+  h6{
+    font-size: 20px;
+  }
+  h5{
+    font-size: 23px;
+  }
+  h4{
+    font-size: 27px;
+  }
+  h3{
+    font-size: 33px;
+  }
+  h2{
+    font-size: 40px;
+  }
+  h1{
+    font-size: 47px;
+  }
   p, a, li, button, ul {
     margin: 0;
     padding: 0;
@@ -66,13 +85,13 @@
   input:focus, textarea:focus, select:focus {
     outline: none;
   }
-  
+  /*
   @media (min-width:1700px) {
       main .container {
           max-width: 100%;
           padding: 0 150px;
       }
-  }
+  }*/
   
   p.success {
       color: green;
@@ -81,4 +100,12 @@
   p.danger {
       color: red;
   }
-  
+  .regular{
+    font-weight: 300;
+  }
+  .medium{
+    font-weight: 500;
+  }
+  .bold{
+    font-weight: 700;
+  }

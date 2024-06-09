@@ -8,7 +8,7 @@ import "./_homeScreen.scss";
 function HomeScreen() {
   const [sidebar,toggleSideBar]=useState(false)
   const handleToggleSidebar=()=>{
-    console.log("hola")
+    // console.log("hola")
     toggleSideBar(prev=>!prev)
   }
   return (

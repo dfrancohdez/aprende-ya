@@ -20,7 +20,7 @@
             letter-spacing: 0.4px;
         }
         &:hover{
-            background-color: v.$border-color;
+            background-color: v.$fondo2;
         }
         
     }
@@ -34,13 +34,14 @@ hr{
  @media (max-width:v.$breakpoint-medium){
     .home__sidebar{
         width:90px;
+        li{
+            justify-content: center;
+        }
+        span{
+            display: none;
+        }
     }
-    li{
-        justify-content: center;
-    }
-    span{
-        display: none;
-    }
+    
  }
  @media(max-width:v.$breakpoint-small){
     .home__sidebar{

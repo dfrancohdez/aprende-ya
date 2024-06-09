@@ -1,0 +1,14 @@
+@use '../../scss/base/variables' as v;
+
+.principal{
+    background-color: v.$fondo1;
+    background: radial-gradient(circle at center, #7DB6A8 10%,v.$fondo1);
+    
+}
+.blur{
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    position:absolute;
+    backdrop-filter: blur(2px);
+}

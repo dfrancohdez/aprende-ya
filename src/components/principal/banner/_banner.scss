@@ -1,4 +1,4 @@
-@use '../../scss/base/variables' as v;
+@use '../../../scss/base/variables' as v;
 
 /************ Banner Css ************/
 .banner {
@@ -21,14 +21,49 @@
   height: 100%;
 }
 .banner-content{
-  padding: 260px 0 0 0;
+  padding: 0;
   z-index: 10;
   
   // background: linear-gradient(270deg, v.$negro, #3AA58c55 100%);
   // width: 100%;
   // height: 100%;
 }
+.container-banner{
+  padding: 150px 100px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.banner-img{
+  width: 50%;
+  min-width: 300px;
+  max-width: 500px;
 
+}
+.banner-letter{
+  padding: 100px 50px;
+  min-width: 600px;
+  max-width: 800px;
+  h1{
+    margin:10!important;
+  }
+  p{
+    margin-top:20px;
+  }
+}
+@media(max-width:v.$breakpoint-medium) {
+  .container-banner{
+    flex-wrap: wrap;
+    padding: 50px 100px;
+    
+  }
+  .banner-h1{
+    font-size: 50px !important;
+  }
+
+}
 
 
 .banner .tagline {
@@ -100,4 +135,15 @@
 
 .txt-rotate>.wrap {
   border-right: 0.08em solid #666;
+}
+
+@media (max-width:v.$breakpoint-medium){
+  .banner{
+    height: 80rem;
+  }
+  .banner-img{
+    width: 30%;
+  
+  }
+  
 }
