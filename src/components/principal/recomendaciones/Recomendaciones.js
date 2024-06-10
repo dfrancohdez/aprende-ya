@@ -38,7 +38,10 @@ export const Recomendaciones = () => {
                     Elige entre más de 210.000 cursos de vídeo en línea con nuevo contenido cada mes
                     </h5>
                 </div>
-                <h2>Los estudiantes están viendo</h2>
+                <div className="centrar">
+                    <h2>Los estudiantes están viendo</h2>
+                </div>
+                
                 <Carousel
                 centerMode={true}
                 

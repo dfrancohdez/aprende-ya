@@ -2,7 +2,7 @@
 
 .principal{
     background-color: v.$fondo1;
-    background: radial-gradient(circle at center, #7DB6A8 10%,v.$fondo1);
+    background: radial-gradient(circle at center, #7DB6A8,v.$fondo1);
     
 }
 .blur{
@@ -11,4 +11,16 @@
     z-index: 1001;
     position:absolute;
     backdrop-filter: blur(2px);
+}
+@media (min-width:v.$breakpoint-medium){
+    .blur{
+        display:none;
+    }
+
+}
+@media (max-width:v.$breakpoint-medium) {
+        .overflowx{
+            overflow-x: hidden;
+        }
+
 }

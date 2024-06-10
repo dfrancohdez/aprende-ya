@@ -1,0 +1,23 @@
+@use '../../scss/base/variables' as v;
+.crearAsesoria-container{
+    padding:150px 0;
+    display: flex;
+    justify-content: center;
+    background-color: v.$primary800;
+}
+.crearAsesoria-form{
+    width: 60%;
+    textarea{
+        flex-grow: 1;
+        width: 90%;
+        
+    }
+    .boton{
+        padding: 20px;
+    }
+}
+@media(max-width:v.$breakpoint-medium){
+    .crearAsesoria-form{
+        width: 95%;
+    }
+}

@@ -14,12 +14,14 @@ import Login from "./screens/loginScreen/LoginScreen";
 import SignUp from "./screens/signUpScreen/SignUpScreen";
 import Principal from "./screens/principal/Principal";
 import Profile from "./components/auth/profile";
-import HomeScreen from "./screens/homeScreen/HomeScreen"
 import { ToastContainer } from "react-toastify";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { auth } from "./components/auth/firebase";
 import FormCreate from './components/createCourse/formCreate/FormCreate';
+import HomeScreen from './screens/homeScreen/HomeScreen';
+import CrearAsesoriaScreen from './screens/crearAsesoria/CrearAsesoria';
+
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/home" element={<HomeScreen />} />
                 <Route path="/formCreate" element={<FormCreate />} />
+                <Route path="/crearAsesoria" element={<CrearAsesoriaScreen/>} />
             </Routes>
             <ToastContainer />
         </Router>

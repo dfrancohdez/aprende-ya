@@ -9,7 +9,9 @@
     align-items: center;
     justify-content: space-around;
     padding: 0 5px;
-    
+    &:hover{
+        cursor: pointer;
+    }
 }
 .bold{
     color: white;

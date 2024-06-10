@@ -11,27 +11,30 @@ import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import { useState } from 'react'
 
 function Principal() {
-  const [sidebar,toggleSideBar]=useState(false)
-const handleToggleSidebar=()=>{
-  // console.log("hola")
-  toggleSideBar(prev=>!prev)
-}
+  const [sidebar, toggleSideBar] = useState(false)
+  const handleToggleSidebar = () => {
+    // console.log("hola")
+    toggleSideBar(prev => !prev)
+  }
   return (
-    <div className="principal">
-      <NavBar type1={false} type2={true} handleToggleSidebar={handleToggleSidebar}/>
+    <div>
+      <NavBar type1={false} type2={true} handleToggleSidebar={handleToggleSidebar} />
       <div>
-        
-        <Sidebar sidebar={sidebar} type1={false} type2={true}/>
-        <div className={sidebar?"blur":""}>
+
+        <Sidebar sidebar={sidebar} type1={false} type2={true} />
+        <div className={sidebar ? "blur" : ""}>
         </div>
-        <Banner />
-        <Materias />
-        <Recomendaciones />
-        
-        
-        
+        <div className='overflowx'>
+          <Banner />
+          <div className='principal'>
+            <Materias />
+            <Recomendaciones />
+          </div>
+          <Footer />
+        </div>
+
       </div>
-      <Footer />
+
     </div>
   )
 }

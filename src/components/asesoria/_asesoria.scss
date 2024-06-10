@@ -1,7 +1,7 @@
 .asesoria{
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 450px;
     justify-content: space-around;
     padding: 5px 30px;
     background-color: #555;
@@ -9,4 +9,7 @@
     border-radius: 20px;
     font-size: 25px;
     box-shadow: 6px 6px #fff7;
+    overflow: hidden;
+    max-width: 300px;
+    
 }

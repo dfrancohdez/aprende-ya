@@ -1,14 +1,37 @@
-@use '../../scss/base/_variables.scss' as v;
-@import url("http://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&diplay=swap");
+@use '../../scss/base/variables' as v;
 
-.app__container{
-    display: flex;
-    height: 90vh;
-}
-.home__body{
-    background: v.$fondo2;
-    background-attachment: fixed;
-    color: v.$text-color;
-    letter-spacing: 0.1px;
-    font-family: 'Centra', sans-serif !important;
+.homeScreen {
+    
+
+    &-container {
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        height: 100%;
+        
+        ul{
+            list-style-type: none;
+        }
+        li{
+            
+            &:hover{
+                background-color: v.$fondo3;
+            }
+            padding: 5px 20px;
+            cursor:pointer;
+        }
+        h6{
+            padding: 5px 10px; 
+        }
+        &-asesorias {
+            padding: 150px 0px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    &-busqueda{
+        padding: 150px 0px;
+        background-color: v.$primary800;
+    }
 }

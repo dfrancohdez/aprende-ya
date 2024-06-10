@@ -11,6 +11,7 @@ export const Footer = () => {
         <div className="">
           <img className="" src={logo} alt="Logo" />
         </div>
+        <div>
         <ul>
           <li><a href="">Aprende-ya Business</a></li>
           <li><a href="">Enseña en Aprende-ya</a></li>
@@ -34,6 +35,7 @@ export const Footer = () => {
           <li><a href="">Declaración de accesibilidad</a></li>
 
         </ul>
+        </div>
       </div>
     </footer>
   )

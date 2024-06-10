@@ -37,7 +37,7 @@ export const NavBar = (props) => {
     <div className={scrolled ? "scrolled nav" : "nav"} >
       <div className="container-nav">
         <div href="#home">
-          <img className="home-icon" src={logo} alt="aprendeYa"></img>
+          <img className="home-icon" src={logo} alt="aprendeYa" title="Aprende-ya"></img>
         </div>
         <FaBars className="navbar__menu" size={26}
           onClick={() => props.handleToggleSidebar()}
@@ -52,10 +52,10 @@ export const NavBar = (props) => {
           </div>
           <span className="navbar-text">
             {props.type1 && <div className="social-icon">
-              <a href="#"><img src={bell} alt=""></img></a>
-              <a href="#"><img src={profile} alt=""></img></a>
-              <a href="#"><img src={message} alt=""></img></a>
-              <a href="#"><img src={cart} alt=""></img></a>
+              <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
+              <a href="#"><img src={profile} alt="" title="perfil"></img></a>
+              <a href="#"><img src={message} alt="" title="mensajes"></img></a>
+              <a href="#"><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
             {props.type1 && <Boton text="Mis cursos" style="bold" />}

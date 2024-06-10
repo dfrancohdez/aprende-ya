@@ -3,16 +3,20 @@
 /************ Skills Css ************/
 .skill-content {
     display: flex;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
     align-items: center;
     justify-content: space-evenly;
     padding: 0 10px;
+    flex-wrap: wrap;
     img{
       width: 30%;
       margin: 0 50px;
       min-width: 200px;
+      max-width: 500px;
+
     }
     h5{
+      padding: 20px;
       max-width: 500px;
     }
   }
@@ -20,7 +24,6 @@
     
   }
   .skill h2 {
-      font-size: 45px;
       font-weight: 700;
   }
   .skill p {

@@ -61,6 +61,27 @@
   h1{
     font-size: 47px;
   }
+  @media(max-width:560px){
+    h6{
+      font-size: 16px;
+    }
+    h5{
+      font-size: 20px;
+    }
+    h4{
+      font-size: 23px;
+    }
+    h3{
+      font-size: 27px;
+    }
+    h2{
+      font-size: 33px;
+    }
+    h1{
+      font-size: 40px;
+    }
+  }
+
   p, a, li, button, ul {
     margin: 0;
     padding: 0;

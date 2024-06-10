@@ -1,27 +1,67 @@
+import { NavBar } from '../../components/navBar/NavBar'
+import { Footer } from '../../components/footer/Footer'
+import './_homeScreen.scss'
+import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
+import { useState } from 'react'
+import { Asesoria } from '../../components/asesoria/Asesoria'
 
-import Header from '../../components/home/header/Header';
-import Sidebar from '../../components/home/sidebar/Sidebar';
-import { Container } from 'react-bootstrap';
-import { useState } from 'react';
-import Resultado from '../../components/home/resultado/Resultado';
-import "./_homeScreen.scss";
 function HomeScreen() {
-  const [sidebar,toggleSideBar]=useState(false)
-  const handleToggleSidebar=()=>{
-    // console.log("hola")
-    toggleSideBar(prev=>!prev)
-  }
-  return (
-    <div className='home__body'>
-      <Header handleToggleSidebar={handleToggleSidebar}/>
-      <div className='app__container border border-info'>
-        <Sidebar sidebar={sidebar} handleToggleSidebar={handleToggleSidebar}/>
-        <Container fluid className="app_main border border-warning">
-          <Resultado />
-        </Container>
-      </div>
-    </div>
-  );
-}
+    const [sidebar, toggleSideBar] = useState(false)
+    const handleToggleSidebar = () => {
+        // console.log("hola")
+        toggleSideBar(prev => !prev)
+    }
+    return (
+        <div className='homeScreen'>
+            <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
+            <div>
+                <Sidebar sidebar={sidebar} type1={true} type2={false} />
+                <div className={sidebar ? "blur" : ""}></div>
+            </div>
+            <div className='overflowx'>
+                <div className='homeScreen-container'>
+                    <div className='homeScreen-busqueda'>
+                        <h6>Ubicación</h6>
+                        <ul>
+                            <li>Nuevo León</li>
+                            <li>Distrito Federal</li>
+                            <li>Estado de México</li>
+                            <li>Sonora</li>
+                            <li>Jalisco</li>
+                            <li>Baja California</li>
+                            <li>Aguascalientes</li>
+                            <li>Tamaulipas</li>
+                            <li>Puebla</li>
+                        </ul>
+                        <h6>Precio</h6>
+                        <ul>
+                            
+                            <li>Hasta $450</li>
+                            <li>$450 a $850</li>
+                            <li>Más de $850</li>
+                            <li>Gratis</li>
+                        </ul>
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                    <div className='homeScreen-container-asesorias'>
+                        <Asesoria />
+                        <Asesoria />
+                        <Asesoria />
+                        <Asesoria />
+                        <Asesoria />
+                        <Asesoria />
+                        <Asesoria />
+                    </div>
+                </div>
 
+            </div>
+            <Footer />
+        </div>
+
+    )
+
+
+}
 export default HomeScreen;

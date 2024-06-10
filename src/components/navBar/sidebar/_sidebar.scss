@@ -35,5 +35,13 @@
     li:hover{
         background-color: v.$fondo3;
     }
+    li:last-child:hover{
+        background-color: transparent;
+    }
     
+}
+@media(min-width:v.$breakpoint-medium) {
+    .sidebar__navbar{
+        display: none;
+    }
 }

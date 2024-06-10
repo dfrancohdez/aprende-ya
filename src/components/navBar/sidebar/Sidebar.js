@@ -45,30 +45,38 @@ export const Sidebar = (props) => {
                 {props.type2 && <li>
                     <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}><h6>Iniciar sesión</h6></a>
                 </li>}
+                {props.type1 && 
+                
                 <li>
                     <a href="#"><img src={bell} alt=""></img><h6 className='regular'>Notificaciones</h6></a>
                     
-                </li>
+                </li>}
+                {props.type1 && 
                 <li>  
                     <a href="#"><img src={profile} alt=""></img><h6 className='regular'>Perfil</h6></a>
                     
-                </li>
+                </li>}
+                {props.type1 && 
                 <li>
                     
                     <a href="#"><img src={message} alt=""></img><h6 className='regular'>Mensajes</h6></a>
                     
-                </li>
+                </li>}
+                {props.type1 && 
                 <li>
                     
                     <a href="#"><img src={cart} alt=""></img><h6 className='regular'>Carrito</h6></a>
                     
-                </li>
+                </li>}
+
+                {props.type1 &&
                 <li>
-                    {props.type1 && <Boton text="Mis cursos" style="bold" />}
-                </li>
-                <li>
-                    {props.type2 && <Boton text="Crear cuenta" style="bold"/>}
-                </li>
+                     <Boton text="Mis cursos" style="bold" />
+                </li>}
+                {props.type2 &&<li>
+                     <Boton text="Crear cuenta" style="bold"/>
+                </li>}
+
             </ul>
         </div>
     )

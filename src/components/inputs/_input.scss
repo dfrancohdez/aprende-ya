@@ -1,0 +1,78 @@
+.input{
+    padding: 20px;
+    label{
+        display: flex;
+        h6{
+            font-weight: 500;
+            padding: 3px 50px 3px 15px;
+        }
+        img{
+            width: 24px;
+            cursor: pointer;
+        }
+        margin: 10px 0;
+        
+    }
+    input{
+        outline: none;
+        background-color: #ddd;
+        padding: 15px;
+        border-radius: 20px;
+        width: 100%;
+        ::placeholder{
+            color:#0007
+        }
+        
+    }
+    textarea{
+        outline: none;
+        background-color: #ddd;
+        resize: none;
+        width: 100%;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    .elemento{
+        display: flex;
+        flex-direction: row;
+        img{
+            position: relative;
+            width: 24px;
+            right: 40px;
+            cursor: pointer;
+        }
+    }
+    .nombre-clase-input{
+        
+
+        margin: 0 10%;
+        width: 90%;
+        .insertar-img{
+            display: flex;
+            margin: 0 10%;
+            width: 90%;
+            align-items: start;
+            .insertar-material{
+                flex-grow: 2;
+                padding: 0 20px;
+                width: 600px;
+                label{
+
+                }
+                
+                .img-insertar{
+                    min-width: 100px;
+                    width: 30%;
+                    margin: 0 20px;
+                }
+
+            }
+            textarea{
+                flex-grow: 1;
+                width: 90%;
+                
+            }
+        }
+    }
+    
+}
