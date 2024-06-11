@@ -10,6 +10,8 @@ import coursesIcon from '../../assets/img/cursos.svg'
 function ProfileScreen() {
     const [sidebar, toggleSideBar] = useState(false)
     const [name, setName] = useState('Nombre Apellido')
+    const [showPopup, setShowPopup] = useState(false); // Estado para controlar el popup
+
 
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev)
@@ -19,12 +21,22 @@ function ProfileScreen() {
     }
 
     const handleLinkClick = (event) => {
-        event.preventDefault(); // Previene la acción por defecto del enlace
-        alert('¡Enlace clicado!');
+        setShowPopup(prev => !prev); 
+        console.log(showPopup)
+    }
+
+    const handleCancel = () => {
+        setShowPopup(prev => !prev); 
+    }
+
+    const handleDelete = () => {
+        alert('Cuenta eliminada');
+        setShowPopup(false); // Oculta el popup
+        // Aquí puedes agregar la lógica para eliminar la cuenta
     }
 
     return (
-        <div className='homeScreen'>
+        <div className='profileScreen'>
             <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
             <div>
                 <Sidebar sidebar={sidebar} type1={true} type2={false} />
@@ -49,6 +61,15 @@ function ProfileScreen() {
                         <input type='text' className='profileScreen-container-content-locked' value="example@email.com"></input>
                         <div className='profileScreen-container-content-button'><SimpleButton text='Guardar cambios' style='bold'/></div>
                     </div>
+                    {showPopup && (
+                        <div className="profileScreen-container-popup">
+                            <div className="profileScreen-container-popup-content">
+                                <h3>¿Desea eliminar su cuenta?</h3>
+                                <button onClick={handleCancel}>Cancelar</button>
+                                <button onClick={handleDelete}>Eliminar</button>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
             <Footer />

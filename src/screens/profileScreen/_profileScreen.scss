@@ -3,18 +3,17 @@
 .profileScreen{
     &-container {
         display: flex;
-        justify-content: flex-start; /* Alinear el contenido al principio */
-        align-items: flex-start; /* Alinear los elementos a la parte superior */
-        height: 100vh; /* Usar el 100% del viewport height */
+        justify-content: flex-start;
+        align-items: flex-start; 
+        height: 90vh;
         background-color: v.$blanco;
-        
 
         &-sidenav {
             padding: 0 20px 10px; 
             border: 1px solid transparent;
-            margin: 135px 10px 10px 10px; /* Cambiar el margen según tus necesidades */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Añade una sombra difuminada */
-            max-width: 30%; /* Establecer un valor máximo de ancho */
+            margin: 150px 10px 10px 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+            max-width: 30%; 
             border-radius: 5%;
             background-color: #fafafa;
             
@@ -120,7 +119,7 @@
         &-content{
             padding: 0 20px 10px; 
             border: 1px solid transparent;
-            margin: 135px 10px 10px 10px; /* Cambiar el margen según tus necesidades */
+            margin: 150px 10px 0px 10px; /* Cambiar el margen según tus necesidades */
             border-radius: 5%;
             color: #393c3a;
             
@@ -189,5 +188,49 @@
                 margin-top: 20px;
             }
         }
+
+        &-popup{
+            position: relative;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+
+            &-content{
+                width: 30%;
+                background-color: v.$fondo1;
+                padding: 20px;
+                border-radius: 5px;
+                text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            &-content button {
+                margin: 20px 30px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                color: white;
+            }
+
+            &-content button:first-of-type {
+                background-color: #f44336;
+            }
+            
+            &-content button:last-of-type {
+                background-color: v.$fondo2;
+            }
+        }
+
     }
+    
+    
 }

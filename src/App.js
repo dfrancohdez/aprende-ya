@@ -22,6 +22,7 @@ import FormCreate from './components/createCourse/formCreate/FormCreate';
 import HomeScreen from './screens/homeScreen/HomeScreen';
 import CrearAsesoriaScreen from './screens/crearAsesoria/CrearAsesoria';
 import ProfileScreen from './screens/profileScreen/ProfileScreen';
+import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 
 
 
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/formCreate" element={<FormCreate />} />
                 <Route path="/crearAsesoria" element={<CrearAsesoriaScreen/>} />
                 <Route path="/myAccount" element={<ProfileScreen/>} />
+                <Route path="/faq" element={<FAQ/>} />
             </Routes>
             <ToastContainer />
         </Router>
