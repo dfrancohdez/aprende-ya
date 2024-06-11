@@ -30,11 +30,11 @@ function Principal() {
             <Materias />
             <Recomendaciones />
           </div>
-          <Footer />
+          
         </div>
 
       </div>
-
+      <Footer />
     </div>
   )
 }

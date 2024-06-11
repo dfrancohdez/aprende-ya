@@ -1,5 +1,8 @@
 @use '../../../scss/base/variables' as v;
 .sidebar__navbar{
+    ul{
+        list-style: none;
+    }
     display: flex;
     flex-direction: column;
     position: fixed;

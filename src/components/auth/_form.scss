@@ -1,7 +1,7 @@
 
 @use '../../scss/base/variables' as v;
   /************ Form Css ************/
-  .contact {
+/*  .contact {
     background: linear-gradient(90.21deg, v.$fondo8 -5.91%, v.$fondo2 111.58%);
     // padding: 60px 0 200px 0;
     // position: relative;
@@ -95,4 +95,76 @@
   }
   .align-items{
     align-items: center;
+  }
+*/
+.login-section{
+  background: linear-gradient(90deg, #ddd, v.$fondo3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 200px 0;
+}
+
+  .login-container{
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
+    
+    margin:0 auto;
+    border-radius: 30px;
+    background-color: v.$fondo1;
+    .login-form{
+      max-width: 500px;
+      flex-grow: 1;
+      flex-basis: 0;
+      .form-items{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h2{
+          margin-bottom: 50px;
+        }
+        form{
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .form-boton{
+            margin:0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:20px;
+          }
+
+        }
+      }
+    }
+    .login-img{
+      max-width: 500px;
+      flex-grow: 1;
+      flex-basis: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap:5px
+    }
+  }
+  @media(max-width:v.$breakpoint-medium){
+    .login-container{
+      flex-direction: column;
+      .login-form{
+        margin: 0 auto;
+        width: 100%;
+      }
+      .login-img{
+        padding: 30px 0;
+        margin: 0 auto;
+      }
+      h2{
+        text-align: center;
+      }
+    }
   }

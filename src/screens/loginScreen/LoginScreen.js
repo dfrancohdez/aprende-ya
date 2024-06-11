@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { auth } from "../../components/auth/firebase";
 import { toast } from "react-toastify";
 import { Footer } from "../../components/footer/Footer";
-import {FormLogIn} from "../../components/auth/FormLogIn"
+import { FormLogIn } from "../../components/auth/FormLogIn"
 import { NavBar } from "../../components/navBar/NavBar";
-
+import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,16 +13,16 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            setButtonText('Sending')
+            setButtonText('Iniciando')
             console.log(email)
             console.log(password)
             await signInWithEmailAndPassword(auth, email, password);
             console.log("User logged in Successfully");
             window.location.href = "/home";
-            toast.success("User logged in Successfully", {
+            toast.success("Credenciales correctas", {
                 position: "top-center",
             });
-            setButtonText('Send')
+            setButtonText('Iniciar sesión')
         } catch (error) {
             console.log(error.message);
 
@@ -30,7 +30,7 @@ function Login() {
                 position: "bottom-center",
             });
         }
-        setButtonText('Send')
+        setButtonText('Iniciar sesión')
     };
     /*const initialDetails = {
         email: '',
@@ -38,9 +38,9 @@ function Login() {
 
     }
     const [formDetails, setFormDetail] = useState(initialDetails)*/
-    const [buttonText, setButtonText] = useState('Send')
+    const [buttonText, setButtonText] = useState('Iniciar sesión')
     const onFormUpdate = (event) => {
-        const {name,value,type,checked}=event.target
+        const { name, value, type, checked } = event.target
         /*setFormDetail(prev => {
             return {
                 ...prev,
@@ -49,20 +49,36 @@ function Login() {
             }
         })*/
         console.log(email)
-        if(name==="email") 
-            setEmail (value);
-        if(name==="password") 
-            setPassword (value);
+        console.log(password)
+        if (name === "email")
+            setEmail(value);
+        if (name === "password")
+            setPassword(value);
     }
+
+
+
+
+    const [sidebar, toggleSideBar] = useState(false)
+    const handleToggleSidebar = () => {
+        // console.log("hola")
+        toggleSideBar(prev => !prev)
+    }
+
+
     return (
         <div>
-            <NavBar />
+            <NavBar handleToggleSidebar={handleToggleSidebar} />
+
+
+            <Sidebar sidebar={sidebar} type1={false} type2={true} />
+            <div className={sidebar ? "blur" : ""}></div>
             <FormLogIn
-            handleSubmit={handleSubmit} 
-            email={email} 
-            password={password} 
-            onFormUpdate={onFormUpdate} 
-            buttonText={buttonText}/>
+                handleSubmit={handleSubmit}
+                email={email}
+                password={password}
+                onFormUpdate={onFormUpdate}
+                buttonText={buttonText} />
             <Footer />
         </div>
     );

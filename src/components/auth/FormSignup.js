@@ -3,6 +3,10 @@ import { useState } from "react"
 import contactImg from "../../assets/img/contact-img.svg"
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import { Boton } from "../boton/Boton";
+import { Input } from "../inputs/Input";
+
+
 export const FormSignup = (props) => {
     /*//handleSubmit,formDetails,onFormUpdate,buttonText
     const handleSubmit = async(e)=>{
@@ -26,55 +30,52 @@ export const FormSignup = (props) => {
     }*/
 
     return (
-        <section className="contact contact-form" id="connect">
-            <Container>
-                <Row className="align-items-center">
-                    <Col size={12} md={6}>
+        <section className="login-section">
+            <div>
+                <div className="login-container">
+
+                    <div className="login-form">
+                        <TrackVisibility>
+                            {({ isVisible }) =>
+                                <div className={isVisible ? "animate__animated animate__fadeIn form-items" : "form-items"}>
+                                    <h2>Iniciar Sesión</h2>
+                                    <form onSubmit={props.handleSubmit}>
+                                        <div >
+                                            <Input label="Ingresar nombre" class="input" name="firtName" type="text" value={props.fname} placeholder="Ricardo Lopez" onFormUpdate={props.onFormUpdate} />
+                                        </div>
+                                        <div >
+                                            <Input label="Ingresar correo" class="input" name="email" type="email" value={props.email} placeholder="correo@gmail.com" onFormUpdate={props.onFormUpdate} />
+                                        </div>
+                                        <div >
+                                            <Input label="Ingresar contraseña" class="input" name="password" type="password" value={props.password} placeholder="Contraseña" onFormUpdate={props.onFormUpdate} />
+                                        </div>
+
+                                        <div className="form-boton">       
+                                            <Boton text={props.buttonText} type="submit"/>
+                                        </div>
+
+
+                                        {/*
+                          status.message &&
+                          <Col>
+                            <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
+                          </Col>*/
+                                        }
+                                    </form>
+                                </div>}
+                        </TrackVisibility>
+                    </div>
+                    <div className="login-img">
                         <TrackVisibility>
                             {({ isVisible }) =>
                                 <img className={isVisible ? "animate__animated animate__zoomIn" : ""} src={contactImg} alt="Contact Us" />
                             }
                         </TrackVisibility>
-                    </Col>
-                    <Col size={12} md={6}>
-                        <TrackVisibility>
-                            {({ isVisible }) =>
-                                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                                    <h2>Sign Up</h2>
-                                    <form onSubmit={props.handleSubmit}>
-                                        <Row>
-                                            <Col size={12} sm={6} className="px-1">
-                                                <input autocomplete="off" aria-autocomplete="none" name="firstName" type="text" value={props.firstName} placeholder="First Name" onChange={props.onFormUpdate} />
-                                            </Col>
-                                            <Col size={12} sm={6} className="px-1">
-                                                <input autocomplete="off" aria-autocomplete="none" name="lastName" type="text" value={props.lasttName} placeholder="Last Name" onChange={props.onFormUpdate} />
-                                            </Col>
-                                            <Col size={12} sm={6} className="px-1">
-                                                <input autocomplete="off" aria-autocomplete="none" name="email" type="email" value={props.email} placeholder="Email Address" onChange={props.onFormUpdate} />
-                                            </Col>
-                                            <Col size={12} sm={6} className="px-1">
-                                                <input autocomplete="off" aria-autocomplete="none" name="password" type="password" value={props.password} placeholder="Password" onChange={props.onFormUpdate} />
-                                            </Col>
-                                            <Col size={12} className="px-1">
-                                                <Row className="align-items">
-                                                <Col>
-                                                    <button type="submit"><span>{props.buttonText}</span></button>
-                                                </Col>
-                                                <Col>
-                                                    <p className="su-login">
-                                                        Already registered <a href="/login"><span>Login</span></a>
-                                                    </p>
-                                                </Col>
-                                                </Row>
-                                            </Col>
-                                        </Row>
-                                    </form>
-
-                                </div>}
-                        </TrackVisibility>
-                    </Col>
-                </Row>
-            </Container>
+                        <p className="su-login">Ya tienes una cuenta?</p>
+                        <Boton text="Iniciar sesión" page="/login"/>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }

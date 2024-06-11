@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react"
 import logo from '../../logo.png'
+import { auth, db } from "../auth/firebase";
 // import navIcon1 from '../../assets/img/nav-icon1.svg'
 // import navIcon2 from '../../assets/img/nav-icon2.svg'
 // import navIcon3 from '../../assets/img/nav-icon3.svg'
@@ -30,6 +31,16 @@ export const NavBar = (props) => {
     setActiveLink(value)
   }
   
+
+  async function handleLogout() {
+    try {
+      await auth.signOut();
+      window.location.href = "/";
+      console.log("User logged out successfully!");
+    } catch (error) {
+      console.error("Error logging out:", error.message);
+    }
+  }
   
   //className="bg-body-tertiary"
 
@@ -47,19 +58,19 @@ export const NavBar = (props) => {
             <a href="/" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Inicio</a>
             <a href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>Sobre Nosotros</a>
             <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>FAQ</a>
-            {props.type1 && <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Publicar</a>}
+            {props.type1 && <a href="/crearAsesoria" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Publicar</a>}
             {props.type2 && <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Iniciar sesión</a>}
           </div>
           <span className="navbar-text">
             {props.type1 && <div className="social-icon">
               <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
-              <a href="#"><img src={profile} alt="" title="perfil"></img></a>
+              <a href="#"onClick={handleLogout}><img src={profile} alt="" title="perfil" ></img></a>
               <a href="#"><img src={message} alt="" title="mensajes"></img></a>
               <a href="#"><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
-            {props.type1 && <Boton text="Mis cursos" style="bold" />}
-            {props.type2 && <Boton text="Crear cuenta" style="bold" />}
+            {props.type1 && <Boton text="Mis cursos" style="bold"/>}
+            {props.type2 && <Boton text="Crear cuenta" style="bold" page="signup"/>}
           </span>
         </div>
       </div>

@@ -74,7 +74,7 @@ export const Sidebar = (props) => {
                      <Boton text="Mis cursos" style="bold" />
                 </li>}
                 {props.type2 &&<li>
-                     <Boton text="Crear cuenta" style="bold"/>
+                     <Boton text="Crear cuenta" style="bold" page="/signup"/>
                 </li>}
 
             </ul>

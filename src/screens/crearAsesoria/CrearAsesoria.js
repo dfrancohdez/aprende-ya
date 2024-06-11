@@ -12,6 +12,101 @@ function CrearAsesoriaScreen() {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
+
+    const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
+    const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
+    const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
+
+    const [nombreCurso, SetNombreCurso] = useState("")
+    const [resumen, SetResumen] = useState("")
+    const [descripcion, setDescripcion] = useState("")
+
+    const [nombre, setNombre] = useState("")
+
+
+
+
+    const handleMas = () => {
+        const aux = { i: aprender.length, value: "", name: aprender.length + "-aprender" }
+        setAprender(prev => [...prev, aux])
+    }
+    const handleMasRequisitos = () => {
+        const aux = { i: requisitos.length, value: "", name: requisitos.length + "-requisitos" }
+        setRequisitos(prev => [...prev, aux])
+    }
+    const handleMasContenido = () => {
+        const aux = { i: contenidoCurso.length, value: "", name: contenidoCurso.length + "-contenidoCurso" }
+        setContenidoCurso(prev => [...prev, aux])
+    }
+
+    const handleMenos = () => {
+        setAprender(prev => prev.slice(0, -1))
+    }
+    const handleMenosRquisitos = () => {
+        setRequisitos(prev => prev.slice(0, -1))
+    }
+    const handleMenosContenidoCurso = () => {
+        setContenidoCurso(prev => prev.slice(0, -1))
+    }
+    const onFormUpdate = (e) => {
+        const { name, value } = e.target
+        let aux;
+        if (name.endsWith("aprender")) {
+            aprender.map(dato => {
+                if (name === dato.name) {
+                    aux = dato.i
+                }
+            }
+
+            )
+            let array = [...aprender]
+            array[aux] = { ...array[aux], value: value }
+            setAprender(array)
+        } else if (name.endsWith("requisitos")){
+            requisitos.map(dato => {
+                if (name === dato.name) {
+                    aux = dato.i
+                }
+            }
+
+            )
+            let array = [...requisitos]
+            array[aux] = { ...array[aux], value: value }
+            setRequisitos(array)
+        }
+        else if (name.endsWith("contenidoCurso")){
+            contenidoCurso.map(dato => {
+                if (name === dato.name) {
+                    aux = dato.i
+                }
+            }
+
+            )
+            let array = [...contenidoCurso]
+            array[aux] = { ...array[aux], value: value }
+            setContenidoCurso(array)
+        }
+
+
+
+
+        else if (name.endsWith("nombreCurso")){
+            SetNombreCurso(value)
+        }
+        else if (name.endsWith("resumen")){
+            SetResumen(value)
+        }
+        else if (name.endsWith("nombre")){
+            setNombre(value)
+        }
+        else if (name.endsWith("descripcion")){
+
+            setDescripcion(value)
+        }
+        
+        
+        
+    }
     return (
         <div className='crearAsesoria'>
             <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
@@ -22,21 +117,31 @@ function CrearAsesoriaScreen() {
             <div className='overflowx'>
                 <div className='crearAsesoria-container'>
                     <form className='crearAsesoria-form'>
-                        <Input id="1" label="Nombre del curso" type="input"text="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
-                        <Input id="2" type="textarea"label="Resumen" text="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
-                        <Input id="3" label="Nombre" type="input"text="Juan Pablo De la torre Valdez" />
-                        <Input id="4" type="textarea"label="Descripción" text="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
-                        <Input id="5" typeLabel="mas" type="elemento"label="Lo que aprenderás" text="Dominarás la programación profesional en Python" />
-                        <Input id="6" typeLabel="mas" type="elemento"label="Requisitos" text="Acceso a un ordenador con conexión a internet" />
-                        <Input id="6" typeLabel="mas" type="elemento"label="Contenido del curso" text="Dominarás la programación profesional en Python" />
+
+                        <Input  onFormUpdate={onFormUpdate} value={nombreCurso}name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
+                        <Input onFormUpdate={onFormUpdate} value={resumen}name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
+                        <Input onFormUpdate={onFormUpdate} value={nombre}name="nombre" id="3" label="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
+                        <Input onFormUpdate={onFormUpdate} value={descripcion}name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
+
+                        {aprender.map((dato) => (
+                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel="mas" class="elemento" label="Lo que aprenderás" placeholder="Dominarás la programación profesional en Python" />
+                        ))
 
 
-                        <Input id="6" typeLabel="mas" type="seccion"label="Nombre de la sección" text="Programa un creador de nombres" />
+                        }
+                        {requisitos.map((dato) => (
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel="mas" class="elemento" label="Requisitos" placeholder="Acceso a un ordenador con conexión a internet" />
+                        ))}
+                        {contenidoCurso.map((dato) => (
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel="mas" class="elemento" label="Contenido del curso" placeholder="Dominarás la programación profesional en Python" />
+                        ))}
+
+                        <Input id="6" typeLabel="mas" class="seccion" label="Nombre de la sección" placeholder="Programa un creador de nombres" />
 
                         <div className='boton'>
-                        <Boton text="Publicar" />
+                            <Boton text="Publicar" />
                         </div>
-                        
+
 
 
 
