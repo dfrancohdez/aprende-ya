@@ -10,27 +10,60 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+
+    const [validCorreo, setValidCorreo] = useState(true)
+    const [validPassword, setValidPassword] = useState(true)
+
+    const validar = () => {
+        var validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+        var validPassword =  /.{6,}/;
+        if (validEmail.test(email)) {
+            setValidCorreo(true)
+            if(validPassword.test(password)){
+                setValidPassword(true)
+                return true;
+            }else{
+                setValidPassword(false)
+                return false;
+            }
+            
+        } else {
+            setValidCorreo(false)
+            if(validPassword.test(password)){
+                setValidPassword(true)
+            }else{
+                setValidPassword(false)
+            }
+            return false;
+        }
+    }
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            setButtonText('Iniciando')
-            console.log(email)
-            console.log(password)
-            await signInWithEmailAndPassword(auth, email, password);
-            console.log("User logged in Successfully");
-            window.location.href = "/home";
-            toast.success("Credenciales correctas", {
-                position: "top-center",
-            });
-            setButtonText('Iniciar sesión')
-        } catch (error) {
-            console.log(error.message);
+        console.log(validar())
+        if (validar()) {
+            console.log("iniciando sesion")
+            try {
+                setButtonText('Iniciando')
+                console.log(email)
+                console.log(password)
+                await signInWithEmailAndPassword(auth, email, password);
+                console.log("User logged in Successfully");
+                window.location.href = "/home";
+                toast.success("Credenciales correctas", {
+                    position: "top-center",
+                });
+                setButtonText('Iniciar sesión')
+            } catch (error) {
+                console.log(error.message);
 
-            toast.error(error.message, {
-                position: "bottom-center",
-            });
+                toast.error(error.message, {
+                    position: "bottom-center",
+                });
+            }
+            setButtonText('Iniciar sesión')
         }
-        setButtonText('Iniciar sesión')
     };
     /*const initialDetails = {
         email: '',
@@ -40,6 +73,8 @@ function Login() {
     const [formDetails, setFormDetail] = useState(initialDetails)*/
     const [buttonText, setButtonText] = useState('Iniciar sesión')
     const onFormUpdate = (event) => {
+        
+        
         const { name, value, type, checked } = event.target
         /*setFormDetail(prev => {
             return {
@@ -50,10 +85,16 @@ function Login() {
         })*/
         console.log(email)
         console.log(password)
-        if (name === "email")
+        if (name === "email"){
+            setValidCorreo(true)
             setEmail(value);
-        if (name === "password")
+        }
+            
+        if (name === "password"){
+            setValidPassword(true)
             setPassword(value);
+        }
+            
     }
 
 
@@ -66,6 +107,7 @@ function Login() {
     }
 
 
+
     return (
         <div>
             <NavBar handleToggleSidebar={handleToggleSidebar} />
@@ -74,6 +116,8 @@ function Login() {
             <Sidebar sidebar={sidebar} type1={false} type2={true} />
             <div className={sidebar ? "blur" : ""}></div>
             <FormLogIn
+                validCorreo={validCorreo}
+                validPassword={validPassword}
                 handleSubmit={handleSubmit}
                 email={email}
                 password={password}

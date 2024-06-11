@@ -39,7 +39,7 @@ export const Input = (props) => {
                     </div>
                 </div>
             }
-
+        {props.error!==""&&<p className='input-error'>{props.error}</p>}
         </div>
     )
 }

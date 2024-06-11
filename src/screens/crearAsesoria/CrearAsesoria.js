@@ -124,16 +124,16 @@ function CrearAsesoriaScreen() {
                         <Input onFormUpdate={onFormUpdate} value={descripcion}name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
 
                         {aprender.map((dato) => (
-                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel="mas" class="elemento" label="Lo que aprenderás" placeholder="Dominarás la programación profesional en Python" />
+                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Lo que aprenderás":""} placeholder="Dominarás la programación profesional en Python" />
                         ))
 
 
                         }
                         {requisitos.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel="mas" class="elemento" label="Requisitos" placeholder="Acceso a un ordenador con conexión a internet" />
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Requisitos":""}  placeholder="Acceso a un ordenador con conexión a internet" />
                         ))}
                         {contenidoCurso.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel="mas" class="elemento" label="Contenido del curso" placeholder="Dominarás la programación profesional en Python" />
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Contenido del curso":""} placeholder="Dominarás la programación profesional en Python" />
                         ))}
 
                         <Input id="6" typeLabel="mas" class="seccion" label="Nombre de la sección" placeholder="Programa un creador de nombres" />

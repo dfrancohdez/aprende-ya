@@ -32,6 +32,9 @@ export const FormLogIn = (props) => {
   const handleButton=()=>{
     navigate("/password")
   }
+  
+  
+  
 
   return (
     <section className="login-section">
@@ -45,14 +48,14 @@ export const FormLogIn = (props) => {
                   <h2>Iniciar Sesión</h2>
                   <form onSubmit={props.handleSubmit}>
                       <div >
-                        <Input label="Ingresar correo" class="input"name="email" type="email" value={props.email} placeholder="correo@gmail.com" onFormUpdate={props.onFormUpdate} />
+                        <Input error={props.validCorreo?"":"Correo no invalido"} label="Ingresar correo" class="input"name="email" type="email" value={props.email} placeholder="correo@gmail.com" onFormUpdate={props.onFormUpdate} />
                       </div>
                       <div >
-                        <Input label="Ingresar contraseña" class="input" name="password" type="password" value={props.password} placeholder="Contraseña" onFormUpdate={props.onFormUpdate} />
+                        <Input error={props.validPassword?"":"Contraseña no valida"} label="Ingresar contraseña" class="input" name="password" type="password" value={props.password} placeholder="Contraseña" onFormUpdate={props.onFormUpdate} />
                       </div>
                       <div className="form-boton">
                         <p>Olvidaste tu contraseña?<span className="cursor" onClick={handleButton}> Da click aquí</span></p>
-                        <Boton text={props.buttonText} type="submit" />
+                        <Boton text={props.buttonText} type="submit"/>
                       </div>
 
 
