@@ -44,14 +44,14 @@ export const FormSignup = (props) => {
                                             <Input error={props.validNombre?"":"Nombre no valido"} label="Ingresar nombre" class="input" name="firstName" type="text" value={props.firstName} placeholder="Ricardo Lopez" onFormUpdate={props.onFormUpdate} />
                                         </div>
                                         <div >
-                                            <Input error={props.validCorreo?"":"Correo no invalido"}  label="Ingresar correo" class="input" name="email" type="email" value={props.email} placeholder="correo@gmail.com" onFormUpdate={props.onFormUpdate} />
+                                            <Input error={props.validCorreo?"":"Correo no valido"}  label="Ingresar correo" class="input" name="email" type="email" value={props.email} placeholder="correo@gmail.com" onFormUpdate={props.onFormUpdate} />
                                         </div>
                                         <div >
                                             <Input error={props.validPassword?"":"Contraseña no valida"}  label="Ingresar contraseña" class="input" name="password" type="password" value={props.password} placeholder="Contraseña" onFormUpdate={props.onFormUpdate} />
                                         </div>
 
                                         <div className="form-boton">       
-                                            <Boton text={props.buttonText} type="submit"/>
+                                            <Boton block={props.buttonText==="Creando"?"block":""}text={props.buttonText} type="submit"/>
                                         </div>
 
 

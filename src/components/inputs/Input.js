@@ -13,7 +13,7 @@ export const Input = (props) => {
 
 
 
-            {props.class === "input" && <input id={props.id} placeholder={props.placeholder} autocomplete="off" aria-autocomplete="none" name={props.name} type={props.type} value={props.value} onChange={props.onFormUpdate}/>}
+            {props.class === "input" && <input id={props.id} placeholder={props.placeholder} autoComplete="off" aria-autocomplete="none" name={props.name} type={props.type} value={props.value} onChange={props.onFormUpdate}/>}
 
 
 

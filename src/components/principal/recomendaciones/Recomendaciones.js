@@ -47,10 +47,10 @@ export const Recomendaciones = () => {
                 
                             responsive={responsive} infinite={true} className="skill-slider">
 
-                <Asesoria />
-                <Asesoria />
-                <Asesoria />
-                <Asesoria />
+                <Asesoria precio="100"nombreCurso="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" nombre="Juan Pablo De la torre Valdez"/>
+                <Asesoria precio="100"nombreCurso="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" nombre="Juan Pablo De la torre Valdez"/>
+                <Asesoria precio="100"nombreCurso="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" nombre="Juan Pablo De la torre Valdez"/>
+                <Asesoria precio="100"nombreCurso="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" nombre="Juan Pablo De la torre Valdez"/>
                 </Carousel>
             </div>
 

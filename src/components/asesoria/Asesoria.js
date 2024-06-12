@@ -1,12 +1,12 @@
 import React from 'react'
 import portada from '../../assets/img/principal/Rectangle 30.png'
 import './_asesoria.scss'
-export const Asesoria=()=>{
+export const Asesoria=({nombreCurso,nombre,precio})=>{
     return(
         <div className='asesoria'>
             <img src={portada}/>
-            <h6 className='bold'>Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL</h6>
-            <h6 className='regular'>Juan Pablo De la torre Valdez</h6>
+            <h6 className='bold'>{nombreCurso}</h6>
+            <h6 className='regular'>{nombre}</h6>
             <div className='rate'>
                 <div className='calif'>
                     5.0
@@ -16,7 +16,7 @@ export const Asesoria=()=>{
                 </div>
             </div>
             <h6>
-                100 MX$
+                {precio} MX$
             </h6>
         </div>
     )

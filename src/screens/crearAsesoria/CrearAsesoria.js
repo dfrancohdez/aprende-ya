@@ -5,13 +5,63 @@ import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import { useState } from 'react'
 import { Input } from '../../components/inputs/Input'
 import { Boton } from '../../components/boton/Boton'
+import { toast } from "react-toastify";
 
+import { auth, db } from "../../components/auth/firebase";
+import { addDoc,setDoc, doc, collection } from "firebase/firestore";
+
+import { useNavigate } from "react-router-dom";
 function CrearAsesoriaScreen() {
+    const navigate = useNavigate()
+    const handleButton = (page) => {
+        navigate(page)
+    }
     const [sidebar, toggleSideBar] = useState(false)
+    const [buttonText, setButtonText] = useState('Publicar')
     const handleToggleSidebar = () => {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+          try {
+            const user = auth.currentUser;
+            console.log(user);
+            const Aprender=aprender.map(prev=>prev.value)
+            const Requisitos=requisitos.map(prev=>prev.value)
+            const ContenidoCurso=contenidoCurso.map(prev=>prev.value)
+            if (user) {
+                setButtonText('Publicando')
+              await setDoc(doc(db, "Asesorias", user.uid,"Cursos",nombreCurso), {
+                nombreCurso: nombreCurso,
+                resumen: resumen,
+                nombre: nombre,
+                descripcion: descripcion,
+                aprender:Aprender,
+                requisitos:Requisitos,
+                contenidoCurso:ContenidoCurso,
+                precio:precio
+              });
+            }
+            console.log("User Registered Successfully!!");
+            toast.success("Publicado exitosamente", {
+              position: "bottom-center",
+            });
+            handleButton("/home")
+            setButtonText("Publicar")
+          } catch (error) {
+            console.log(error.message);
+            toast.error(error.message, {
+              position: "bottom-center",
+            });
+          }
+          setButtonText('Publicar')
+      };
+
+
+
 
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
@@ -22,6 +72,7 @@ function CrearAsesoriaScreen() {
     const [descripcion, setDescripcion] = useState("")
 
     const [nombre, setNombre] = useState("")
+    const [precio,setPrecio] = useState("")
 
 
 
@@ -103,6 +154,10 @@ function CrearAsesoriaScreen() {
 
             setDescripcion(value)
         }
+        else if (name.endsWith("precio")){
+
+            setPrecio(value)
+        }
         
         
         
@@ -116,7 +171,7 @@ function CrearAsesoriaScreen() {
             </div>
             <div className='overflowx'>
                 <div className='crearAsesoria-container'>
-                    <form className='crearAsesoria-form'>
+                    <form className='crearAsesoria-form' onSubmit={handleSubmit}>
 
                         <Input  onFormUpdate={onFormUpdate} value={nombreCurso}name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
                         <Input onFormUpdate={onFormUpdate} value={resumen}name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
@@ -138,8 +193,11 @@ function CrearAsesoriaScreen() {
 
                         <Input id="6" typeLabel="mas" class="seccion" label="Nombre de la sección" placeholder="Programa un creador de nombres" />
 
+                        <Input onFormUpdate={onFormUpdate} value={precio}name="precio"  class="input" label="Precio" placeholder="100" />
+
+
                         <div className='boton'>
-                            <Boton text="Publicar" />
+                            <Boton block={buttonText==="Publicando"?"block":""} text={buttonText} type="submit"/>
                         </div>
 
 

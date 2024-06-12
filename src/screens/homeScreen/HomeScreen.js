@@ -2,15 +2,35 @@ import { NavBar } from '../../components/navBar/NavBar'
 import { Footer } from '../../components/footer/Footer'
 import './_homeScreen.scss'
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Asesoria } from '../../components/asesoria/Asesoria'
 
+
+import { auth, db } from "../../components/auth/firebase";
+import { QuerySnapshot, collection, getDocs,collectionGroup, query } from "firebase/firestore";
 function HomeScreen() {
     const [sidebar, toggleSideBar] = useState(false)
     const handleToggleSidebar = () => {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
+    const [asesorias,setAsesorias]=useState([])
+    const fetchPost = async () => {
+        let newData=[]
+        const asesorias = query(collectionGroup(db, 'Cursos'))
+        const querySnapshot = await getDocs(asesorias);
+        querySnapshot.forEach((doc) => {
+            newData.push({...doc.data(), id:doc.id })
+        });
+            
+            setAsesorias(newData)
+            console.log(newData)
+        }
+
+    useEffect(()=>{
+        fetchPost();
+
+    },[])
     return (
         <div className='homeScreen'>
             <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
@@ -46,13 +66,8 @@ function HomeScreen() {
                         </ul>
                     </div>
                     <div className='homeScreen-container-asesorias'>
-                        <Asesoria />
-                        <Asesoria />
-                        <Asesoria />
-                        <Asesoria />
-                        <Asesoria />
-                        <Asesoria />
-                        <Asesoria />
+                        {asesorias.map(prev=><Asesoria precio={prev.precio} nombreCurso={prev.nombreCurso} nombre={prev.nombre}/>)
+                        }
                     </div>
                 </div>
 

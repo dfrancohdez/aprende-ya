@@ -7,7 +7,14 @@ import { FormSignup } from "../../components/auth/FormSignup"
 import { Footer } from "../../components/footer/Footer";
 import { NavBar } from "../../components/navBar/NavBar";
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
+import { useNavigate } from "react-router-dom";
 function SignUp() {
+  const navigate = useNavigate()
+    const handleButton = (page) => {
+        navigate(page)
+    }
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
@@ -68,8 +75,11 @@ function SignUp() {
         }
         console.log("User Registered Successfully!!");
         toast.success("Usuario registrado exitosamente", {
-          position: "top-center",
+          position: "bottom-center",
+          
         });
+        setButtonText("Crear cuenta")
+        handleButton("/login")
       } catch (error) {
         console.log(error.message);
         toast.error(error.message, {
@@ -133,6 +143,7 @@ function SignUp() {
         firstName={fname}
         onFormUpdate={onFormUpdate}
         buttonText={buttonText} />
+        
       <Footer />
     </div>
   );

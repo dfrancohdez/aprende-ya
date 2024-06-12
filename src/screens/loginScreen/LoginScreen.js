@@ -6,7 +6,12 @@ import { Footer } from "../../components/footer/Footer";
 import { FormLogIn } from "../../components/auth/FormLogIn"
 import { NavBar } from "../../components/navBar/NavBar";
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
+import { useNavigate } from "react-router-dom";
 function Login() {
+    const navigate = useNavigate()
+    const handleButton = (page) => {
+        navigate(page)
+    }
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -16,22 +21,22 @@ function Login() {
 
     const validar = () => {
         var validEmail = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-        var validPassword =  /.{6,}/;
+        var validPassword = /.{6,}/;
         if (validEmail.test(email)) {
             setValidCorreo(true)
-            if(validPassword.test(password)){
+            if (validPassword.test(password)) {
                 setValidPassword(true)
                 return true;
-            }else{
+            } else {
                 setValidPassword(false)
                 return false;
             }
-            
+
         } else {
             setValidCorreo(false)
-            if(validPassword.test(password)){
+            if (validPassword.test(password)) {
                 setValidPassword(true)
-            }else{
+            } else {
                 setValidPassword(false)
             }
             return false;
@@ -50,11 +55,13 @@ function Login() {
                 console.log(password)
                 await signInWithEmailAndPassword(auth, email, password);
                 console.log("User logged in Successfully");
-                window.location.href = "/home";
+                //window.location.href = "/home";
+
                 toast.success("Credenciales correctas", {
-                    position: "top-center",
+                    position: "bottom-center",
                 });
                 setButtonText('Iniciar sesión')
+                handleButton("/home")
             } catch (error) {
                 console.log(error.message);
 
@@ -73,8 +80,8 @@ function Login() {
     const [formDetails, setFormDetail] = useState(initialDetails)*/
     const [buttonText, setButtonText] = useState('Iniciar sesión')
     const onFormUpdate = (event) => {
-        
-        
+
+
         const { name, value, type, checked } = event.target
         /*setFormDetail(prev => {
             return {
@@ -85,16 +92,16 @@ function Login() {
         })*/
         console.log(email)
         console.log(password)
-        if (name === "email"){
+        if (name === "email") {
             setValidCorreo(true)
             setEmail(value);
         }
-            
-        if (name === "password"){
+
+        if (name === "password") {
             setValidPassword(true)
             setPassword(value);
         }
-            
+
     }
 
 
@@ -123,6 +130,7 @@ function Login() {
                 password={password}
                 onFormUpdate={onFormUpdate}
                 buttonText={buttonText} />
+
             <Footer />
         </div>
     );
