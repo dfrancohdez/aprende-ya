@@ -8,7 +8,7 @@ import { Boton } from '../../components/boton/Boton'
 import { toast } from "react-toastify";
 
 import { auth, db } from "../../components/auth/firebase";
-import { addDoc,setDoc, doc, collection } from "firebase/firestore";
+import { addDoc, setDoc, doc, collection } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
 function CrearAsesoriaScreen() {
@@ -25,40 +25,40 @@ function CrearAsesoriaScreen() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-          try {
+
+        try {
             const user = auth.currentUser;
             console.log(user);
-            const Aprender=aprender.map(prev=>prev.value)
-            const Requisitos=requisitos.map(prev=>prev.value)
-            const ContenidoCurso=contenidoCurso.map(prev=>prev.value)
+            const Aprender = aprender.map(prev => prev.value)
+            const Requisitos = requisitos.map(prev => prev.value)
+            const ContenidoCurso = contenidoCurso.map(prev => prev.value)
             if (user) {
                 setButtonText('Publicando')
-              await setDoc(doc(db, "Asesorias", user.uid,"Cursos",nombreCurso), {
-                nombreCurso: nombreCurso,
-                resumen: resumen,
-                nombre: nombre,
-                descripcion: descripcion,
-                aprender:Aprender,
-                requisitos:Requisitos,
-                contenidoCurso:ContenidoCurso,
-                precio:precio
-              });
+                await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso), {
+                    nombreCurso: nombreCurso,
+                    resumen: resumen,
+                    nombre: nombre,
+                    descripcion: descripcion,
+                    aprender: Aprender,
+                    requisitos: Requisitos,
+                    contenidoCurso: ContenidoCurso,
+                    precio: precio
+                });
             }
             console.log("User Registered Successfully!!");
             toast.success("Publicado exitosamente", {
-              position: "bottom-center",
+                position: "bottom-center",
             });
             handleButton("/home")
             setButtonText("Publicar")
-          } catch (error) {
+        } catch (error) {
             console.log(error.message);
             toast.error(error.message, {
-              position: "bottom-center",
+                position: "bottom-center",
             });
-          }
-          setButtonText('Publicar')
-      };
+        }
+        setButtonText('Publicar')
+    };
 
 
 
@@ -66,13 +66,15 @@ function CrearAsesoriaScreen() {
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
+    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ value: "", material: "", descripcion: "" }] }])
+
 
     const [nombreCurso, SetNombreCurso] = useState("")
     const [resumen, SetResumen] = useState("")
     const [descripcion, setDescripcion] = useState("")
 
     const [nombre, setNombre] = useState("")
-    const [precio,setPrecio] = useState("")
+    const [precio, setPrecio] = useState("")
 
 
 
@@ -89,6 +91,21 @@ function CrearAsesoriaScreen() {
         const aux = { i: contenidoCurso.length, value: "", name: contenidoCurso.length + "-contenidoCurso" }
         setContenidoCurso(prev => [...prev, aux])
     }
+    const handleMasSeccion = () => {
+        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{value:"", material: "", descripcion: "" }] }
+        setSecciones(prev => [...prev, aux])
+    }
+    const handleMasClase = (i) => {
+        const newItem = { value: "", material: "", descripcion: "" }
+        const aux = [...secciones]
+        const aux1 = aux[i].clases
+        //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+        aux1.push(newItem)
+        console.log(aux)
+        setSecciones(aux)
+    }
+    
+
 
     const handleMenos = () => {
         setAprender(prev => prev.slice(0, -1))
@@ -98,6 +115,9 @@ function CrearAsesoriaScreen() {
     }
     const handleMenosContenidoCurso = () => {
         setContenidoCurso(prev => prev.slice(0, -1))
+    }
+    const handleMenosSeccion = () => {
+        setSecciones(prev => prev.slice(0, -1))
     }
     const onFormUpdate = (e) => {
         const { name, value } = e.target
@@ -113,7 +133,7 @@ function CrearAsesoriaScreen() {
             let array = [...aprender]
             array[aux] = { ...array[aux], value: value }
             setAprender(array)
-        } else if (name.endsWith("requisitos")){
+        } else if (name.endsWith("requisitos")) {
             requisitos.map(dato => {
                 if (name === dato.name) {
                     aux = dato.i
@@ -125,7 +145,46 @@ function CrearAsesoriaScreen() {
             array[aux] = { ...array[aux], value: value }
             setRequisitos(array)
         }
-        else if (name.endsWith("contenidoCurso")){
+
+
+
+        else if (name.endsWith("section")) {
+            const subString = name.split("-")
+            if(name.startsWith("descripcion")){
+                const aux1 = [...secciones]
+                aux1[subString[3]].clases[subString[1]].descripcion=value
+                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                setSecciones(aux1)
+            }else if(name.startsWith("material")){
+                const aux1 = [...secciones]
+                aux1[subString[3]].clases[subString[1]].material=value
+                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                setSecciones(aux1)
+            }
+            else{
+
+            if(subString.length>2){ 
+                const aux1 = [...secciones]
+                aux1[subString[2]].clases[subString[0]].value=value
+                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                setSecciones(aux1)
+    
+            }else{
+                
+                const aux1 = [...secciones]
+                aux1[subString[0]].value=value
+                console.log(aux1)
+                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                setSecciones(aux1)
+
+            }}
+            
+
+        }
+
+
+
+        else if (name.endsWith("contenidoCurso")) {
             contenidoCurso.map(dato => {
                 if (name === dato.name) {
                     aux = dato.i
@@ -141,26 +200,27 @@ function CrearAsesoriaScreen() {
 
 
 
-        else if (name.endsWith("nombreCurso")){
+        else if (name.endsWith("nombreCurso")) {
             SetNombreCurso(value)
         }
-        else if (name.endsWith("resumen")){
+        else if (name.endsWith("resumen")) {
             SetResumen(value)
         }
-        else if (name.endsWith("nombre")){
+        else if (name.endsWith("nombre")) {
             setNombre(value)
         }
-        else if (name.endsWith("descripcion")){
+        else if (name.endsWith("descripcion")) {
 
             setDescripcion(value)
         }
-        else if (name.endsWith("precio")){
+        else if (name.endsWith("precio")) {
 
             setPrecio(value)
         }
-        
-        
-        
+
+
+
+
     }
     return (
         <div className='crearAsesoria'>
@@ -173,31 +233,53 @@ function CrearAsesoriaScreen() {
                 <div className='crearAsesoria-container'>
                     <form className='crearAsesoria-form' onSubmit={handleSubmit}>
 
-                        <Input  onFormUpdate={onFormUpdate} value={nombreCurso}name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
-                        <Input onFormUpdate={onFormUpdate} value={resumen}name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
-                        <Input onFormUpdate={onFormUpdate} value={nombre}name="nombre" id="3" label="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
-                        <Input onFormUpdate={onFormUpdate} value={descripcion}name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
+                        <Input onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
+                        <Input onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
+                        <Input onFormUpdate={onFormUpdate} value={nombre} name="nombre" id="3" label="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
+                        <Input onFormUpdate={onFormUpdate} value={descripcion} name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
 
                         {aprender.map((dato) => (
-                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Lo que aprenderás":""} placeholder="Dominarás la programación profesional en Python" />
+                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Lo que aprenderás" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))
 
 
                         }
                         {requisitos.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Requisitos":""}  placeholder="Acceso a un ordenador con conexión a internet" />
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Requisitos" : ""} placeholder="Acceso a un ordenador con conexión a internet" />
                         ))}
                         {contenidoCurso.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel={dato.i===0?"mas":""} class="elemento" label={dato.i===0?"Contenido del curso":""} placeholder="Dominarás la programación profesional en Python" />
+                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Contenido del curso" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))}
 
-                        <Input id="6" typeLabel="mas" class="seccion" label="Nombre de la sección" placeholder="Programa un creador de nombres" />
 
-                        <Input onFormUpdate={onFormUpdate} value={precio}name="precio"  class="input" label="Precio" placeholder="100" />
+                        {secciones.map((dato) => (
+                            <Input
+                                onFormUpdate={onFormUpdate}
+                                handleMas={handleMasSeccion}
+                                handleMenos={handleMenosSeccion}
+                                handleMasClase={() => handleMasClase(dato.i)}
+                                //handleMenosClase={handleMenosClase}
+                                //handleMasMaterial={handleMasMaterial}
+                                //handleMenosMaterial={handleMenosMaterial}
+                                clases={dato.clases}
+                                typeLabel="mas"
+                                class="seccion"
+                                label={dato.value}
+                                placeholder="Programa un creador de nombres"
+                                nameSection={dato.i + "-section"}
+                                //valor de nombre seccion
+                                value={dato.value}
 
 
+                            />
+                        ))}
+
+
+
+
+                        <Input onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" label="Precio" placeholder="100" />
                         <div className='boton'>
-                            <Boton block={buttonText==="Publicando"?"block":""} text={buttonText} type="submit"/>
+                            <Boton block={buttonText === "Publicando" ? "block" : ""} text={buttonText} type="submit" />
                         </div>
 
 

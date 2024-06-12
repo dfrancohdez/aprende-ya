@@ -1,3 +1,4 @@
+@use '../../scss/base/variables' as v;
 .input{
     padding: 20px;
     label{
@@ -74,9 +75,21 @@
             }
         }
     }
+    &:hover{
+        background-color: v.$fondo2;
+        border-radius: 30px;
+    }
     
 }
 .input-error{
     padding: 5px 0px 0px 5px;
     color: yellow;
+}
+.line{
+    height: 3px;
+    width: 100%;
+    background-color: v.$fondo4;
+}
+.claseNombre{
+    color:yellow
 }
