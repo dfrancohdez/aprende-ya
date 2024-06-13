@@ -43,7 +43,29 @@ function CrearAsesoriaScreen() {
                     requisitos: Requisitos,
                     contenidoCurso: ContenidoCurso,
                     precio: precio
+
                 });
+                for (const seccion of secciones)
+                console.log(seccion)
+                for (const seccion of secciones){
+                    
+                    await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso, "Secciones", seccion.value), {
+                        nombre: seccion.value,
+                        clases: seccion.clases
+                    }
+                    
+
+                    )
+                }
+                /*for (const seccion of secciones) {
+                    for (const clase of seccion) {
+                        await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso, "Secciones", seccion,"Clases",clase), {
+                            nombre:clase.value,
+                            material:clase.material
+                        })
+                    }
+                }*/
+
             }
             console.log("User Registered Successfully!!");
             toast.success("Publicado exitosamente", {
@@ -66,7 +88,7 @@ function CrearAsesoriaScreen() {
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
-    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ value: "", material: "", descripcion: "" }] }])
+    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ value: "", material: [{ ruta: "", description: "" }] }] }])
 
 
     const [nombreCurso, SetNombreCurso] = useState("")
@@ -92,33 +114,84 @@ function CrearAsesoriaScreen() {
         setContenidoCurso(prev => [...prev, aux])
     }
     const handleMasSeccion = () => {
-        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{value:"", material: "", descripcion: "" }] }
+        toast.success("Sección agregada", {
+            position: "bottom-center",
+        })
+        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ value: "", material: [{ ruta: "", description: "" }] }] }
         setSecciones(prev => [...prev, aux])
     }
     const handleMasClase = (i) => {
-        const newItem = { value: "", material: "", descripcion: "" }
+        const newItem = { value: "", material: [{ ruta: "", description: "" }] }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
         aux1.push(newItem)
-        console.log(aux)
+        console.log(aux1)
         setSecciones(aux)
     }
-    
+    const handleMasMaterial = (i, j, z) => {
+
+        console.log(i + " asesoria")
+        console.log(j + " clase")
+        console.log(z + "material")
+        const newItem = { ruta: "", description: "" }
+        const aux = [...secciones]
+        const aux1 = aux[i].clases
+        const aux2 = aux1[j].material
+        //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+        console.log(aux1)
+        aux2.push(newItem)
+
+        setSecciones(aux)
+    }
 
 
-    const handleMenos = () => {
-        setAprender(prev => prev.slice(0, -1))
+
+    const handleMenos = (i) => {
+        const aux = [...aprender]
+        console.log(i)
+        console.log(aux)
+        aux.splice(i, 1)
+        console.log(aux)
+        setAprender(aux)
     }
-    const handleMenosRquisitos = () => {
-        setRequisitos(prev => prev.slice(0, -1))
+    const handleMenosRquisitos = (i) => {
+        const aux = [...requisitos]
+        aux.splice(i, 1)
+        setRequisitos(aux)
     }
-    const handleMenosContenidoCurso = () => {
-        setContenidoCurso(prev => prev.slice(0, -1))
+    const handleMenosContenidoCurso = (i) => {
+        const aux = [...contenidoCurso]
+        aux.splice(i, 1)
+        setContenidoCurso(aux)
     }
-    const handleMenosSeccion = () => {
-        setSecciones(prev => prev.slice(0, -1))
+    const handleMenosSeccion = (i) => {
+        const aux = [...secciones]
+        aux.splice(i, 1)
+        setSecciones(aux)
     }
+
+    const handleMenosClase = (i, j) => {
+        console.log(i)
+        console.log(j)
+        const aux = [...secciones]
+        const aux1 = aux[i].clases
+        aux1.splice(j, 1)
+        aux[i].clases = aux1
+        setSecciones(aux)
+
+    }
+    const handleMenosMaterial = (i, j, z) => {
+        console.log(i)
+        console.log(j)
+        const aux = [...secciones]
+        const aux1 = aux[i].clases
+        const aux2 = aux1[j].material
+        aux2.splice(z, 1)
+        aux[i].clases[j].material = aux2
+        setSecciones(aux)
+    }
+
     const onFormUpdate = (e) => {
         const { name, value } = e.target
         let aux;
@@ -150,37 +223,40 @@ function CrearAsesoriaScreen() {
 
         else if (name.endsWith("section")) {
             const subString = name.split("-")
-            if(name.startsWith("descripcion")){
-                const aux1 = [...secciones]
-                aux1[subString[3]].clases[subString[1]].descripcion=value
-                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
-                setSecciones(aux1)
-            }else if(name.startsWith("material")){
-                const aux1 = [...secciones]
-                aux1[subString[3]].clases[subString[1]].material=value
-                //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
-                setSecciones(aux1)
-            }
-            else{
 
-            if(subString.length>2){ 
+            if (subString.length >= 6) {
+                if (subString[1] !== "descripcion") {
+                    const aux1 = [...secciones]
+                    aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = value
+                    //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                    setSecciones(aux1)
+                } else {
+                    const aux1 = [...secciones]
+                    aux1[subString[4]].clases[subString[2]].material[subString[0]].description = value
+                    //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                    setSecciones(aux1)
+                }
+            }
+
+            else if (subString.length === 4) {
                 const aux1 = [...secciones]
-                aux1[subString[2]].clases[subString[0]].value=value
+                aux1[subString[2]].clases[subString[0]].value = value
                 //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
                 setSecciones(aux1)
-    
-            }else{
-                
+
+            } else {
+
                 const aux1 = [...secciones]
-                aux1[subString[0]].value=value
+                aux1[subString[0]].value = value
                 console.log(aux1)
                 //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
                 setSecciones(aux1)
 
-            }}
-            
-
+            }
         }
+
+
+
 
 
 
@@ -233,51 +309,54 @@ function CrearAsesoriaScreen() {
                 <div className='crearAsesoria-container'>
                     <form className='crearAsesoria-form' onSubmit={handleSubmit}>
 
-                        <Input onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
-                        <Input onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
-                        <Input onFormUpdate={onFormUpdate} value={nombre} name="nombre" id="3" label="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
-                        <Input onFormUpdate={onFormUpdate} value={descripcion} name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
+                        <Input onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" lable="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
+                        <Input onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" lable="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
+                        <Input onFormUpdate={onFormUpdate} value={nombre} name="nombre" id="3" lable="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
+                        <Input onFormUpdate={onFormUpdate} value={descripcion} name="descripcion" id="4" class="textarea" lable="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
 
-                        {aprender.map((dato) => (
-                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={handleMenos} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Lo que aprenderás" : ""} placeholder="Dominarás la programación profesional en Python" />
+                        {aprender.map((dato, index) => (
+                            <Input value={dato.value} onFormUpdate={onFormUpdate} handleMenos={() => handleMenos(index)} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Lo que aprenderás" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))
 
 
                         }
-                        {requisitos.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosRquisitos} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Requisitos" : ""} placeholder="Acceso a un ordenador con conexión a internet" />
+                        {requisitos.map((dato, index) => (
+                            <Input onFormUpdate={onFormUpdate} handleMenos={() => handleMenosRquisitos(index)} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Requisitos" : ""} placeholder="Acceso a un ordenador con conexión a internet" />
                         ))}
-                        {contenidoCurso.map((dato) => (
-                            <Input onFormUpdate={onFormUpdate} handleMenos={handleMenosContenidoCurso} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typeLabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Contenido del curso" : ""} placeholder="Dominarás la programación profesional en Python" />
-                        ))}
-
-
-                        {secciones.map((dato) => (
-                            <Input
-                                onFormUpdate={onFormUpdate}
-                                handleMas={handleMasSeccion}
-                                handleMenos={handleMenosSeccion}
-                                handleMasClase={() => handleMasClase(dato.i)}
-                                //handleMenosClase={handleMenosClase}
-                                //handleMasMaterial={handleMasMaterial}
-                                //handleMenosMaterial={handleMenosMaterial}
-                                clases={dato.clases}
-                                typeLabel="mas"
-                                class="seccion"
-                                label={dato.value}
-                                placeholder="Programa un creador de nombres"
-                                nameSection={dato.i + "-section"}
-                                //valor de nombre seccion
-                                value={dato.value}
-
-
-                            />
+                        {contenidoCurso.map((dato, index) => (
+                            <Input onFormUpdate={onFormUpdate} handleMenos={() => handleMenosContenidoCurso(index)} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Contenido del curso" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))}
 
 
+                        {secciones.map((dato, index) => {
+                            return (
+                                <Input
+                                    onFormUpdate={onFormUpdate}
+                                    handleMas={handleMasSeccion}
+                                    handleMenos={() => handleMenosSeccion(index)}
+                                    handleMasClase={() => handleMasClase(dato.i)}
+                                    handleMenosClase={handleMenosClase}
+                                    handleMasMaterial={handleMasMaterial}
+                                    handleMenosMaterial={handleMenosMaterial}
+                                    clases={dato.clases}
+                                    typelable="mas"
+                                    class="seccion"
+                                    lable={dato.value}
+                                    placeholder="Programa un creador de nombres"
+                                    nameSection={dato.i + "-section"}
+                                    //valor de nombre seccion
+                                    value={dato.value}
+                                    i={dato.i}
 
 
-                        <Input onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" label="Precio" placeholder="100" />
+                                />
+                            )
+                        })}
+
+
+
+
+                        <Input onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" lable="Precio" placeholder="100" />
                         <div className='boton'>
                             <Boton block={buttonText === "Publicando" ? "block" : ""} text={buttonText} type="submit" />
                         </div>
