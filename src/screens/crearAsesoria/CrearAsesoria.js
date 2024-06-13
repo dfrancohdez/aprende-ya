@@ -309,22 +309,22 @@ function CrearAsesoriaScreen() {
                 <div className='crearAsesoria-container'>
                     <form className='crearAsesoria-form' onSubmit={handleSubmit}>
 
-                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" lable="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
-                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" lable="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
-                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={nombre} name="nombre" id="3" lable="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
-                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={descripcion} name="descripcion" id="4" class="textarea" lable="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
+                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
+                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
+                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={nombre} name="nombre" id="3" label="Nombre" class="input" placeholder="Juan Pablo De la torre Valdez" />
+                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={descripcion} name="descripcion" id="4" class="textarea" label="Descripción" placeholder="Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación." />
 
                         {aprender.map((dato, index) => (
-                            <Input hover="input-hover" value={dato.value} onFormUpdate={onFormUpdate} handleMenos={() => handleMenos(index)} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Lo que aprenderás" : ""} placeholder="Dominarás la programación profesional en Python" />
+                            <Input hover="input-hover" value={dato.value} onFormUpdate={onFormUpdate} handleMenos={() => handleMenos(index)} handleMas={handleMas} name={dato.i + "-aprender"} id="5" typelabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Lo que aprenderás" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))
 
 
                         }
                         {requisitos.map((dato, index) => (
-                            <Input hover="input-hover" onFormUpdate={onFormUpdate} handleMenos={() => handleMenosRquisitos(index)} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Requisitos" : ""} placeholder="Acceso a un ordenador con conexión a internet" />
+                            <Input hover="input-hover" onFormUpdate={onFormUpdate} handleMenos={() => handleMenosRquisitos(index)} handleMas={handleMasRequisitos} value={dato.value} name={dato.i + "-requisitos"} id="6" typelabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Requisitos" : ""} placeholder="Acceso a un ordenador con conexión a internet" />
                         ))}
                         {contenidoCurso.map((dato, index) => (
-                            <Input hover="input-hover" onFormUpdate={onFormUpdate} handleMenos={() => handleMenosContenidoCurso(index)} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typelable={dato.i === 0 ? "mas" : ""} class="elemento" lable={dato.i === 0 ? "Contenido del curso" : ""} placeholder="Dominarás la programación profesional en Python" />
+                            <Input hover="input-hover" onFormUpdate={onFormUpdate} handleMenos={() => handleMenosContenidoCurso(index)} handleMas={handleMasContenido} value={dato.value} name={dato.i + "-contenidoCurso"} id="6" typelabel={dato.i === 0 ? "mas" : ""} class="elemento" label={dato.i === 0 ? "Contenido del curso" : ""} placeholder="Dominarás la programación profesional en Python" />
                         ))}
 
 
@@ -340,9 +340,9 @@ function CrearAsesoriaScreen() {
                                     handleMasMaterial={handleMasMaterial}
                                     handleMenosMaterial={handleMenosMaterial}
                                     clases={dato.clases}
-                                    typelable="mas"
+                                    typelabel="mas"
                                     class="seccion"
-                                    lable={dato.value}
+                                    label={dato.value}
                                     placeholder="Programa un creador de nombres"
                                     nameSection={dato.i + "-section"}
                                     //valor de nombre seccion
@@ -353,11 +353,15 @@ function CrearAsesoriaScreen() {
                                 />
                             )
                         })}
+                        
+
+                        
 
 
-
-
-                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" lable="Precio" placeholder="100" />
+                        <Input hover="input-hover" onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" label="Precio" placeholder="100" />
+                        
+                        
+                        
                         <div className='boton'>
                             <Boton block={buttonText === "Publicando" ? "block" : ""} text={buttonText} type="submit" />
                         </div>
