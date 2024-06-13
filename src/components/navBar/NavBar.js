@@ -56,17 +56,17 @@ export const NavBar = (props) => {
         <div className="navBar">
           <div className="nav-link">
             <a href="/" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Inicio</a>
-            <a href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>Sobre Nosotros</a>
-            <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>FAQ</a>
+            <a href="/about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>Sobre Nosotros</a>
+            <a href="/faq" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>FAQ</a>
             {props.type1 && <a href="/crearAsesoria" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Publicar</a>}
             {props.type2 && <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Iniciar sesión</a>}
           </div>
           <span className="navbar-text">
             {props.type1 && <div className="social-icon">
               <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
-              <a href="#"onClick={handleLogout}><img src={profile} alt="" title="perfil" ></img></a>
+              <a href="/myAccount"><img src={profile} alt="" title="perfil"></img></a>
               <a href="#"><img src={message} alt="" title="mensajes"></img></a>
-              <a href="#"><img src={cart} alt="" title="carrito"></img></a>
+              <a href="" onClick={handleLogout}><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
             {props.type1 && <Boton text="Mis cursos" style="bold"/>}

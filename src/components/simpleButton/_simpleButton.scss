@@ -1,0 +1,22 @@
+@use '../../scss/base/variables' as v;
+.SimpleButton{
+    display: flex;
+    font-family: v.$fuente_parrafo;
+    width: 169px;
+    height: 48px;
+    border-radius: 20px;
+    background-color: v.$fondo2;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.bold{
+    color: white;
+    font-weight: bold;
+}
+.sin{
+    background-color: transparent;
+}

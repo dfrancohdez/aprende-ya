@@ -34,13 +34,13 @@ export const Sidebar = (props) => {
                     <a href="/" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}><h6>Inicio</h6></a>
                 </li>
                 <li>
-                    <a href="#about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}><h6>Sobre Nosotros</h6></a>
+                    <a href="/about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}><h6>Sobre Nosotros</h6></a>
                 </li>
                 <li>
-                    <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}><h6>FAQ</h6></a>
+                    <a href="/faq" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('faq')}><h6>FAQ</h6></a>
                 </li>
                 {props.type1 &&<li>
-                     <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}><h6>Publicar</h6></a>
+                     <a href="/crearAsesoria" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('crearAsesoria')}><h6>Publicar</h6></a>
                 </li>}
                 {props.type2 && <li>
                     <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}><h6>Iniciar sesión</h6></a>
@@ -53,7 +53,7 @@ export const Sidebar = (props) => {
                 </li>}
                 {props.type1 && 
                 <li>  
-                    <a href="#"><img src={profile} alt=""></img><h6 className='regular'>Perfil</h6></a>
+                    <a href="/myAccount"><img src={profile} alt=""></img><h6 className='regular'>Perfil</h6></a>
                     
                 </li>}
                 {props.type1 && 

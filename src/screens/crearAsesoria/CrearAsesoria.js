@@ -302,7 +302,7 @@ function CrearAsesoriaScreen() {
         <div className='crearAsesoria'>
             <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
             <div>
-                <Sidebar sidebar={sidebar} type1={false} type2={true} />
+                <Sidebar sidebar={sidebar} type1={true} type2={false} />
                 <div className={sidebar ? "blur" : ""}></div>
             </div>
             <div className='overflowx'>
