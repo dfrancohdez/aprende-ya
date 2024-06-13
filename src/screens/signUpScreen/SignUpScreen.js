@@ -28,7 +28,8 @@ function SignUp() {
   const validar = () => {
     var validEmailEx = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
     var validPasswordEx = /.{6,}/;
-    var validNombreEx = /^[A-Za-z]{5,}$/;
+    //\s space
+    var validNombreEx = /^(?!\s)[A-Za-z\s]{5,}$/
     let aux=true
     if (validEmailEx.test(email)) {
       setValidCorreo(true)

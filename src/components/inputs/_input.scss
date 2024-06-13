@@ -1,31 +1,39 @@
 @use '../../scss/base/variables' as v;
-.input{
+
+.input {
     padding: 20px;
-    lable{
+
+    lable {
         display: flex;
-        h6{
+
+        h6 {
             font-weight: 500;
             padding: 3px 50px 3px 15px;
         }
-        img{
+
+        img {
             width: 24px;
             cursor: pointer;
         }
+
         margin: 10px 0;
-        
+
     }
-    input{
+
+    input {
         outline: none;
         background-color: #ddd;
         padding: 15px;
         border-radius: 20px;
         width: 100%;
-        ::placeholder{
-            color:#0007 !important
+
+        ::placeholder {
+            color: #0007 !important
         }
-        
+
     }
-    textarea{
+
+    textarea {
         outline: none;
         background-color: #ddd;
         resize: none;
@@ -33,76 +41,91 @@
         border-radius: 20px;
         padding: 10px;
     }
-    .elemento{
+
+    .elemento {
         display: flex;
         flex-direction: row;
-        img{
+
+        img {
             position: relative;
             width: 24px;
             right: 40px;
             cursor: pointer;
         }
     }
-    .nombre-clase-input{
-        
+
+    .nombre-clase-input {
+
 
         margin: 0 10%;
         width: 90%;
-        .insertar-img{
+
+        .insertar-img {
             display: flex;
-            
+
             width: 90%;
             align-items: start;
-            .insertar-material{
+
+            .insertar-material {
                 flex-grow: 2;
                 padding: 0 20px;
                 width: 600px;
-                lable{
 
-                }
-                
-                .img-insertar{
+                lable {}
+
+                .img-insertar {
                     min-width: 100px;
                     width: 30%;
                     margin: 0 20px;
                 }
 
             }
-            textarea{
+
+            textarea {
                 flex-grow: 1;
                 width: 90%;
-                
+
             }
         }
     }
-    &:hover{
+
+    
+
+}
+.input-hover {
+    &:hover {
         background-color: v.$fondo2;
         border-radius: 30px;
     }
-    
 }
-.input-error{
+
+.input-error {
     padding: 5px 0px 0px 5px;
     color: yellow;
 }
-.line{
+
+.line {
     height: 3px;
     width: 100%;
     background-color: v.$fondo4;
 }
-.claseNombre{
-    color:yellow
+
+.claseNombre {
+    color: yellow
 }
-.insertar-img-botton{
+
+.insertar-img-botton {
     width: 24px;
     cursor: pointer;
     margin: 5px;
-    
+
 }
-.img-blanco{
+
+.img-blanco {
     filter: invert(1);
 }
-.insertar-img-container{
+
+.insertar-img-container {
     display: flex;
     align-items: center;
 }
