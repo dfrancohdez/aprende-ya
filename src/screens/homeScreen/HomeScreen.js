@@ -66,7 +66,13 @@ function HomeScreen() {
                         </ul>
                     </div>
                     <div className='homeScreen-container-asesorias'>
-                        {asesorias.map(prev=><Asesoria precio={prev.precio} nombreCurso={prev.nombreCurso} nombre={prev.nombre}/>)
+                        {asesorias.map(prev=>
+                        <Asesoria 
+                        precio={prev.precio} 
+                        nombreCurso={prev.nombreCurso} 
+                        nombre={prev.nombre}
+                        img={prev.img}
+                        />)
                         }
                     </div>
                 </div>

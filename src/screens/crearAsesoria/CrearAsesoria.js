@@ -4,20 +4,62 @@ import './_crearAsesoria.scss'
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import { useState } from 'react'
 import { Input } from '../../components/inputs/Input'
+import { Radio } from '../../components/inputs/Radio'
 import { Boton } from '../../components/boton/Boton'
 import { toast } from "react-toastify";
 
-import { auth, db } from "../../components/auth/firebase";
+import { auth, db, storage } from "../../components/auth/firebase";
 import { addDoc, setDoc, doc, collection } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
+
+
+import {
+    getDownloadURL,
+    ref as storageRef,
+    uploadBytes,
+} from "firebase/storage";
+
 function CrearAsesoriaScreen() {
+    const user = auth.currentUser;
     const navigate = useNavigate()
     const handleButton = (page) => {
         navigate(page)
     }
+    const [imageUpload, setImageUpload] = useState(null);
+
+    const uploadFile = () => {
+        console.log(imageUpload)
+        if (imageUpload === null) {
+            toast.error("Please select an image");
+            return;
+        }
+        const imageRef = storageRef(storage, `portada/${user.uid}/${nombreCurso}`);
+
+        uploadBytes(imageRef, imageUpload)
+            .then((snapshot) => {
+                getDownloadURL(snapshot.ref)
+                    .then((url) => {
+                        setImgURL(url)
+                        console.log(url)
+                    })
+                    .catch((error) => {
+                        toast.error(error.message);
+                    });
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+    };
+
+
+
+
+
     const [sidebar, toggleSideBar] = useState(false)
     const [buttonText, setButtonText] = useState('Publicar')
+    const [imagePreview, setImagePreview] = useState("")
+    const [imageUploadName, setImageUploadName] = useState("")
     const handleToggleSidebar = () => {
         // console.log("hola")
         toggleSideBar(prev => !prev)
@@ -25,7 +67,7 @@ function CrearAsesoriaScreen() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        uploadFile()
         try {
             const user = auth.currentUser;
             console.log(user);
@@ -42,18 +84,21 @@ function CrearAsesoriaScreen() {
                     aprender: Aprender,
                     requisitos: Requisitos,
                     contenidoCurso: ContenidoCurso,
-                    precio: precio
+                    precio: precio,
+                    categoria: categoria,
+                    img: imgURL
 
                 });
                 for (const seccion of secciones)
-                console.log(seccion)
-                for (const seccion of secciones){
-                    
+                    console.log(seccion)
+                for (const seccion of secciones) {
+
                     await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso, "Secciones", seccion.value), {
                         nombre: seccion.value,
                         clases: seccion.clases
+
                     }
-                    
+
 
                     )
                 }
@@ -84,11 +129,11 @@ function CrearAsesoriaScreen() {
 
 
 
-
+    const [imgURL, setImgURL] = useState("")
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
-    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ value: "", material: [{ ruta: "", description: "" }] }] }])
+    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ categoria: "", value: "", material: [{ ruta: "", description: "" }] }] }])
 
 
     const [nombreCurso, SetNombreCurso] = useState("")
@@ -97,8 +142,7 @@ function CrearAsesoriaScreen() {
 
     const [nombre, setNombre] = useState("")
     const [precio, setPrecio] = useState("")
-
-
+    const [categoria, setCategoria] = useState("")
 
 
     const handleMas = () => {
@@ -117,11 +161,11 @@ function CrearAsesoriaScreen() {
         toast.success("Sección agregada", {
             position: "bottom-center",
         })
-        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ value: "", material: [{ ruta: "", description: "" }] }] }
+        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ categoria: "", value: "", material: [{ ruta: "", description: "" }] }] }
         setSecciones(prev => [...prev, aux])
     }
     const handleMasClase = (i) => {
-        const newItem = { value: "", material: [{ ruta: "", description: "" }] }
+        const newItem = { categoria: "", value: "", material: [{ ruta: "", description: "" }] }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
@@ -193,7 +237,7 @@ function CrearAsesoriaScreen() {
     }
 
     const onFormUpdate = (e) => {
-        const { name, value } = e.target
+        const { name, value, checked } = e.target
         let aux;
         if (name.endsWith("aprender")) {
             aprender.map(dato => {
@@ -293,6 +337,11 @@ function CrearAsesoriaScreen() {
 
             setPrecio(value)
         }
+        else if (name.endsWith("categoria")) {
+
+            setCategoria(value)
+
+        }
 
 
 
@@ -353,15 +402,48 @@ function CrearAsesoriaScreen() {
                                 />
                             )
                         })}
-                        
-
-                        
-
 
                         <Input hover="input-hover" onFormUpdate={onFormUpdate} value={precio} name="precio" class="input" label="Precio" placeholder="100" />
-                        
-                        
-                        
+                        <div className='radio-container'>
+                            <div className='line'></div>
+                            <div className='radio-container-items'>
+                                <h6>Categoría</h6>
+                                <div className='radio'>
+
+                                    <Radio categoria={categoria} name='categoria' value="matematicas" text="Matemáticas" onFormUpdate={onFormUpdate} />
+                                    <Radio categoria={categoria} name='categoria' value="fisica" text="Física" onFormUpdate={onFormUpdate} />
+                                    <Radio categoria={categoria} name='categoria' value="programacion" text="Programación" onFormUpdate={onFormUpdate} />
+                                    <Radio categoria={categoria} name='categoria' value="quimica" text="Quimica" onFormUpdate={onFormUpdate} />
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div className='input-img-portada-container'>
+                            <label for='input-img' className='label-img-portada'>
+                                <div className='img-portada'>
+                                    <h6>{imageUploadName === "" ? "Ingrese portada" : imageUploadName}</h6>
+                                    <img src={imagePreview === "" ? "https://static.thenounproject.com/png/777906-200.png" : imagePreview}></img>
+                                </div>
+                            </label>
+                            <input
+                                id='input-img'
+                                className="input-img-upload"
+                                label="Image"
+                                placeholder="Choose image"
+                                accept="image/png,image/jpeg"
+                                type="file"
+                                onChange={(e) => {
+                                    setImageUpload(e.target.files[0]);
+                                    setImageUploadName(e.target.files[0].name);
+                                    if (e.target.files && e.target.files[0]) {
+                                        setImagePreview(URL.createObjectURL(e.target.files[0]));
+                                    }
+                                }}
+                            />
+                        </div>
+
                         <div className='boton'>
                             <Boton block={buttonText === "Publicando" ? "block" : ""} text={buttonText} type="submit" />
                         </div>
