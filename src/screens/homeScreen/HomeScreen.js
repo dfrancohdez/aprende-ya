@@ -12,6 +12,7 @@ import './_loader.scss'
 const Asesoria = lazy(() => import('../../components/asesoria/Asesoria'))
 
 function HomeScreen() {
+    const [buscar,setBuscar]= useState("")
     const [sidebar, toggleSideBar] = useState(false)
     const [carga, setCarga] = useState(false)
     const handleToggleSidebar = () => {
@@ -112,6 +113,11 @@ function HomeScreen() {
 
         }
     }
+    const buscarUpdate=(e)=>{
+        const {name,value}=e.target
+        if(name==="buscar")
+            setBuscar(value)
+    }
     return (
         <div className='homeScreen'>
             {carga &&
@@ -150,15 +156,16 @@ function HomeScreen() {
             <div className='busqueda-bar'>
 
                 <div className="input buscar-input">
-                    <div>
-
+                    <div className='click-lupa' onClick={()=>console.log("click")}>
+                    <FaMagnifyingGlass size={28} />
                     </div>
 
-                    <FaMagnifyingGlass size={28} />
+                    
                     <input
-
+                        onChange={buscarUpdate}
                         //error={props.validCorreo?"":"Correo no valido"} 
-                        //label="Ingresar correo" 
+                        //label="Ingresar correo"
+                        value={buscar} 
                         name="buscar"
                         type="text"
                         placeholder="Buscar"
