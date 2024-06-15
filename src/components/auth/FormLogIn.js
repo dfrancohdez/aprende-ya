@@ -79,6 +79,7 @@ export const FormLogIn = (props) => {
             <Boton text="Crear cuenta" page="/signup"/>
           </div>
         </div>
+        
       </div>
     </section>
   )

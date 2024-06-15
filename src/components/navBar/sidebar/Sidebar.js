@@ -78,6 +78,7 @@ export const Sidebar = (props) => {
                 </li>}
 
             </ul>
+            
         </div>
     )
 }

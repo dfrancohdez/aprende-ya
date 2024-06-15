@@ -12,6 +12,7 @@ import message from '../../assets/img/mensaje.svg'
 import { Boton } from "../boton/Boton"
 import { FaBars } from "react-icons/fa"
 import './_navbar.scss'
+import { Input } from "../inputs/Input";
 export const NavBar = (props) => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
@@ -30,7 +31,7 @@ export const NavBar = (props) => {
   const onUpdateActiveLink = (value) => {
     setActiveLink(value)
   }
-  
+
 
   async function handleLogout() {
     try {
@@ -41,13 +42,13 @@ export const NavBar = (props) => {
       console.error("Error logging out:", error.message);
     }
   }
-  
+
   //className="bg-body-tertiary"
 
   return (
     <div className={scrolled ? "scrolled nav" : "nav"} >
       <div className="container-nav">
-        <div href="#home">
+        <div href="/home">
           <img className="home-icon" src={logo} alt="aprendeYa" title="Aprende-ya"></img>
         </div>
         <FaBars className="navbar__menu" size={26}
@@ -57,8 +58,8 @@ export const NavBar = (props) => {
           <div className="nav-link">
             <a href="/" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Inicio</a>
             <a href="/about" className={activeLink === 'about' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('about')}>Sobre Nosotros</a>
-            <a href="/faq" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>FAQ</a>
-            {props.type1 && <a href="/crearAsesoria" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Publicar</a>}
+            <a href="/faq" className={activeLink === 'faq' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('faq')}>FAQ</a>
+            {props.type1 && <a href="/crearAsesoria" className={activeLink === 'crearAsesoria' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('crearAsesoria')}>Publicar</a>}
             {props.type2 && <a href="/login" className={activeLink === 'login' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('login')}>Iniciar sesión</a>}
           </div>
           <span className="navbar-text">
@@ -69,11 +70,12 @@ export const NavBar = (props) => {
               <a href="" onClick={handleLogout}><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
-            {props.type1 && <Boton text="Mis cursos" style="bold"/>}
-            {props.type2 && <Boton text="Crear cuenta" style="bold" page="signup"/>}
+            {props.type1 && <Boton text="Mis cursos" style="bold" />}
+            {props.type2 && <Boton text="Crear cuenta" style="bold" page="signup" />}
           </span>
         </div>
       </div>
+      
     </div>
   )
 }
