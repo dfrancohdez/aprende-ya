@@ -1,0 +1,47 @@
+@use '../../scss/base/variables' as v;
+
+.cursosScreen {
+
+    &-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        min-height: 90vh;
+        width: 100%;
+        background-color: #407a6d;
+
+        &-content {
+            margin-top: 200px;
+            //margin: 120px auto 0; /* Usar margin: 0 auto para centrar horizontalmente */
+            padding: 0 20px 10px;
+            border: 1px solid transparent;
+            border-radius: 5%;
+            color: #393c3a;
+            width: 120vh;
+            
+            h3 {
+                padding: 10px 5px;
+                text-align: center;
+                color: v.$black-secondary;
+            }
+
+            h6 {
+                padding: 10px 5px 1px;
+                color: v.$black-secondary;
+                text-align: center;
+            }
+            &-asesorias {
+                padding: 300px 0px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+
+        &-accordion {
+            color: #393c3a;
+            margin: 200px auto 0;
+        }
+    }
+}

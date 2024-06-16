@@ -25,7 +25,7 @@ function HomeScreen() {
             
             setAsesorias(newData)
             console.log(newData)
-        }
+    }
 
     useEffect(()=>{
         fetchPost();
