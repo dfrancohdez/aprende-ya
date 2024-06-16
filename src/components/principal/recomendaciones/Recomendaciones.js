@@ -6,7 +6,7 @@ import materia2 from "../../../assets/img/principal/material-symbols_science.svg
 import materia3 from "../../../assets/img/principal/octicon_number-24.svg"
 import materia4 from "../../../assets/img/principal/tabler_list-letters.svg"
 import './_recomendaciones.scss'
-import { Asesoria } from "../../asesoria/Asesoria";
+import Asesoria  from "../../asesoria/Asesoria";
 import img from "../../../assets/img/principal/Isometric Stickers Charts.png"
 export const Recomendaciones = () => {
     const responsive = {

@@ -8,9 +8,11 @@
         flex-direction: row;
         align-content: space-between;
         height: 100%;
+
         
         ul{
             list-style-type: none;
+            
         }
         li{
             
@@ -24,14 +26,48 @@
             padding: 5px 10px; 
         }
         &-asesorias {
-            padding: 150px 0px;
+            padding: 210px 0px;
+            //margin: 0 0 0 10px;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
     }
     &-busqueda{
-        padding: 150px 0px;
+        //position: relative;
+        padding: 220px 0px 350px 0px;
         background-color: v.$primary800;
+        //z-index: 0;
     }
+}
+.busqueda-bar{
+    position: fixed;
+    top: 14vh;
+    height: 70px;
+    width: 100%;
+    background-color: v.$primary500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    
+}
+.buscar-input{
+    display: flex;
+    padding: 0;
+    justify-content: space-evenly;
+    width: 80%;
+    align-items: center;
+    gap:5px
+}
+.categoria-link{
+    opacity: .75;
+}
+.categoria-link.active{
+    background-color: v.$fondo2;
+    font-weight: 500;
+    opacity: 1;
+}
+.click-lupa{
+    cursor: pointer;
 }

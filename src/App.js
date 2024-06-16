@@ -24,6 +24,7 @@ import CrearAsesoriaScreen from './screens/crearAsesoria/CrearAsesoria';
 import ProfileScreen from './screens/profileScreen/ProfileScreen';
 import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 import MisCursos from "./screens/misCursos/MisCursos";
+import About from './screens/about/About';
 
 
 
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/myAccount" element={<ProfileScreen/>} />
                 <Route path="/faq" element={<FAQ/>} />
                 <Route path='/misCursos' element ={<MisCursos/>} />
+                <Route path="/about" element={<About/>} />
             </Routes>
             <ToastContainer />
         </Router>

@@ -1,23 +1,86 @@
 @use '../../scss/base/variables' as v;
-.crearAsesoria-container{
-    padding:150px 0;
+
+.crearAsesoria-container {
+    padding: 150px 0;
     display: flex;
     justify-content: center;
     background-color: v.$primary800;
 }
-.crearAsesoria-form{
+
+.crearAsesoria-form {
     width: 60%;
-    textarea{
+
+    textarea {
         flex-grow: 1;
         width: 100%;
-        
+
     }
-    .boton{
+
+    .boton {
         padding: 20px;
     }
 }
-@media(max-width:v.$breakpoint-medium){
-    .crearAsesoria-form{
+
+@media(max-width:v.$breakpoint-medium) {
+    .crearAsesoria-form {
         width: 95%;
     }
 }
+
+.radio {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px 0;
+    
+}
+.radio-container{
+
+    padding: 20px;
+    .radio-container-items{
+        padding: 20px 0;
+    }
+    h6{
+        padding: 0 10px;
+    }
+    &:hover{
+        background-color: v.$fondo2;
+        border-radius: 30px;
+    }
+}
+.img-portada{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    &:hover{
+        background-color: v.$fondo2;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+    img{
+        object-fit: contain;
+    }
+}
+.input-img-upload{
+    opacity: 0;
+   position: absolute;
+   z-index: -1;
+
+}
+.label-img-portada{
+    display: inline-block;
+    margin: 0 auto;
+    
+}
+.input-img-portada-container{
+    display: flex;
+    justify-content: center;
+}
+
+
+

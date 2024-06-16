@@ -11,5 +11,37 @@
     box-shadow: 6px 6px #fff7;
     overflow: hidden;
     max-width: 300px;
+    position: relative;
+    &-img-container{
+        
+    }
+    img{
+        width:300px;
+        height: 150px;
+        object-fit: contain;
+    }
+    .centrar-loader{
+        
+        // display: flex;
+        // justify-content: center;
+        
+    }
+    .fijar{
+        width: 240px;
+    }
+    .rate{
+        display: flex;
+        justify-content: space-evenly;
+        .estrellas{
+            //display: inline-flex;
+            
+        }
+    }
     
+}
+.loader-img{
+    position: absolute;
+    right: 35%;
+    top: 10%;
+
 }
