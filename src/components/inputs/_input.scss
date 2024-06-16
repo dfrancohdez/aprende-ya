@@ -93,6 +93,8 @@
 
 }
 .input-hover {
+    transition: background-color .5s ease;
+    border-radius: 30px;
     &:hover {
         background-color: v.$fondo2;
         border-radius: 30px;

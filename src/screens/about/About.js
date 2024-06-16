@@ -28,11 +28,11 @@ const About = () => {
                     </p>
                     <h2>Misión</h2>
                     <p>
-                        Qui dolore labore sint excepteur nisi in incididunt irure nostrud laboris laboris excepteur. Amet velit velit nostrud deserunt. Fugiat in nulla incididunt Lorem velit qui eu cupidatat aute culpa reprehenderit sint adipisicing excepteur. Aute minim voluptate nostrud incididunt cillum tempor laborum irure anim. Ipsum velit ut velit ea enim quis exercitation excepteur sunt ut reprehenderit.
+                    Ofrecer una plataforma educativa interactiva y accesible que aborde las necesidades específicas de aprendizaje de las comunidades y regiones de México, reduciendo la tasa de abandono escolar y promoviendo la inclusión y el progreso socioeconómico a través de tecnologías avanzadas como chatbots de inteligencia artificial y redes colaborativas de usuarios.
                     </p>
                     <h2>Visión</h2>
                     <p>
-                        Fugiat deserunt sit esse commodo irure. Ut do et qui quis minim cillum mollit incididunt officia. Do laboris eiusmod irure velit anim occaecat mollit exercitation enim ut ea. Aliqua eu in consectetur irure amet minim ipsum exercitation aute sunt. Proident ea fugiat adipisicing exercitation fugiat laboris amet reprehenderit qui.
+                    Ser la aplicación web educativa líder en México, reconocida por su capacidad para personalizar la experiencia educativa, fomentar la retención escolar y empoderar a los estudiantes a través del intercambio colaborativo de conocimientos, contribuyendo así al desarrollo sostenible y al bienestar socioeconómico del país.
                     </p>
                     <h2>Funciones principales</h2>
                         <h5>Intercambio colaborativo:</h5>

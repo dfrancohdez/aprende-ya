@@ -1,9 +1,13 @@
 .about{
     &-container{
-        padding: 160px 20px;
+        padding: 200px 20px 300px;
         display: flex;
         justify-content: center;
-        background-image: url();
+        background-image: url("../../assets/img/explanadaESCOM.jpg");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-attachment: fixed;
+        background-position: 0 -300px;
     }
     .text-container-about{
         background-color: #ddd;
@@ -12,6 +16,7 @@
         padding: 50px;
         width: 80%;
         box-shadow: 8px 8px #fff7;
+        animation: identifier 2s ease-in;
         h2{
             padding: 30px 0 10px 0;
         }
@@ -25,4 +30,14 @@
             padding: 5px 0;
         }
     }
+}
+@keyframes  identifier{
+    0% {
+        //transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        //transform: translate(0);
+        opacity: 1;
+      }
 }

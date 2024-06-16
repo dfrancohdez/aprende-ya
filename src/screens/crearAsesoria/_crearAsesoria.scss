@@ -35,7 +35,8 @@
     
 }
 .radio-container{
-
+    border-radius: 30px;
+    transition: background-color .5s ease;
     padding: 20px;
     .radio-container-items{
         padding: 20px 0;
@@ -57,6 +58,8 @@
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
+    border-radius: 30px;
+    transition: background-color .5s ease;
     &:hover{
         background-color: v.$fondo2;
         border-radius: 30px;
