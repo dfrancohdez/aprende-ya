@@ -26,54 +26,18 @@ function CrearAsesoriaScreen() {
     const handleButton = (page) => {
         navigate(page)
     }
+    const [imgURL, setImgURL] = useState("")
     const [imageUpload, setImageUpload] = useState(null);
 
-    const uploadFile = () => {
-        console.log(imageUpload)
-        if (imageUpload === null) {
-            toast.error("Please select an image");
-            return;
-        }
-        const imageRef = storageRef(storage, `portada/${user.uid}/${nombreCurso}`);
-
-        uploadBytes(imageRef, imageUpload)
-            .then((snapshot) => {
-                getDownloadURL(snapshot.ref)
-                    .then((url) => {
-                        setImgURL(url)
-                        console.log(url)
-                    })
-                    .catch((error) => {
-                        toast.error(error.message);
-                    });
-            })
-            .catch((error) => {
-                toast.error(error.message);
-            });
-    };
-
-
-
-
-
-    const [sidebar, toggleSideBar] = useState(false)
-    const [buttonText, setButtonText] = useState('Publicar')
-    const [imagePreview, setImagePreview] = useState("")
-    const [imageUploadName, setImageUploadName] = useState("")
-    const handleToggleSidebar = () => {
-        // console.log("hola")
-        toggleSideBar(prev => !prev)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        uploadFile()
+    const handleSubmit = async (url) => {
+        
         try {
             const user = auth.currentUser;
             console.log(user);
             const Aprender = aprender.map(prev => prev.value)
             const Requisitos = requisitos.map(prev => prev.value)
             const ContenidoCurso = contenidoCurso.map(prev => prev.value)
+            console.log(imgURL)
             if (user) {
                 setButtonText('Publicando')
                 await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso), {
@@ -86,7 +50,7 @@ function CrearAsesoriaScreen() {
                     contenidoCurso: ContenidoCurso,
                     precio: precio,
                     categoria: categoria,
-                    img: imgURL
+                    img: url
 
                 });
                 for (const seccion of secciones)
@@ -113,6 +77,7 @@ function CrearAsesoriaScreen() {
 
             }
             console.log("User Registered Successfully!!");
+            
             toast.success("Publicado exitosamente", {
                 position: "bottom-center",
             });
@@ -127,9 +92,53 @@ function CrearAsesoriaScreen() {
         setButtonText('Publicar')
     };
 
+    const uploadFile = async (e) => {
+        e.preventDefault();
+        console.log(imageUpload)
+        if (imageUpload === null) {
+            toast.error("Please select an image");
+            return;
+        }
+        const imageRef = storageRef(storage, `portada/${user.uid}/${nombreCurso}`);
+
+        uploadBytes(imageRef, imageUpload)
+            .then((snapshot) => {
+                getDownloadURL(snapshot.ref)
+                    .then((url) => {
+                        
+                        console.log(url)
+                        const aux = url
+                        setImgURL(aux)  
+                        handleSubmit(url)
+                    })
+                    .catch((error) => {
+                        toast.error(error.message);
+                    });
+            })
+            .catch((error) => {
+                toast.error(error.message);
+            });
+            
+    };
 
 
-    const [imgURL, setImgURL] = useState("")
+
+
+
+    const [sidebar, toggleSideBar] = useState(false)
+    const [buttonText, setButtonText] = useState('Publicar')
+    const [imagePreview, setImagePreview] = useState("")
+    const [imageUploadName, setImageUploadName] = useState("")
+    const handleToggleSidebar = () => {
+        // console.log("hola")
+        toggleSideBar(prev => !prev)
+    }
+
+
+
+
+
+    
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
@@ -356,7 +365,7 @@ function CrearAsesoriaScreen() {
             </div>
             <div className='overflowx'>
                 <div className='crearAsesoria-container'>
-                    <form className='crearAsesoria-form' onSubmit={handleSubmit}>
+                    <form className='crearAsesoria-form' onSubmit={uploadFile}>
 
                         <Input hover="input-hover" onFormUpdate={onFormUpdate} value={nombreCurso} name="nombreCurso" id="1" label="Nombre del curso" class="input" placeholder="Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL" />
                         <Input hover="input-hover" onFormUpdate={onFormUpdate} value={resumen} name="resumen" id="2" class="textarea" label="Resumen" placeholder="Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!" />
