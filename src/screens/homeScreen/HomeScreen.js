@@ -19,6 +19,8 @@ function HomeScreen() {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
+
+    //Consulta
     const [asesorias, setAsesorias] = useState([])
     const fetchPost = async () => {
         setCarga(true)
@@ -37,6 +39,7 @@ function HomeScreen() {
         fetchPost();
 
     }, [])
+    
     const categoria = async (value) => {
         let newData = []
         const asesorias = query(collectionGroup(db, 'Cursos'), where("categoria", "==", value))
