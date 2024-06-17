@@ -12,6 +12,11 @@
     overflow: hidden;
     max-width: 300px;
     position: relative;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    &:hover{
+        background-color: #444;
+    }
     &-img-container{
         
     }
