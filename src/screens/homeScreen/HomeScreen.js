@@ -20,7 +20,6 @@ function HomeScreen() {
         toggleSideBar(prev => !prev)
     }
 
-    //Consulta
     const [asesorias, setAsesorias] = useState([])
     const fetchPost = async () => {
         setCarga(true)
