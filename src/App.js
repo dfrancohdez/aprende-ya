@@ -25,6 +25,7 @@ import ProfileScreen from './screens/profileScreen/ProfileScreen';
 import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 import MisCursos from "./screens/misCursos/MisCursos";
 import About from './screens/about/About';
+import Curso from './screens/curso/Curso';
 
 
 
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/faq" element={<FAQ/>} />
                 <Route path='/misCursos' element ={<MisCursos/>} />
                 <Route path="/about" element={<About/>} />
+                <Route path="/curso" element={<Curso/>} />
             </Routes>
             <ToastContainer />
         </Router>
