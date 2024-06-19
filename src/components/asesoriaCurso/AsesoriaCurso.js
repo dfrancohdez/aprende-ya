@@ -4,6 +4,7 @@ import portada from '../../assets/img/portada.jpg'
 import './_asesoriaCurso.scss'
 
 import { Blocks } from 'react-loader-spinner'
+import { BotonCurso } from '../../components/botonCurso/BotonCurso';
 
 const AsesoriaCurso = ({ precio, img,fijar }) => {
     const [cargando,setImg]=useState(true);
@@ -26,7 +27,13 @@ const AsesoriaCurso = ({ precio, img,fijar }) => {
                 </div>
             </div>
             <h6 className='bold'>{precio} MXN$</h6>
-        
+            <BotonCurso 
+                type="button" 
+                style="bold" 
+                block="full-width" 
+                text="Añadir a la cesta" 
+                page="/#"
+            />
         </div>
     )
 }
