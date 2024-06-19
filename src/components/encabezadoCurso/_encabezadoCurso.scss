@@ -33,7 +33,13 @@
                 margin-top: 3.5px;
             }
         }
-
+    }
+}
+@media (max-width: 600px) {
+    .titulo-barra-navegacion {
+        .contenido{
+            width: 100%;
+        }
     }
 }
   

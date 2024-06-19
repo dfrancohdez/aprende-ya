@@ -2,12 +2,10 @@ import { NavBar } from '../../components/navBar/NavBar'
 import { Footer } from '../../components/footer/Footer'
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import EncabezadoCurso from '../../components/encabezadoCurso/EncabezadoCurso'
-
-
 import './_curso.scss'
 import { useState } from 'react'
-import React, { Suspense, lazy } from 'react'
-const AsesoriaMisCursos = lazy(() => import('../../components/asesoriaMisCursos/AsesoriaMisCursos'))
+import ImgLanguaje from "./language_24dp_FILL0_wght400_GRAD0_opsz24.png"
+import  AsesoriaCurso  from '../../components/asesoriaCurso/AsesoriaCurso'
 
 function MisCursos() {
     const [sidebar, toggleSideBar] = useState(false)
@@ -34,7 +32,18 @@ function MisCursos() {
                         noEstudiantes={43639}
                         idioma={'Español'}
                     />
+                    <div className='flotante'>
+                        <AsesoriaCurso
+                            fijar={true}
+                            precio={100}
+                            
+                            //img={prev.img}
+                        />
+                        
+                    </div>
                 </div>
+                
+                
             </div> 
             
             

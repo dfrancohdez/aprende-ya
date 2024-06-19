@@ -1,7 +1,15 @@
 @use '../../scss/base/variables' as v;
 
 .cursosScreen {
-    
+    .encabezado{
+        position: relative;
+    }
+    .flotante{
+        position: absolute;
+        top: 150px;
+        left: 65%;
+        
+    }
     &-container {
         display: flex;
         flex-wrap: wrap;
@@ -11,3 +19,28 @@
         background-color: #407a6d;       
     }
 }
+
+@media (max-width: 600px) {
+    .cursosScreen {
+        .encabezado{
+            position: relative;
+            height: 900px;
+            background-color: #2C3331;
+        }
+        .flotante{
+            position: absolute;
+            top: 550px;
+            left: 0%;
+            
+        }
+        &-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centra horizontalmente */
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: #407a6d;       
+        }
+    }
+}
+
