@@ -26,6 +26,7 @@ import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 import MisCursos from "./screens/misCursos/MisCursos";
 import About from './screens/about/About';
 import Curso from './screens/curso/Curso';
+import VisualizarCurso from './screens/visualizarCurso/VisualizarCurso'
 
 
 
@@ -54,6 +55,7 @@ function App() {
                 <Route path='/misCursos' element ={<MisCursos/>} />
                 <Route path="/about" element={<About/>} />
                 <Route path="/curso" element={<Curso/>} />
+                <Route path="/visualizarCurso" element={<VisualizarCurso/>} />
             </Routes>
             <ToastContainer />
         </Router>

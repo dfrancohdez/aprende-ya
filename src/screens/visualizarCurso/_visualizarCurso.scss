@@ -1,0 +1,62 @@
+@use '../../scss/base/variables' as v;
+
+.visualizarCursoScreen {
+    .encabezado{
+        position: relative;
+    }
+    .flotante{
+        position: absolute;
+        top: 150px;
+        left: 65%;
+        
+    }
+    .botonV{
+        position: absolute;
+        top: 348px;
+        left: 71.5%;
+    }
+    &-container {
+        display: flex;
+        justify-content: center; /* Centra horizontalmente */
+        padding-top: 25px;
+        padding-left: 50px;
+        padding-bottom: 25px;
+        background-color: #407a6d;       
+        .contenedor-titulo{
+            
+            .titulo-c{
+                font-size: 22.5px;
+                
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .cursosScreen {
+        .encabezado{
+            position: relative;
+            height: 900px;
+            background-color: #2C3331;
+        }
+        .flotante{
+            position: absolute;
+            top: 550px;
+            left: 0%;
+            
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centra horizontalmente */
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: #407a6d; 
+            .contenido-izquierda{
+                justify-content: center;
+                width: 100%;
+            }      
+        }
+    }
+}
+
