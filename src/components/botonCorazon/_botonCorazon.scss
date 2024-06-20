@@ -1,0 +1,17 @@
+// _botonConIcono.scss
+.IconoBoton {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .button-icon {
+    margin-left: 8px; /* Espacio entre el texto y el ícono */
+    width: 24px; /* Ajusta el tamaño del ícono según sea necesario */
+    height: 24px; /* Ajusta el tamaño del ícono según sea necesario */
+    vertical-align: middle; /* Centrar verticalmente el ícono */
+    fill: white;
+  }
+  

@@ -5,17 +5,18 @@ import './_asesoriaCurso.scss'
 
 import { Blocks } from 'react-loader-spinner'
 import { BotonCurso } from '../../components/botonCurso/BotonCurso';
+import { BotonCorazon } from '../botonCorazon/BotonCorazon';
 
 const AsesoriaCurso = ({ precio, img,fijar }) => {
     const [cargando,setImg]=useState(true);
     return (
         
-        <div className='asesoria'>
+        <div className='asesoria2'>
            
-            <div className={fijar?'fijar':""}>
+            <div className={fijar?'fijar2':""}>
                 <div className='centrar-loader'>
                     <img onLoad={()=>setImg(false)} src={!img ? portada:img}/>
-                    {cargando&&<div className='loader-img'><Blocks
+                    {cargando&&<div className='loader-img2'><Blocks
                         height="80"
                         width="80"
                         color="green"
@@ -27,13 +28,25 @@ const AsesoriaCurso = ({ precio, img,fijar }) => {
                 </div>
             </div>
             <h6 className='bold'>{precio} MXN$</h6>
-            <BotonCurso 
-                type="button" 
-                style="bold" 
-                block="full-width" 
-                text="Añadir a la cesta" 
-                page="/#"
-            />
+            <div className='container-botones'>
+                <div className='bot-1'>
+                    <BotonCurso 
+                        type="button" 
+                        style="bold" 
+                        block="full-width" 
+                        text="Añadir a la cesta" 
+                        page="/#"
+                    />
+                </div>
+                <div className='bot-2'>
+                    <BotonCorazon 
+                        style="primary" 
+                        page="/#" 
+                    />
+                </div>
+                
+            </div>
+            
         </div>
     )
 }

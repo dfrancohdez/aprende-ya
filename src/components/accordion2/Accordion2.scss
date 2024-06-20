@@ -1,0 +1,44 @@
+@use '../../scss/base/variables' as v;
+
+h3 {
+    color: #000;
+}
+
+.accordion {
+    &-title {
+        cursor: pointer;
+        padding: 10px 20px;
+        margin: 5px 0;
+        border: 0px solid #000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
+
+        h4 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+    }
+
+    &-icon {
+        font-size: 18px;
+        transition: transform 0.4s ease;
+    }
+
+    &-icon.open {
+        transform: rotate(180deg);
+    }
+
+    &-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0 10px;
+    }
+
+    &-content.open {
+        max-height: 100px;
+        /* Ajusta esta altura según sea necesario */
+        padding: 10px;
+    }
+}
