@@ -21,6 +21,7 @@
             max-width: 50%;
         }
         .contenido-derecha{
+            max-width: 50%;
             padding-top: 100px;
             padding-left: 80px;
             padding-right: 50px;
@@ -29,6 +30,12 @@
             padding-top: 25px;
             .titulo-c{
                 font-size: 22.5px;
+                
+            }
+            .cont-line{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     }
@@ -55,7 +62,8 @@
             padding-bottom: 30px;
             background-color: #407a6d; 
             .contenido-izquierda{
-                justify-content: left;
+                justify-content: center;
+                width: 100%;
             }      
         }
     }

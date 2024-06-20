@@ -1,51 +1,33 @@
 import React, { useState } from 'react'
-import portada from '../../assets/img/portada.jpg'
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
 
 import './_reseña.scss'
 
-import { Blocks } from 'react-loader-spinner'
-import { BotonCurso } from '../../components/botonCurso/BotonCurso';
-import { BotonCorazon } from '../botonCorazon/BotonCorazon';
+const Reseña = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
 
-const Reseña = ({ precio, img,fijar }) => {
-    const [cargando,setImg]=useState(true);
     return (
-        
-        <div className='asesoria2'>
-           
-            <div className={fijar?'fijar2':""}>
-                <div className='centrar-loader'>
-                    <img onLoad={()=>setImg(false)} src={!img ? portada:img}/>
-                    {cargando&&<div className='loader-img2'><Blocks
-                        height="80"
-                        width="80"
-                        color="green"
-                        ariaLabel="blocks-loading"
-                        wrapperStyle={{}}
-                        wrapperClass="blocks-wrapper"
-                        visible={true}
-                    /></div>}
+        <div className='reseña'>
+            <div className='contenedor-cabeza'>
+                <div className='izquierda'>
+                    <img src={imagenRe} className='imagen'/>
+                </div>
+                <div className='derecha'>
+                    <h3>{nombre}</h3>
+                    <div>
+                        <Rating 
+                        name="size-medium" 
+                        defaultValue={calificacion}
+                        emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
+                        />
+                        <span className='tiempo-re'>Hace {tiempoCali} días</span>
+                    </div>
+                    
                 </div>
             </div>
-            <h6 className='bold'>{precio} MXN$</h6>
-            <div className='container-botones'>
-                <div className='bot-1'>
-                    <BotonCurso 
-                        type="button" 
-                        style="bold" 
-                        block="full-width" 
-                        text="Añadir a la cesta" 
-                        page="/#"
-                    />
-                </div>
-                <div className='bot-2'>
-                    <BotonCorazon 
-                        style="primary" 
-                        page="/#" 
-                    />
-                </div>
-                
-            </div>
+            <p>{opinion}</p>
+            
+            
             
         </div>
     )

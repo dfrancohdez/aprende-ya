@@ -8,6 +8,7 @@ import { BloqTxt } from '../../components/bloqTxt/BloqTxt';
 import { Accordion2 } from '../../components/accordion2/Accordion2'
 import ImgPrueba from "./img/Rectangle 30.png";
 import Reseña from '../../components/reseña/Reseña';
+import IconoPerfil from './img/inconoPerfil.png'
 import './_curso.scss';
 
 function MisCursos() {
@@ -68,20 +69,44 @@ function MisCursos() {
                         <Accordion2 title={"¿Qué son los cursos en línea?"} content={"Los cursos en línea son programas educativos que se ofrecen a través de internet. Estos cursos permiten a los estudiantes aprender nuevas habilidades, adquirir conocimientos en diversas áreas y obtener certificaciones."} tiempo={60} img={ImgPrueba}/>
                         <Accordion2 title={"¿Cómo me registro en la plataforma?"} content={"Para registrarte, simplemente visita nuestra página de registro, proporciona tu nombre, dirección de correo electrónico y crea una contraseña."} tiempo={60} img={ImgPrueba}/>
                     </div>
-                    <div className='contenedor-titulo'>
-                        <h2 className='titulo-c'>Reseñas del curso</h2>
-                        <Reseña
-                            fijar={true}
-                            precio={100}
-                            img={ImgPrueba}
-                        />
-                    </div>
                 </div>
                 <div className='contenido-derecha'>
                     <BloqTxt titulo="Requisitos" items={items2} />
+                    <div className='contenedor-titulo'>
+                        <h2 className='titulo-c'>Descripción</h2>
+                        <p>Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación.
+                        </p>
+                        <p>Además de sencillo es poderoso: con unas pocas líneas de código puedes realizar tareas que en otros lenguajes de programación ocuparían cientos de líneas, y esto hace que aumente considerablemente tu productividad.
+                        </p>
+                        
+                    </div>
                 </div>
-
-                
+                <div className='contenedor-titulo'>
+                    <center><h2 className='titulo-c'>Reseñas del curso</h2></center>
+                        <div className='cont-line'>
+                            <Reseña
+                                imagenRe={IconoPerfil}
+                                nombre={'José Martín Cruz'}
+                                calificacion={3}
+                                tiempoCali={4}
+                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
+                            />      
+                            <Reseña
+                                imagenRe={IconoPerfil}
+                                nombre={'José Martín Cruz'}
+                                calificacion={3}
+                                tiempoCali={4}
+                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
+                            />
+                            <Reseña
+                                imagenRe={IconoPerfil}
+                                nombre={'José Martín Cruz'}
+                                calificacion={3}
+                                tiempoCali={4}
+                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
+                            />          
+                        </div> 
+                </div>
 
             </div>
             <Footer />
