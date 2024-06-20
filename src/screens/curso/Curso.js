@@ -5,8 +5,10 @@ import { Sidebar } from '../../components/navBar/sidebar/Sidebar';
 import EncabezadoCurso from '../../components/encabezadoCurso/EncabezadoCurso';
 import AsesoriaCurso from '../../components/asesoriaCurso/AsesoriaCurso';
 import { BloqTxt } from '../../components/bloqTxt/BloqTxt';
+import { Accordion2 } from '../../components/accordion2/Accordion2'
+import ImgPrueba from "./img/Rectangle 30.png";
+import Reseña from '../../components/reseña/Reseña';
 import './_curso.scss';
-import ImgLanguaje from './language_24dp_FILL0_wght400_GRAD0_opsz24.png';
 
 function MisCursos() {
     const [sidebar, toggleSideBar] = useState(false);
@@ -49,7 +51,7 @@ function MisCursos() {
                         <AsesoriaCurso
                             fijar={true}
                             precio={100}
-                        // img={prev.img}
+                            img={ImgPrueba}
                         />
                     </div>
                 </div>
@@ -61,11 +63,24 @@ function MisCursos() {
                     <BloqTxt titulo="Lo que aprenderás" items={items} />
                     <div className='contenedor-titulo'>
                         <h2 className='titulo-c'>Contenido del curso</h2>
+                        <Accordion2 title={"¿Qué son los cursos en línea?"} content={"Los cursos en línea son programas educativos que se ofrecen a través de internet. Estos cursos permiten a los estudiantes aprender nuevas habilidades, adquirir conocimientos en diversas áreas y obtener certificaciones."} tiempo={60} img={ImgPrueba}/>
+                        <Accordion2 title={"¿Cómo me registro en la plataforma?"} content={"Para registrarte, simplemente visita nuestra página de registro, proporciona tu nombre, dirección de correo electrónico y crea una contraseña."} tiempo={60} img={ImgPrueba}/>
+                        <Accordion2 title={"¿Qué son los cursos en línea?"} content={"Los cursos en línea son programas educativos que se ofrecen a través de internet. Estos cursos permiten a los estudiantes aprender nuevas habilidades, adquirir conocimientos en diversas áreas y obtener certificaciones."} tiempo={60} img={ImgPrueba}/>
+                        <Accordion2 title={"¿Cómo me registro en la plataforma?"} content={"Para registrarte, simplemente visita nuestra página de registro, proporciona tu nombre, dirección de correo electrónico y crea una contraseña."} tiempo={60} img={ImgPrueba}/>
+                    </div>
+                    <div className='contenedor-titulo'>
+                        <h2 className='titulo-c'>Reseñas del curso</h2>
+                        <Reseña
+                            fijar={true}
+                            precio={100}
+                            img={ImgPrueba}
+                        />
                     </div>
                 </div>
                 <div className='contenido-derecha'>
                     <BloqTxt titulo="Requisitos" items={items2} />
                 </div>
+
                 
 
             </div>

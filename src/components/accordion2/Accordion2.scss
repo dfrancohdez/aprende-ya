@@ -5,6 +5,7 @@ h3 {
 }
 
 .accordion {
+    background-color: #6C7D78;
     &-title {
         cursor: pointer;
         padding: 10px 20px;
@@ -16,6 +17,7 @@ h3 {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 15px;
             width: 100%;
         }
     }
@@ -34,11 +36,34 @@ h3 {
         overflow: hidden;
         transition: max-height 0.4s ease, padding 0.4s ease;
         padding: 0 10px;
+        overflow: hidden;
+        .izq{
+            float: left;
+            .imagen{
+                width: 125px;
+            }
+        }
+        .der{
+            float: right;
+            width: 490px;
+        }
     }
 
     &-content.open {
         max-height: 100px;
         /* Ajusta esta altura según sea necesario */
         padding: 10px;
+        overflow: hidden;
+        .izq{
+            float: left;
+            .imagen{
+                width: 125px;
+            }
+        }
+        .der{
+            float: right;
+            width: 490px;
+        }
+        
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Accordion2.scss';
 
-export const Accordion = ({ title, content }) => {
+export const Accordion2 = ({ title, content, tiempo , img}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {
@@ -12,14 +12,16 @@ export const Accordion = ({ title, content }) => {
         <div className='accordion'>
             <div className='accordion-title' onClick={toggleAccordion}>
                 <h4>
-                    <span>{title}</span>
                     <span className={`accordion-icon ${isOpen ? 'open' : ''}`}>
                         {isOpen ? '▼' : '▼'}
                     </span>
+                    <span>{title}</span>
+                    <span>{tiempo}min</span>
                 </h4>
             </div>
             <div className={`accordion-content ${isOpen ? 'open' : ''}`}>
-                <p>{content}</p>
+                <div className='izq'><img src={img} className='imagen'/></div>
+                <div className='der'>{content}</div>
             </div>
         </div>
     );
