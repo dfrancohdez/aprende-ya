@@ -1,5 +1,5 @@
 @use '../../scss/base/variables' as v;
-.Boton{
+.BotonCu{
     display: flex;
     font-family: v.$fuente_parrafo;
     //font-size: 15px;
@@ -14,14 +14,14 @@
         cursor: pointer;
     }
 }
-.bold{
+.boldCu{
     color: white;
     font-weight: bold;
     font-size: 15px;
 }
-.sin{
+.sinCu{
     background-color: transparent;
 }
-.block{
+.blockCu{
     background-color: v.$primary500;
 }

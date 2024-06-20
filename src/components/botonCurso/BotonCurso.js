@@ -8,7 +8,7 @@ export const BotonCurso=(props)=>{
         navigate(props.page,{ replace: true })
     }
     return(
-        <button type={props.type}className={props.style==="bold"?"Boton bold "+props.block:"Boton bold "+props.block} onClick={handleButton}>
+        <button type={props.type}className={props.style==="boldCu"?"BotonCu boldCu "+props.block:"BotonCu boldCu "+props.block} onClick={handleButton}>
             {props.text}
             
         </button>

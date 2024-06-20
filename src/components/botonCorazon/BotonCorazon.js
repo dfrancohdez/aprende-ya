@@ -12,7 +12,7 @@ export const BotonCorazon = (props) => {
     };
 
     // Concatenar las clases para el botón
-    const buttonClasses = `IconoBoton ${props.style}`;
+    const buttonClasses = `IconoBotonCo ${props.style}`;
 
     return (
         <button 
@@ -20,7 +20,7 @@ export const BotonCorazon = (props) => {
             className={buttonClasses} 
             onClick={handleIconClick}
         >
-            <HeartFill size={24} className="button-icon" /> 
+            <HeartFill size={24} className="button-iconCo" /> 
         </button>
     );
 };
