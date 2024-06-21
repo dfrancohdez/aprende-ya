@@ -16,18 +16,20 @@
         left: 71.5%;
     }
     &-container {
-        display: flex;
-        justify-content: center; /* Centra horizontalmente */
+        display: inline-block;
+        text-align: center;
+        width: 100%;
         padding-top: 25px;
         padding-left: 50px;
-        padding-bottom: 25px;
+        padding-bottom: 100px;
         background-color: #407a6d;       
         .contenedor-titulo{
-            
             .titulo-c{
-                font-size: 22.5px;
-                
+                font-size: 24.5px;
             }
+        }
+        .resumenes{
+            padding-top: 20px;
         }
     }
 }

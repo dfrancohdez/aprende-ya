@@ -4,9 +4,9 @@ import { Footer } from '../../components/footer/Footer';
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar';
 import EncabezadoCurso from '../../components/encabezadoCurso/EncabezadoCurso';
 import CuadroPortadaCurso from '../../components/cuadroPortadaCurso/CuadroPortadaCurso'
-import { Accordion2 } from '../../components/accordion2/Accordion2'
-import ImgPrueba from "./img/Rectangle 30.png";
+import ResumenCapitulo from '../../components/resumenCapitulo/ResumenCapitulo';
 import { BotonCurso } from '../../components/botonCurso/BotonCurso';
+import ImgPort from '../../assets/img/principal/Rectangle 30.png'
 import './_visualizarCurso.scss';
 
 function MisCursos() {
@@ -37,28 +37,65 @@ function MisCursos() {
                         <CuadroPortadaCurso
                             fijar={true}
                             precio={100}
-                            img={ImgPrueba}
+                            img={ImgPort}
                         />
                     </div>
                     <div className='botonV'>
-                        <BotonCurso 
-                            type="button" 
-                            style="bold" 
-                            block="full-width" 
-                            text="Publicar Reseña" 
+                        <BotonCurso
+                            type="button"
+                            style="bold"
+                            block="full-width"
+                            text="Publicar Reseña"
                             page="/#"
                         />
                     </div>
                 </div>
             </div>
 
-            <div className='visualizarCursoScreen-container'>          
-                    
+            <div className='visualizarCursoScreen-container'>
+
                 <div className='contenedor-titulo'>
                     <h2 className='titulo-c'>Contenido del curso</h2>
-                    
                 </div>
-                
+                <div className='resumenes'>
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                    <ResumenCapitulo
+                        img={ImgPort}
+                        nomCap={'Programa un creador de nombres'}
+                        duracion={60}
+                        progreso={80}
+                    />
+                </div>
+
 
             </div>
             <Footer />
