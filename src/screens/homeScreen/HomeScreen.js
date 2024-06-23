@@ -39,7 +39,7 @@ function HomeScreen() {
         });
         setCarga(false)
         setAsesorias(newData)
-        console.log(newData)
+        // console.log(newData)
     }
 
     useEffect(() => {

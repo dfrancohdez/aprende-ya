@@ -114,6 +114,22 @@
                     margin-left: 15%;
                 }
             }
+
+            &-close{
+                color: #393c3a;
+                padding-left: 55px;
+                &:hover{
+                    background-color: #dedede;
+                    color: #393c3a; 
+                    text-decoration: none;
+                }
+                &:visited{
+                    color: #393c3a;
+                }
+                &-text{
+                    margin-left: 17%;
+                }
+            }
         }
 
         &-content{
@@ -186,6 +202,22 @@
             &-button{
                 margin-left: 6px;
                 margin-top: 20px;
+                display: flex;
+                font-family: v.$fuente_parrafo;
+                width: 169px;
+                height: 48px;
+                border-radius: 20px;
+                background-color: v.$fondo2;
+                align-items: center;
+                justify-content: space-around;
+                padding: 0 5px;
+                &:hover{
+                    cursor: pointer;
+                }
+                &-text{
+                    color: white;
+                    font-weight: bold;
+                }
             }
         }
 
@@ -204,7 +236,7 @@
             z-index: 2000;
 
             &-content{
-                width: 30%;
+                width: 35%;
                 background-color: v.$fondo1;
                 padding: 20px;
                 border-radius: 5px;

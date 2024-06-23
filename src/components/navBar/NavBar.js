@@ -13,7 +13,10 @@ import { Boton } from "../boton/Boton"
 import { FaBars } from "react-icons/fa"
 import './_navbar.scss'
 import { Input } from "../inputs/Input";
+import { eraseCookie } from "../../utils/cookie";
+import { useNavigate } from "react-router-dom";
 export const NavBar = (props) => {
+  const navigate = useNavigate();
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,9 +35,15 @@ export const NavBar = (props) => {
     setActiveLink(value)
   }
 
+  const cerrarSesion = async () => {
+    await auth.signOut();
+    eraseCookie('sesion')
+    navigate("/");
+  }
 
   async function handleLogout() {
     try {
+      eraseCookie('session');
       await auth.signOut();
       window.location.href = "/";
       console.log("User logged out successfully!");
@@ -67,7 +76,7 @@ export const NavBar = (props) => {
               <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
               <a href="/myAccount"><img src={profile} alt="" title="perfil"></img></a>
               <a href="#"><img src={message} alt="" title="mensajes"></img></a>
-              <a href="" onClick={handleLogout}><img src={cart} alt="" title="carrito"></img></a>
+              <a href="" onClick={cerrarSesion}><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
             {props.type1 && <Boton text="Mis cursos" style="bold" />}

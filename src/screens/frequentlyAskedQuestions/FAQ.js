@@ -22,7 +22,6 @@ function FaqScreen() {
     }, []);
 
     const [sidebar, toggleSideBar] = useState(false)
-
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev)
     }
@@ -51,5 +50,4 @@ function FaqScreen() {
         </div>
     )
 }
-
 export default FaqScreen;

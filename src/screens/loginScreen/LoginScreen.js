@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../../components/auth/firebase";
 import { toast } from "react-toastify";
 import { Footer } from "../../components/footer/Footer";
@@ -14,9 +14,14 @@ function Login() {
     const handleButton = (page) => {
         navigate(page)
     }
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (userID) {
+            navigate("/home");
+        }
+    }, [navigate]);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
 
     const [validCorreo, setValidCorreo] = useState(true)
     const [validPassword, setValidPassword] = useState(true)
