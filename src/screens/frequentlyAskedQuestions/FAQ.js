@@ -4,22 +4,34 @@ import { SimpleButton } from '../../components/simpleButton/simpleButton'
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import { Accordion } from '../../components/accordion/Accordion'
 import './_FAQ.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../utils/cookie";
 
 function FaqScreen() {
-    const [sidebar, toggleSideBar] = useState(false)
+    const [type1, setType1] = useState(false); //No inicio sesion
+    const [type2, setType2] = useState(true); //Si inicio sesion
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (userID) {
+            setType1(true);
+            setType2(false);
+        }
+    }, []);
+
+    const [sidebar, toggleSideBar] = useState(false)
 
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev)
     }
 
-
     return (
         <div className='faqScreen'>
-            <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
+            <NavBar type1={type1} type2={type2} handleToggleSidebar={handleToggleSidebar} />
             <div>
-                <Sidebar sidebar={sidebar} type1={true} type2={false} />
+                <Sidebar sidebar={sidebar} type1={type1} type2={type2} />
                 <div className={sidebar ? "blur" : ""}></div>
             </div> 
             <div className='overflowx'>
@@ -38,7 +50,6 @@ function FaqScreen() {
             <Footer />
         </div>
     )
-
-
 }
+
 export default FaqScreen;

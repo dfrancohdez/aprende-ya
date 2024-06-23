@@ -6,11 +6,21 @@ import { Accordion } from '../../components/accordion/Accordion'
 import TituloBar from '../../components/tituloBar/TituloBar'
 import { auth, db } from "../../components/auth/firebase";
 import { QuerySnapshot, collection, getDocs,collectionGroup, query } from "firebase/firestore";
+import { getCookie } from "../../utils/cookie";
+import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 
 import './_misCursos.scss'
 import { useState } from 'react'
 
 function MisCursos() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (!userID) {
+            navigate("/");
+        }
+    }, [navigate]);
     const [sidebar, toggleSideBar] = useState(false)
 
 

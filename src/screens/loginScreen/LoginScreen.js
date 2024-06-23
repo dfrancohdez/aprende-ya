@@ -7,6 +7,8 @@ import { FormLogIn } from "../../components/auth/FormLogIn"
 import { NavBar } from "../../components/navBar/NavBar";
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
 import { useNavigate } from "react-router-dom";
+import { getCookie, setCookie } from "../../utils/cookie";
+
 function Login() {
     const navigate = useNavigate()
     const handleButton = (page) => {
@@ -53,7 +55,10 @@ function Login() {
                 setButtonText('Iniciando')
                 console.log(email)
                 console.log(password)
-                await signInWithEmailAndPassword(auth, email, password);
+                const userCredencial = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredencial.user;
+                setCookie('sesion', user.uid, 7);
+                // console.log("Cookie: ", getCookie())
                 console.log("User logged in Successfully");
                 //window.location.href = "/home";
 

@@ -2,16 +2,25 @@ import { NavBar } from '../../components/navBar/NavBar'
 import { Footer } from '../../components/footer/Footer'
 import { SimpleButton } from '../../components/simpleButton/simpleButton'
 import { Sidebar } from '../../components/navBar/sidebar/Sidebar'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
 import './_profileScreen.scss'
 import accountIcon from '../../assets/img/account-profile.svg'
 import coursesIcon from '../../assets/img/cursos.svg'
+import { getCookie } from "../../utils/cookie";
 
 function ProfileScreen() {
+    const navigate = useNavigate();
     const [sidebar, toggleSideBar] = useState(false)
     const [name, setName] = useState('Nombre Apellido')
     const [showPopup, setShowPopup] = useState(false); // Estado para controlar el popup
 
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (!userID) {
+            navigate("/");
+        }
+    }, [navigate]);
 
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev)

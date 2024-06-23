@@ -4,17 +4,33 @@ import { Sidebar } from "../../components/navBar/sidebar/Sidebar"
 import portada from '../../assets/img/portada.jpg'
 import { NavBar } from "../../components/navBar/NavBar"
 import "./_about.scss"
+import { useEffect } from 'react'
+import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../utils/cookie";
+
 const About = () => {
     const [sidebar, toggleSideBar] = useState(false)
+    const [type1, setType1] = useState(false); //No inicio sesion
+    const [type2, setType2] = useState(true); //Si inicio sesion
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (userID) {
+            setType1(true);
+            setType2(false);
+        }
+    }, []);
+
     const handleToggleSidebar = () => {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
     return (
         <div className="about">
-            <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
+            <NavBar type1={type1} type2={type2} handleToggleSidebar={handleToggleSidebar} />
             <div>
-                <Sidebar sidebar={sidebar} type1={true} type2={false} />
+                <Sidebar sidebar={sidebar} type1={type1} type2={type2} />
                 <div className={sidebar ? "blur" : ""}></div>
             </div>
             <div className="about-container">

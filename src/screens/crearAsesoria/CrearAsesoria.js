@@ -12,6 +12,8 @@ import { auth, db, storage } from "../../components/auth/firebase";
 import { addDoc, setDoc, doc, collection } from "firebase/firestore";
 
 import { useNavigate } from "react-router-dom";
+import { getCookie } from "../../utils/cookie";
+import { useEffect } from 'react'
 
 
 import {
@@ -21,8 +23,14 @@ import {
 } from "firebase/storage";
 
 function CrearAsesoriaScreen() {
+    const navigate = useNavigate();
+    useEffect(() => {
+        const userID = getCookie('sesion');
+        if (!userID) {
+            navigate("/");
+        }
+    }, [navigate]);
     const user = auth.currentUser;
-    const navigate = useNavigate()
     const handleButton = (page) => {
         navigate(page)
     }

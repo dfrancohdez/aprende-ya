@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import { useState } from "react"
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+
 export const FormCreate = (props) => {
     const [cont, setCont] = useState(0)
     /*//handleSubmit,formDetails,onFormUpdate,buttonText
