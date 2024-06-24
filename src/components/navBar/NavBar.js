@@ -66,7 +66,7 @@ export const NavBar = (props) => {
             {props.type1 && <div className="social-icon">
               <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
               <a href="/myAccount"><img src={profile} alt="" title="perfil"></img></a>
-              <a href="#"><img src={message} alt="" title="mensajes"></img></a>
+              <a href="/chat"><img src={message} alt="" title="mensajes"></img></a>
               <a href="" onClick={handleLogout}><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}

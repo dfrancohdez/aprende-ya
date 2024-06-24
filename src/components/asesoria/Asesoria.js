@@ -8,12 +8,12 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Blocks } from 'react-loader-spinner'
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-const Asesoria = ({ nombreCurso, nombre, precio, img,fijar }) => {
-    const [cargando,setImg]=useState(true);
+const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type }) => {
+    const [cargando, setImg] = useState(true);
     return (
-        
-        <div className='asesoria'>
-           
+
+        <div className={'asesoria ' + type}>
+
             {/* <LazyLoadImage
 
                 src={img}
@@ -29,10 +29,10 @@ const Asesoria = ({ nombreCurso, nombre, precio, img,fijar }) => {
                     visible={true}
                 />}
             /> */}
-            <div className={fijar?'fijar':""}>
+            <div className={fijar ? 'fijar' : ""}>
                 <div className='centrar-loader'>
-                    <img onLoad={()=>setImg(false)} src={!img ? portada:img}/>
-                    {cargando&&<div className='loader-img'><Blocks
+                    <img onLoad={() => setImg(false)} src={!img ? portada : img} />
+                    {cargando && <div className='loader-img'><Blocks
                         height="80"
                         width="80"
                         color="green"
@@ -43,24 +43,27 @@ const Asesoria = ({ nombreCurso, nombre, precio, img,fijar }) => {
                     /></div>}
                 </div>
             </div>
-            <h6 className='bold'>{nombreCurso}</h6>
-            <h6 className='regular'>{nombre}</h6>
-            <div className='rate'>
-                <div className='calif'>
-                    5.0
+            <div className='container-info-asesoaria'>
+                <h6 className='bold'>{nombreCurso}</h6>
+                <h6 className='regular'>{nombre}</h6>
+                <div className='rate'>
+                    <div className='calif'>
+                        5.0
+                    </div>
+                    <div className='estrellas'>
+                        <Rating
+                            name="size-medium"
+                            defaultValue={2}
+
+                            emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
+                        />
+                    </div>
                 </div>
-                <div className='estrellas'>
-                    <Rating 
-                    name="size-medium" 
-                    defaultValue={2}
-                    
-                    emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
-                    />
-                </div>
+                <h6>
+                    {precio} MX$
+                </h6>
             </div>
-            <h6>
-                {precio} MX$
-            </h6>
+            {type&&<h5 className='elminar-asesoria'>Eliminar</h5>}
         </div>
     )
 }

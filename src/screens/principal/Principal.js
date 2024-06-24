@@ -28,7 +28,7 @@ function Principal() {
           <Banner />
           <div className='principal'>
             <Materias />
-            <Recomendaciones />
+            <Recomendaciones type="2"/>
           </div>
           
         </div>
