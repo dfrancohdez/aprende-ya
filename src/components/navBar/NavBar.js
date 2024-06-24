@@ -76,10 +76,10 @@ export const NavBar = (props) => {
               <a href="#"><img src={bell} alt="" title="notificaciones"></img></a>
               <a href="/myAccount"><img src={profile} alt="" title="perfil"></img></a>
               <a href="/chat"><img src={message} alt="" title="mensajes"></img></a>
-              <a href="" onClick={handleLogout}><img src={cart} alt="" title="carrito"></img></a>
+              <a href="/cesta"><img src={cart} alt="" title="carrito"></img></a>
             </div>}
             {/* <button className="" onClick={()=>console.log('boton')}><span>Empecemos</span></button> */}
-            {props.type1 && <Boton text="Mis cursos" style="bold" />}
+            {props.type1 && <Boton text="Mis cursos" style="bold" page="/misCursos"/>}
             {props.type2 && <Boton text="Crear cuenta" style="bold" page="signup" />}
           </span>
         </div>
