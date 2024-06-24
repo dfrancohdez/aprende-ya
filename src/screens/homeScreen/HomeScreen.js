@@ -124,16 +124,18 @@ function HomeScreen() {
 
     const navigate = useNavigate(); // Obtener la función navigate de React Router DOM
 
-    const handleClick = () => {
-        // Navegar a VisualizarCurso y pasar datos a través del estado de la ubicación
-        navigate('/curso'//, {
-        //    state: {
-        //        id,
-        //        nombreCurso
-        //    }
-        //}
-    );
+    const handleClick = (prev) => {
+        {
+
+            navigate('/curso', {
+                state: {
+                    prev
+                }
+            })
+
+        }
     };
+
 
     return (
         <div className='homeScreen'>
@@ -241,7 +243,7 @@ function HomeScreen() {
 
                         {asesorias.length > 0 && asesorias.map(prev =>
                             <Suspense fallback={<div></div>}>
-                                <div onClick={handleClick}>
+                                <div onClick={() => handleClick(prev)}>
                                     <Asesoria
                                         fijar={true}
                                         precio={prev.precio}

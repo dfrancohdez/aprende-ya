@@ -6,6 +6,7 @@ import EncabezadoCurso from '../../components/encabezadoCurso/EncabezadoCurso';
 import AsesoriaCurso from '../../components/asesoriaCurso/AsesoriaCurso';
 import { BloqTxt } from '../../components/bloqTxt/BloqTxt';
 import { Accordion2 } from '../../components/accordion2/Accordion2'
+import { useLocation } from 'react-router-dom';
 import ImgPrueba from "./img/Rectangle 30.png";
 import Reseña from '../../components/reseña/Reseña';
 import IconoPerfil from './img/inconoPerfil.png'
@@ -17,6 +18,10 @@ function MisCursos() {
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev);
     };
+
+    const location = useLocation();
+    const { prev } = location.state || {}; // Acceder a los datos del estado
+    console.log(prev);
 
     const items = [
         'Dominarás la programación profesional en Python',
