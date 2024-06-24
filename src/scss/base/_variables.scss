@@ -45,3 +45,18 @@ $black-secondary: #121417;
 $border-color:#4c4c4c;
 $breakpoint-medium:1224px;
 $breakpoint-small:520px;
+@mixin mobile{
+    @media screen and (max-width:480px){
+        @content;
+    }
+}
+@mixin tablet{
+    @media screen and (max-width:768px){
+        @content;
+    }
+}
+@mixin laptop{
+    @media screen and (max-width:1200px){
+        @content;
+    }
+}

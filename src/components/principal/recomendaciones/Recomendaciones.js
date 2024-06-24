@@ -8,7 +8,7 @@ import materia4 from "../../../assets/img/principal/tabler_list-letters.svg"
 import './_recomendaciones.scss'
 import Asesoria  from "../../asesoria/Asesoria";
 import img from "../../../assets/img/principal/Isometric Stickers Charts.png"
-export const Recomendaciones = () => {
+export const Recomendaciones = ({text}) => {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -31,15 +31,15 @@ export const Recomendaciones = () => {
     return (
         <section className="skill" id="skills">
             <div className="skill-bx">
-                <div className="skill-content">
+                {!text&&<div className="skill-content">
                     <img src={img}/>
                     <h5>
                     Una amplia selección de cursos
                     Elige entre más de 210.000 cursos de vídeo en línea con nuevo contenido cada mes
                     </h5>
-                </div>
+                </div>}
                 <div className="centrar">
-                    <h2>Los estudiantes están viendo</h2>
+                    <h2>{text?text:"Los estudiantes están viendo"}</h2>
                 </div>
                 
                 <Carousel

@@ -73,6 +73,10 @@ function SignUp() {
             lastName: lname,
             photo: ""
           });
+
+          await setDoc(doc(db, "userChats", user.uid), {
+            
+          });
         }
         console.log("User Registered Successfully!!");
         toast.success("Usuario registrado exitosamente", {
