@@ -21,20 +21,16 @@ function MisCursos() {
 
     const location = useLocation();
     const { prev } = location.state || {}; // Acceder a los datos del estado
-    console.log(prev);
 
-    const items = [
-        'Dominarás la programación profesional en Python',
-        'Crearás programas sólidos, avanzados y útiles',
-        'Trabajarás en programas del mundo real todos los días. Cada sección finaliza con un proyecto que podrás completar con lo aprendido en el día',
-        'Aplicarás Python en aplicaciones como: Juegos, Inteligencia Artificial, Machine Learning, Data Science, Gestión Administrativa y mucho más',
-        'Comprenderás la Programación Orientada a Objetos (OOP)',
-        'Aprenderás con claridad los temas más complejos'
-    ];
-    const items2 = [
-        'Acceso a un ordenador con conexión a internet',
-        'Deseo de crecimiento rápido y ganas de aprender con alegría'
-    ];
+    const items = [];
+    prev.aprender.map(apre =>
+        items.push(apre)
+    )
+
+    const items2 = [];
+    prev.requisitos.map(requisito =>
+        items2.push(requisito)
+    )
 
     return (
         <div className='cursosScreen'>
@@ -45,9 +41,9 @@ function MisCursos() {
                 <div className={sidebar ? 'blur' : ''}></div>
                 <div className='encabezado'>
                     <EncabezadoCurso
-                        titulo={'Desarrollo Web Completo con HTML5, CSS3, JS AJAX PHP y MySQL'}
-                        descripcionCorta={'Desde 0, y con 16 proyectos REALES. 160 ejercicios de código. Machine Learning, Data Science, Django, IGU, Juegos y más!'}
-                        nombreAsesor={'Juan Pablo De la torre Valdez'}
+                        titulo={prev.nombreCurso}
+                        descripcionCorta={prev.resumen}
+                        nombreAsesor={prev.nombre}
                         calificacion={3}
                         noCalificaciones={20398}
                         noEstudiantes={43639}
@@ -56,8 +52,8 @@ function MisCursos() {
                     <div className='flotante'>
                         <AsesoriaCurso
                             fijar={true}
-                            precio={100}
-                            img={ImgPrueba}
+                            precio={prev.precio}
+                            img={prev.img}
                         />
                     </div>
                 </div>
@@ -79,11 +75,8 @@ function MisCursos() {
                     <BloqTxt titulo="Requisitos" items={items2} />
                     <div className='contenedor-titulo'>
                         <h2 className='titulo-c'>Descripción</h2>
-                        <p>Python es uno de los lenguajes más buscados del mundo. Por su sencillez, su ductilidad y su flexibilidad, se ha transformado en el lenguaje favorito. Sus instrucciones son lo más cercanas posible al lenguaje humano, lo cual hace que sea más fácil de aprender, y esto hace que sea ideal para personas que se están iniciando en el mundo de la programación.
-                        </p>
-                        <p>Además de sencillo es poderoso: con unas pocas líneas de código puedes realizar tareas que en otros lenguajes de programación ocuparían cientos de líneas, y esto hace que aumente considerablemente tu productividad.
-                        </p>
-                        
+                        <p>{prev.descripcion}
+                        </p>                      
                     </div>
                 </div>
                 <div className='contenedor-titulo'>
