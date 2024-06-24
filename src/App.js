@@ -27,6 +27,7 @@ import MisCursos from "./screens/misCursos/MisCursos";
 import About from './screens/about/About';
 import Curso from './screens/curso/Curso';
 import VisualizarCurso from './screens/visualizarCurso/VisualizarCurso'
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 
 
@@ -39,6 +40,7 @@ function App() {
     });
     return (
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route
                     path="/"

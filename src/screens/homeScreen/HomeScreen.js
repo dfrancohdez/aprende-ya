@@ -8,11 +8,12 @@ import { auth, db } from "../../components/auth/firebase";
 import { QuerySnapshot, collection, getDocs, collectionGroup, query, where, and } from "firebase/firestore";
 import { Blocks } from 'react-loader-spinner'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
+import { useNavigate } from 'react-router-dom';
 import './_loader.scss'
 const Asesoria = lazy(() => import('../../components/asesoria/Asesoria'))
 
 function HomeScreen() {
-    const [buscar,setBuscar]= useState("")
+    const [buscar, setBuscar] = useState("")
     const [sidebar, toggleSideBar] = useState(false)
     const [carga, setCarga] = useState(false)
     const handleToggleSidebar = () => {
@@ -38,7 +39,7 @@ function HomeScreen() {
         fetchPost();
 
     }, [])
-    
+
     const categoria = async (value) => {
         let newData = []
         const asesorias = query(collectionGroup(db, 'Cursos'), where("categoria", "==", value))
@@ -115,11 +116,25 @@ function HomeScreen() {
 
         }
     }
-    const buscarUpdate=(e)=>{
-        const {name,value}=e.target
-        if(name==="buscar")
+    const buscarUpdate = (e) => {
+        const { name, value } = e.target
+        if (name === "buscar")
             setBuscar(value)
     }
+
+    const navigate = useNavigate(); // Obtener la función navigate de React Router DOM
+
+    const handleClick = () => {
+        // Navegar a VisualizarCurso y pasar datos a través del estado de la ubicación
+        navigate('/curso'//, {
+        //    state: {
+        //        id,
+        //        nombreCurso
+        //    }
+        //}
+    );
+    };
+
     return (
         <div className='homeScreen'>
             {carga &&
@@ -158,16 +173,16 @@ function HomeScreen() {
             <div className='busqueda-bar'>
 
                 <div className="input buscar-input">
-                    <div className='click-lupa' onClick={()=>console.log("click")}>
-                    <FaMagnifyingGlass size={28} />
+                    <div className='click-lupa' onClick={() => console.log("click")}>
+                        <FaMagnifyingGlass size={28} />
                     </div>
 
-                    
+
                     <input
                         onChange={buscarUpdate}
                         //error={props.validCorreo?"":"Correo no valido"} 
                         //label="Ingresar correo"
-                        value={buscar} 
+                        value={buscar}
                         name="buscar"
                         type="text"
                         placeholder="Buscar"
@@ -226,13 +241,15 @@ function HomeScreen() {
 
                         {asesorias.length > 0 && asesorias.map(prev =>
                             <Suspense fallback={<div></div>}>
-                                <Asesoria
-                                    fijar={true}
-                                    precio={prev.precio}
-                                    nombreCurso={prev.nombreCurso}
-                                    nombre={prev.nombre}
-                                    img={prev.img}
-                                />
+                                <div onClick={handleClick}>
+                                    <Asesoria
+                                        fijar={true}
+                                        precio={prev.precio}
+                                        nombreCurso={prev.nombreCurso}
+                                        nombre={prev.nombre}
+                                        img={prev.img}
+                                    />
+                                </div>
                             </Suspense>
                         )
 
