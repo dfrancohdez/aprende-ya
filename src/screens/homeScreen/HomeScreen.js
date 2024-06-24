@@ -10,7 +10,6 @@ import { Blocks } from 'react-loader-spinner'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
 import { useNavigate } from 'react-router-dom';
 import './_loader.scss'
-import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookie";
 const Asesoria = lazy(() => import('../../components/asesoria/Asesoria'))
 
@@ -131,7 +130,17 @@ function HomeScreen() {
             setBuscar(value)
     }
 
-    
+    const handleClick = (prev) => {
+        {
+
+            navigate('/curso', {
+                state: {
+                    prev
+                }
+            })
+
+        }
+    };
 
 
     return (

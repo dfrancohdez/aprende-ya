@@ -4,7 +4,6 @@ import { Sidebar } from '../../components/navBar/sidebar/Sidebar';
 import { auth, db } from "../../components/auth/firebase";
 import { doc, getDoc, collection } from "firebase/firestore";
 import { getCookie } from "../../utils/cookie";
-import { useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import TituloBar from '../../components/tituloBar/TituloBar';
 
