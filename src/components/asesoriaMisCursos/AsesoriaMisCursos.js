@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import portada from '../../assets/img/portada.jpg';
-
+import { useNavigate } from 'react-router-dom';
 import './_asesoriaMisCursos.scss';
-
 import { Blocks } from 'react-loader-spinner';
 
-const Asesoria = ({ nombreCurso, nombre, img, fijar }) => {
+const Asesoria = ({ nombreCurso, nombre, img, fijar, id }) => {
     const [cargando, setImg] = useState(true);
+    const navigate = useNavigate(); // Obtener la función navigate de React Router DOM
 
     const handleClick = () => {
-        window.location.href = '/visualizarCurso';
+        // Navegar a VisualizarCurso y pasar datos a través del estado de la ubicación
+        navigate('/visualizarCurso', {
+            state: {
+                id,
+                nombreCurso
+            }
+        });
     };
 
     return (

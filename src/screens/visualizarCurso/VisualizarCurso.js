@@ -7,6 +7,7 @@ import CuadroPortadaCurso from '../../components/cuadroPortadaCurso/CuadroPortad
 import ResumenCapitulo from '../../components/resumenCapitulo/ResumenCapitulo';
 import { BotonCurso } from '../../components/botonCurso/BotonCurso';
 import ImgPort from '../../assets/img/principal/Rectangle 30.png'
+import { useLocation } from 'react-router-dom';
 import './_visualizarCurso.scss';
 
 function MisCursos() {
@@ -15,6 +16,12 @@ function MisCursos() {
     const handleToggleSidebar = () => {
         toggleSideBar(prev => !prev);
     };
+
+    const location = useLocation();
+    const { id, nombreCurso } = location.state || {}; // Acceder a los datos del estado
+
+    console.log('Id: ', id);
+    console.log('Nombre: ', nombreCurso);
 
     return (
         <div className='visualizarCursoScreen'>
