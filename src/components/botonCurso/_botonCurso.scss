@@ -1,0 +1,27 @@
+@use '../../scss/base/variables' as v;
+.BotonCu{
+    display: flex;
+    font-family: v.$fuente_parrafo;
+    //font-size: 15px;
+    width: 130px;
+    height: 48px;
+    border-radius: 20px;
+    background-color: v.$fondo2;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 5px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.boldCu{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
+.sinCu{
+    background-color: transparent;
+}
+.blockCu{
+    background-color: v.$primary500;
+}

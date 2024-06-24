@@ -1,0 +1,39 @@
+.buttonR {
+    background-color: #6C7D78;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 50px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+    outline: none;
+    width: 95%;
+    height: 100px;
+    margin-bottom: 20px;
+    .progre{
+        margin-right: 100px;
+    }
+    span{
+        font-size: 20px;
+    }
+    .im {
+        
+        img {
+            height: 100px;
+            width: auto;
+        }
+    }
+
+}
+
+.buttonR:hover {
+    background-color: #454d4a;
+}
+
+.buttonR:active {
+    background-color: #2d3130;
+}

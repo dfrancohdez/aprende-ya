@@ -8,6 +8,7 @@ import { auth, db } from "../../components/auth/firebase";
 import { QuerySnapshot, collection, getDocs, collectionGroup, query, where, and } from "firebase/firestore";
 import { Blocks } from 'react-loader-spinner'
 import { FaMagnifyingGlass } from 'react-icons/fa6'
+import { useNavigate } from 'react-router-dom';
 import './_loader.scss'
 import { useNavigate } from "react-router-dom";
 import { getCookie } from "../../utils/cookie";
@@ -28,6 +29,7 @@ function HomeScreen() {
         // console.log("hola")
         toggleSideBar(prev => !prev)
     }
+
     const [asesorias, setAsesorias] = useState([])
     const fetchPost = async () => {
         setCarga(true)
@@ -46,6 +48,7 @@ function HomeScreen() {
         fetchPost();
 
     }, [])
+
     const categoria = async (value) => {
         let newData = []
         const asesorias = query(collectionGroup(db, 'Cursos'), where("categoria", "==", value))
@@ -122,11 +125,15 @@ function HomeScreen() {
 
         }
     }
-    const buscarUpdate=(e)=>{
-        const {name,value}=e.target
-        if(name==="buscar")
+    const buscarUpdate = (e) => {
+        const { name, value } = e.target
+        if (name === "buscar")
             setBuscar(value)
     }
+
+    
+
+
     return (
         <div className='homeScreen'>
             {carga &&
@@ -165,16 +172,16 @@ function HomeScreen() {
             <div className='busqueda-bar'>
 
                 <div className="input buscar-input">
-                    <div className='click-lupa' onClick={()=>console.log("click")}>
-                    <FaMagnifyingGlass size={28} />
+                    <div className='click-lupa' onClick={() => console.log("click")}>
+                        <FaMagnifyingGlass size={28} />
                     </div>
 
-                    
+
                     <input
                         onChange={buscarUpdate}
                         //error={props.validCorreo?"":"Correo no valido"} 
                         //label="Ingresar correo"
-                        value={buscar} 
+                        value={buscar}
                         name="buscar"
                         type="text"
                         placeholder="Buscar"
@@ -233,13 +240,15 @@ function HomeScreen() {
 
                         {asesorias.length > 0 && asesorias.map(prev =>
                             <Suspense fallback={<div></div>}>
-                                <Asesoria
-                                    fijar={true}
-                                    precio={prev.precio}
-                                    nombreCurso={prev.nombreCurso}
-                                    nombre={prev.nombre}
-                                    img={prev.img}
-                                />
+                                <div onClick={() => handleClick(prev)}>
+                                    <Asesoria
+                                        fijar={true}
+                                        precio={prev.precio}
+                                        nombreCurso={prev.nombreCurso}
+                                        nombre={prev.nombre}
+                                        img={prev.img}
+                                    />
+                                </div>
                             </Suspense>
                         )
 

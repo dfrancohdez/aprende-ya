@@ -1,0 +1,32 @@
+.reseña{
+    height: 300px;
+    padding: 20px 20px 20px 20px;
+    background-color: #555;
+    margin:10px 20px;
+    border-radius: 20px;
+    font-size: 25px;
+    box-shadow: 6px 6px #fff7;
+    overflow: hidden;
+    width: 450px;
+    position: relative;
+    transition: background-color 0.5s ease;
+    
+    h3{
+        font-size: 25px;
+        color: white;
+        padding-top: 7px;
+    }
+    .contenedor-cabeza{
+        display: flex;
+        .imagen{
+            width: 70px;
+        }
+        .derecha{
+            padding-left: 20px;
+            .tiempo-re{
+                font-size: 17px;
+                padding-left: 10px;
+            }
+        }
+    }
+}

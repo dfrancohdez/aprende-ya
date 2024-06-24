@@ -25,6 +25,9 @@ import ProfileScreen from './screens/profileScreen/ProfileScreen';
 import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 import MisCursos from "./screens/misCursos/MisCursos";
 import About from './screens/about/About';
+import Curso from './screens/curso/Curso';
+import VisualizarCurso from './screens/visualizarCurso/VisualizarCurso'
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import {ChatScreen} from './screens/chat/Chat'
 import {Cesta} from './screens/cesta/Cesta'
 
@@ -37,6 +40,7 @@ function App() {
     });
     return (
         <Router>
+            <ScrollToTop />
             <Routes>
                 <Route
                     path="/"
@@ -54,6 +58,8 @@ function App() {
                 <Route path="/about" element={<About/>} />
                 <Route path="/chat" element={<ChatScreen/>} />
                 <Route path="/cesta" element={<Cesta/>} />
+                <Route path="/curso" element={<Curso/>} />
+                <Route path="/visualizarCurso" element={<VisualizarCurso/>} />
             </Routes>
             <ToastContainer />
         </Router>

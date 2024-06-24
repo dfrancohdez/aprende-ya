@@ -1,0 +1,69 @@
+@use '../../scss/base/variables' as v;
+
+h3 {
+    color: #000;
+}
+
+.accordion2 {
+    background-color: #6C7D78;
+    &-title {
+        cursor: pointer;
+        padding: 10px 20px;
+        margin: 5px 0;
+        border: 0px solid #000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.09);
+
+        h4 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            width: 100%;
+        }
+    }
+
+    &-icon {
+        font-size: 18px;
+        transition: transform 0.4s ease;
+    }
+
+    &-icon.open {
+        transform: rotate(180deg);
+    }
+
+    &-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0 10px;
+        overflow: hidden;
+        .izq{
+            float: left;
+            .imagen{
+                width: 125px;
+            }
+        }
+        .der{
+            float: right;
+            width: 490px;
+        }
+    }
+
+    &-content.open {
+        max-height: 100px;
+        /* Ajusta esta altura según sea necesario */
+        padding: 10px;
+        overflow: hidden;
+        .izq{
+            float: left;
+            .imagen{
+                width: 125px;
+            }
+        }
+        .der{
+            float: right;
+            width: 490px;
+        }
+        
+    }
+}

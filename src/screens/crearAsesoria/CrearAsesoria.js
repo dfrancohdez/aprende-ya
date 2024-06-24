@@ -41,7 +41,8 @@ function CrearAsesoriaScreen() {
         
         try {
             const user = auth.currentUser;
-            console.log(user);
+            console.log(user.uid);
+
             const Aprender = aprender.map(prev => prev.value)
             const Requisitos = requisitos.map(prev => prev.value)
             const ContenidoCurso = contenidoCurso.map(prev => prev.value)

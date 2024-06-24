@@ -1,0 +1,71 @@
+@use '../../scss/base/variables' as v;
+
+.cursosScreen {
+    .encabezado{
+        position: relative;
+    }
+    .flotante{
+        position: absolute;
+        top: 150px;
+        left: 65%;
+        
+    }
+    &-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left; /* Centra horizontalmente */
+        padding-top: 25px;
+        padding-left: 50px;
+        background-color: #407a6d;       
+        .contenido-izquierda{
+            max-width: 50%;
+        }
+        .contenido-derecha{
+            max-width: 50%;
+            padding-top: 100px;
+            padding-left: 80px;
+            padding-right: 50px;
+        }
+        .contenedor-titulo{
+            padding-top: 25px;
+            .titulo-c{
+                font-size: 22.5px;
+                
+            }
+            .cont-line{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .cursosScreen {
+        .encabezado{
+            position: relative;
+            height: 900px;
+            background-color: #2C3331;
+        }
+        .flotante{
+            position: absolute;
+            top: 550px;
+            left: 0%;
+            
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centra horizontalmente */
+            padding-top: 30px;
+            padding-bottom: 30px;
+            background-color: #407a6d; 
+            .contenido-izquierda{
+                justify-content: center;
+                width: 100%;
+            }      
+        }
+    }
+}
+
