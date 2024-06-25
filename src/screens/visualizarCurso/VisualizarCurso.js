@@ -98,13 +98,16 @@ function MisCursos() {
                             idioma={'Español'}
                         />
                     )}
-                    <div className='flotante'>
+                    
+                    {curso && (
+                        <div className='flotante'>
                         <CuadroPortadaCurso
                             fijar={true}
                             precio={curso ? curso.precio : 0} // Ajusta esto según la estructura de tu objeto de curso
-                            img={ImgPort}
+                            img={curso.img}
                         />
-                    </div>
+                        </div>
+                    )}
                     <div className='botonV'>
                         <BotonCurso
                             type="button"
