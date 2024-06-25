@@ -30,6 +30,7 @@ import VisualizarCurso from './screens/visualizarCurso/VisualizarCurso'
 import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import {ChatScreen} from './screens/chat/Chat'
 import {Cesta} from './screens/cesta/Cesta'
+import { Calif } from './screens/calif/Calif';
 
 function App() {
     const [user, setUser] = useState();
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/cesta" element={<Cesta/>} />
                 <Route path="/curso" element={<Curso/>} />
                 <Route path="/visualizarCurso" element={<VisualizarCurso/>} />
+                <Route path="/calif" element={<Calif />}/>
             </Routes>
             <ToastContainer />
         </Router>

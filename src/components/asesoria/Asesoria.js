@@ -60,10 +60,10 @@ const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar }) =>
                     </div>
                 </div>
                 <h6>
-                    {precio} MX$
+                    {precio===""?"":precio+ "MX"}
                 </h6>
             </div>
-            {type&&<h5 onClick={()=>eliminar()}className='elminar-asesoria'>Eliminar</h5>}
+            {type&&eliminar&&<h5 onClick={()=>eliminar()}className='elminar-asesoria'>Eliminar</h5>}
         </div>
     )
 }

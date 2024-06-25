@@ -1,7 +1,7 @@
 @use '../../scss/base/variables' as v;
 
 .homeScreen {
-    //background-color: #407a6d;
+    background: radial-gradient(circle at center, #7DB6A8,v.$fondo1);
 
     &-container {
         display: flex;

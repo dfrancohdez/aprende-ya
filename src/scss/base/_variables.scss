@@ -60,3 +60,7 @@ $breakpoint-small:520px;
         @content;
     }
 }
+::selection {
+    background:#407A6D;
+    color:yellow
+  }
