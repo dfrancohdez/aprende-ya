@@ -54,6 +54,7 @@ function MisCursos() {
                             fijar={true}
                             precio={prev.precio}
                             img={prev.img}
+                            path={prev.path}
                         />
                     </div>
                 </div>

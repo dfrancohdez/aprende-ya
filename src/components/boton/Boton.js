@@ -9,7 +9,7 @@ export const Boton=(props)=>{
         navigate(props.page,{ replace: true })
     }
     return(
-        <button type={props.type}className={props.style==="bold"?"Boton bold "+props.block:"Boton bold "+props.block} onClick={handleButton}>
+        <button type={props.type}className={props.style==="bold"?"Boton bold "+props.block:"Boton bold "+props.block} onClick={props.onClick?props.onClick:handleButton}>
             {props.text}
             <ArrowUpCircleFill size={24}/>
             

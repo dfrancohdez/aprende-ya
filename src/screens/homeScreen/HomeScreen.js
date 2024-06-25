@@ -36,7 +36,8 @@ function HomeScreen() {
         const asesorias = query(collectionGroup(db, 'Cursos'))
         const querySnapshot = await getDocs(asesorias);
         querySnapshot.forEach((doc) => {
-            newData.push({ ...doc.data(), id: doc.id })
+            newData.push({ ...doc.data(),id:doc.id, path:doc.ref.path})
+            console.log(newData)
         });
         setCarga(false)
         setAsesorias(newData)
@@ -53,7 +54,7 @@ function HomeScreen() {
         const asesorias = query(collectionGroup(db, 'Cursos'), where("categoria", "==", value))
         const querySnapshot = await getDocs(asesorias);
         querySnapshot.forEach((doc) => {
-            newData.push({ ...doc.data(), id: doc.id })
+            newData.push({ ...doc.data(), id: doc.id, path:doc.ref.path })
         });
 
         setAsesorias(newData)
@@ -65,7 +66,7 @@ function HomeScreen() {
         const asesorias = query(collectionGroup(db, 'Cursos'), and(where("precio", ">=", value1), where("precio", "<=", value2)))
         const querySnapshot = await getDocs(asesorias);
         querySnapshot.forEach((doc) => {
-            newData.push({ ...doc.data(), id: doc.id })
+            newData.push({ ...doc.data(), id: doc.id, path:doc.ref.path})
         });
 
         setAsesorias(newData)
@@ -76,7 +77,7 @@ function HomeScreen() {
         const asesorias = query(collectionGroup(db, 'Cursos'), where("precio", ">=", value1))
         const querySnapshot = await getDocs(asesorias);
         querySnapshot.forEach((doc) => {
-            newData.push({ ...doc.data(), id: doc.id })
+            newData.push({ ...doc.data(), id: doc.id, path:doc.ref.path })
         });
 
         setAsesorias(newData)
@@ -87,7 +88,7 @@ function HomeScreen() {
         const asesorias = query(collectionGroup(db, 'Cursos'), where("precio", "==", value1))
         const querySnapshot = await getDocs(asesorias);
         querySnapshot.forEach((doc) => {
-            newData.push({ ...doc.data(), id: doc.id })
+            newData.push({ ...doc.data(), id: doc.id, path:doc.ref.path })
         });
 
         setAsesorias(newData)

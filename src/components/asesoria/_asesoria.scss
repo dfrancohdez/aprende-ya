@@ -52,15 +52,16 @@
         }
     }
     }
+    .loader-img {
+        position: absolute;
+        right: 35%;
+        top: 10%;
+    
+    }
 
 }
 
-.loader-img {
-    position: absolute;
-    right: 35%;
-    top: 10%;
 
-}
 
 
 
@@ -122,5 +123,19 @@
             color: #ddd;
             margin-left: 10%;
         }
+        .loader-img {
+            position: absolute;
+            left: 15%;
+            top: 30%;
+        
+        }
+        
     }
+    
+}
+.loaderCes{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

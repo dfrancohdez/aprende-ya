@@ -8,7 +8,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Blocks } from 'react-loader-spinner'
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type }) => {
+const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar }) => {
     const [cargando, setImg] = useState(true);
     return (
 
@@ -63,7 +63,7 @@ const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type }) => {
                     {precio} MX$
                 </h6>
             </div>
-            {type&&<h5 className='elminar-asesoria'>Eliminar</h5>}
+            {type&&<h5 onClick={()=>eliminar()}className='elminar-asesoria'>Eliminar</h5>}
         </div>
     )
 }
