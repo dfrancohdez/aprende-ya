@@ -10,7 +10,9 @@ import { auth, db } from "../../components/auth/firebase";
 import { doc, getDoc, collection, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Blocks } from 'react-loader-spinner'
+import { useNavigate } from "react-router-dom";
 export const Cesta = () => {
+    const navigate = useNavigate();
     const [sidebar, toggleSideBar] = useState(false)
     const handleToggleSidebar = () => {
         // console.log("hola")
@@ -21,6 +23,11 @@ export const Cesta = () => {
     const [total, setTotal] = useState(0)
     const [data, setData] = useState([])
     const [carga, setCarga] = useState(true)
+    const [text,setText]=useState("Comprar")
+    const handleButton = (page) => {
+        navigate(page)
+    }
+
     const fetchData = async () => {
         try {
             setCarga(true)
@@ -60,6 +67,7 @@ export const Cesta = () => {
     const comprar = async () => {
 
         try {
+            setText("Comprando")
             let cursosComprados = []
             const user = auth.currentUser;
             console.log(user.uid);
@@ -84,6 +92,16 @@ export const Cesta = () => {
                     cursosComprados: merge
                 });
 
+
+
+                //vaciar cesta
+
+                await updateDoc(doc(db, "Users", user.uid), {
+                    cesta: []
+                });
+
+                //
+                setText("Comprar")
                 /*for (const seccion of secciones) {
                     for (const clase of seccion) {
                         await setDoc(doc(db, "Asesorias", user.uid, "Cursos", nombreCurso, "Secciones", seccion,"Clases",clase), {
@@ -95,14 +113,15 @@ export const Cesta = () => {
 
 
             }
-            /*
-            console.log("User Registered Successfully!!");
             
-            toast.success("Publicado exitosamente", {
+            //console.log("User Registered Successfully!!");
+            
+            toast.success("Comprado exitosamente", {
                 position: "bottom-center",
             });
-            handleButton("/home")
-            setButtonText("Publicar")*/
+            
+            handleButton("/misCursos")
+
         } catch (error) {
             console.log(error.message);
             toast.error(error.message, {
@@ -218,7 +237,7 @@ export const Cesta = () => {
                         <div className='cesta-precio-container'>
                             <h6>Total</h6>
                             <h4>{total} MX$</h4>
-                            <Boton text="comprar" onClick={() => comprar()} />
+                            <Boton block={text==="Comprando"?" block":""} text={text} onClick={() => comprar()} />
                         </div>
                     </div>
 

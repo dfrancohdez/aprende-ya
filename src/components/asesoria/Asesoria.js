@@ -12,7 +12,7 @@ const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar }) =>
     const [cargando, setImg] = useState(true);
     return (
 
-        <div className={'asesoria ' + type}>
+        <div className={'asesoriaV2 ' + type}>
 
             {/* <LazyLoadImage
 
