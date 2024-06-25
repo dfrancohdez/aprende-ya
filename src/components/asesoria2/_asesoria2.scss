@@ -1,0 +1,60 @@
+.asesoria2{
+    display: flex;
+    height: 200px;
+    padding: 5px 30px;
+    background-color: #555;
+    margin:10px 10px;
+    border-radius: 20px;
+    font-size: 25px;
+    box-shadow: 6px 6px #fff7;
+    overflow: hidden;
+    width: 700px;
+    &-img-container{
+        
+    }
+    img{
+        width:150px;
+        height: 180px;
+        object-fit: contain; 
+    }
+    .centrar-loader2{
+        
+        position: relative;
+        width: 150px;
+        
+    }
+    .fijar{
+        width: 240px;
+    }
+    
+    .bloque{
+        display: block;
+        position: relative;
+        left: 50px;
+        .bold2{
+            padding: 5px 10px;
+            width: 90%;
+        }
+        .regular2{
+            font-size: 12px;
+            padding: 30px 10px;
+            
+        }
+        .rate2{
+        display: flex;
+        padding: 25px 10px;
+        .estrellas{
+            //display: inline-flex;
+            
+        }
+    }
+    }
+
+    
+}
+.loader-img{
+    position: absolute;
+    right: 35%;
+    top: 10%;
+
+}

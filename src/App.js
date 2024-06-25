@@ -25,9 +25,8 @@ import ProfileScreen from './screens/profileScreen/ProfileScreen';
 import FAQ from './screens/frequentlyAskedQuestions/FAQ'
 import MisCursos from "./screens/misCursos/MisCursos";
 import About from './screens/about/About';
-
-
-
+import Publicar_res from './screens/pubRes/publicar_res';
+import Chat from './screens/chatM/chat'
 function App() {
     const [user, setUser] = useState();
     useEffect(() => {
@@ -52,6 +51,8 @@ function App() {
                 <Route path="/faq" element={<FAQ/>} />
                 <Route path='/misCursos' element ={<MisCursos/>} />
                 <Route path="/about" element={<About/>} />
+                <Route path="/chat" element={<Chat/>}/>
+                <Route path="/publicarRes" element={<Publicar_res/>}/>
             </Routes>
             <ToastContainer />
         </Router>

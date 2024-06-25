@@ -1,0 +1,65 @@
+
+.princ{
+    background-color: #2C3331;
+    
+h3{
+    padding: 190px 50px 0px;
+    display: flex;
+    justify-content: center;
+    color: white;
+}    
+.cursoo{
+    padding: 30px 50px 60px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 360px;
+}
+.centrar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    margin: 0;
+    padding: 0;
+    color: #fff; // Texto blanco para mejor contraste 
+
+}
+.reseñas{
+    width: 70vw; 
+    max-width: 500px; 
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    padding: 30px;
+    border-radius: 8px; 
+    .feedback {
+        display: flex;
+        flex-direction: column;
+    }
+    input[type="text"], textarea {
+        width: 100%; // Ocupa todo el ancho disponible
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #fff;
+        color: #333;
+        resize: none;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #407A6D; // Color de fondo del botón
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-bottom: 500px;
+        &:hover {
+            background-color: #3AA58C; // Cambia de color al pasar el cursor
+        }
+    }
+
+}
+
+}
