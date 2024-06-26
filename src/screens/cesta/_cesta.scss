@@ -1,32 +1,45 @@
 @use '../../scss/base/variables' as v;
+
 .cesta {
-    
+
     background-color: v.$primary800;
+
     .cesta-container {
         width: 80%;
-    margin: 0 auto;
+        margin: 0 auto;
         padding: 200px 20px;
         display: flex;
         align-items: center;
-        gap:10px;
+        gap: 20px;
         justify-content: space-between;
-        
+
         .cesta-asesorias {
             width: 100%;
-            .line-cesta{
-                margin: 5px 0;
+            .line-cesta {
+                margin: 5px 0 50px 0;
                 border: 3px solid white;
+
             }
         }
 
         .cesta-precio-container {
-            border: 5px solid #ddd; 
+            background: radial-gradient(circle at center, #7DB6A8,v.$fondo2);
+            border: 5px solid #ddd;
             padding: 20px;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            height: 200px;
+            height: 300px;
+            gap: 20px;
+            &:first-child{
+                h6{
+                    padding: 5px 0;
+                }    
+                h4{
+                    padding: 5px 0;
+                }
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ import { doc, getDoc, collection, updateDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { Blocks } from 'react-loader-spinner'
 import { useNavigate } from "react-router-dom";
+import { Paypal } from '../../components/paypal/Paypal'
 export const Cesta = () => {
     const navigate = useNavigate();
     const [sidebar, toggleSideBar] = useState(false)
@@ -23,7 +24,7 @@ export const Cesta = () => {
     const [total, setTotal] = useState(0)
     const [data, setData] = useState([])
     const [carga, setCarga] = useState(true)
-    const [text,setText]=useState("Comprar")
+    const [text, setText] = useState("Comprar")
     const handleButton = (page) => {
         navigate(page)
     }
@@ -113,13 +114,13 @@ export const Cesta = () => {
 
 
             }
-            
+
             //console.log("User Registered Successfully!!");
-            
+
             toast.success("Comprado exitosamente", {
                 position: "bottom-center",
             });
-            
+
             handleButton("/misCursos")
 
         } catch (error) {
@@ -201,14 +202,14 @@ export const Cesta = () => {
 
                         <div className='asesorias'>
                             {data.length > 0 && data.map((asesoria, index) =>
-                                <Asesoria 
-                                img={asesoria.img} 
-                                nombreCurso={asesoria.nombreCurso}
-                                nombre={asesoria.nombre} 
-                                precio={asesoria.precio} 
-                                type={"type2"} 
-                                value={asesoria?.califAct===0?0:asesoria?.califAct/asesoria?.reviews?.length}
-                                eliminar={() => eliminar(index)} />
+                                <Asesoria
+                                    img={asesoria.img}
+                                    nombreCurso={asesoria.nombreCurso}
+                                    nombre={asesoria.nombre}
+                                    precio={asesoria.precio}
+                                    type={"type2"}
+                                    value={asesoria?.califAct === 0 ? 0 : asesoria?.califAct / asesoria?.reviews?.length}
+                                    eliminar={() => eliminar(index)} />
                             )}
                             {carga &&
                                 <div className='loaderCes'>
@@ -242,9 +243,12 @@ export const Cesta = () => {
                     </div>
                     <div className='cesta-precio'>
                         <div className='cesta-precio-container'>
-                            <h6>Total</h6>
-                            <h4>{total} MX$</h4>
-                            <Boton block={text==="Comprando"?" block":""} text={text} onClick={() => comprar()} />
+                            <div>
+                                <h6>Total</h6>
+                                <h4>{total} MX$</h4>
+                                <Boton block={text === "Comprando" ? " block" : ""} text={text} onClick={() => comprar()} />
+                            </div>
+                            <Paypal total={total} />
                         </div>
                     </div>
 
