@@ -83,27 +83,15 @@ function MisCursos() {
                 <div className='contenedor-titulo'>
                     <center><h2 className='titulo-c'>Reseñas del curso</h2></center>
                         <div className='cont-line'>
+                            {prev.reviews.map(review=>
                             <Reseña
                                 imagenRe={IconoPerfil}
-                                nombre={'José Martín Cruz'}
-                                calificacion={3}
-                                tiempoCali={4}
-                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
+                                nombre={review?.name}
+                                calificacion={review?.calif}
+                                tiempoCali={review?.date}
+                                opinion={review?.opinion}
                             />      
-                            <Reseña
-                                imagenRe={IconoPerfil}
-                                nombre={'José Martín Cruz'}
-                                calificacion={3}
-                                tiempoCali={4}
-                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
-                            />
-                            <Reseña
-                                imagenRe={IconoPerfil}
-                                nombre={'José Martín Cruz'}
-                                calificacion={3}
-                                tiempoCali={4}
-                                opinion={'Increible el curso su contenido en muy bueno, y solo tendria un comentario de mejora, en toda la parte de graficos el nivel de volumen de las clases es muy bajo.'}
-                            />          
+                            )}
                         </div> 
                 </div>
 

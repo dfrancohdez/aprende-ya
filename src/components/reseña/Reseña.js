@@ -17,10 +17,10 @@ const Reseña = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
                     <div>
                         <Rating 
                         name="size-medium" 
-                        defaultValue={calificacion}
+                        value={calificacion}
                         emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
                         />
-                        <span className='tiempo-re'>Hace {tiempoCali} días</span>
+                        <span className='tiempo-re'> {tiempoCali} </span>
                     </div>
                     
                 </div>

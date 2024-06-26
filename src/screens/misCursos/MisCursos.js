@@ -47,7 +47,7 @@ function MisCursos() {
 
                         if (cursoDocSnapshot.exists()) {
                             const cursoData = cursoDocSnapshot.data();
-                            return { ...cursoData, id: parte1 }; // Devuelve el curso con su ID
+                            return { ...cursoData, id: parte1,path:cursoDocSnapshot.ref }; // Devuelve el curso con su ID
                         } else {
                             console.log('El documento curso no existe');
                             return null;
@@ -95,6 +95,7 @@ function MisCursos() {
                             nombre={curso.nombre}
                             img={curso.img}
                             id={curso.id} // Pasa el ID directamente desde el objeto curso
+                            path={curso.path}
                         />
                     ))}
                 </div>

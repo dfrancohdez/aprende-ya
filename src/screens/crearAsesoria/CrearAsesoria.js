@@ -59,7 +59,8 @@ function CrearAsesoriaScreen() {
                     contenidoCurso: ContenidoCurso,
                     precio: precio,
                     categoria: categoria,
-                    img: url
+                    img: url,
+                    reviews:[]
 
                 });
                 for (const seccion of secciones)

@@ -71,7 +71,8 @@ function SignUp() {
             email: user.email,
             firstName: fname,
             lastName: lname,
-            photo: ""
+            photo: "",
+            cesta:[]
           });
 
           await setDoc(doc(db, "userChats", user.uid), {

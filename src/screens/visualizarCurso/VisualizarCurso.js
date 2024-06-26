@@ -11,8 +11,9 @@ import { BotonCurso } from '../../components/botonCurso/BotonCurso';
 import ImgPort from '../../assets/img/principal/Rectangle 30.png'
 import { useLocation } from 'react-router-dom';
 import './_visualizarCurso.scss';
-
+import { useNavigate } from "react-router-dom";
 function MisCursos() {
+    const navigate = useNavigate();
     const [sidebar, toggleSideBar] = useState(false);
     const [curso, setCurso] = useState(null);
     const [secciones, setSecciones] = useState([]);
@@ -39,7 +40,7 @@ function MisCursos() {
 
                 if (cursoDocSnapshot.exists()) {
                     const cursoData = cursoDocSnapshot.data();
-                    setCurso(cursoData); // Guarda los datos del curso
+                    setCurso({...cursoData,path:cursoDocSnapshot.ref.path}); // Guarda los datos del curso
                 } else {
                     console.log('El documento curso no existe');
                 }
@@ -63,7 +64,7 @@ function MisCursos() {
 
                 const seccionesList = seccionesSnapshot.docs.map(doc => ({
                     id: doc.id,
-                    ...doc.data()
+                    ...doc.data(),
                 }));
 
                 setSecciones(seccionesList);
@@ -77,8 +78,13 @@ function MisCursos() {
     }, [id, nombreCurso]);
 
     console.log('El curso es: ', curso);
-    console.log('Las secciones son: ', secciones);
-
+    const handleButton = () => {
+        navigate('/calif', {
+            state: {
+                curso
+            }
+        })
+    }
     return (
         <div className='visualizarCursoScreen'>
             <NavBar type1={true} type2={false} handleToggleSidebar={handleToggleSidebar} />
@@ -87,34 +93,30 @@ function MisCursos() {
                 <Sidebar sidebar={sidebar} type1={true} type2={false} />
                 <div className={sidebar ? 'blur' : ''}></div>
                 <div className='encabezado'>
-                    {curso && (
                         <EncabezadoCurso
-                            titulo={curso.nombreCurso}
-                            descripcionCorta={curso.descripcion} // Ajusta esto según la estructura de tu objeto de curso
-                            nombreAsesor={curso.nombreAsesor} // Ajusta esto según la estructura de tu objeto de curso
+                            titulo={curso?.nombreCurso}
+                            descripcionCorta={curso?.descripcion} // Ajusta esto según la estructura de tu objeto de curso
+                            nombreAsesor={curso?.nombreAsesor} // Ajusta esto según la estructura de tu objeto de curso
                             calificacion={3}
                             noCalificaciones={20398}
                             noEstudiantes={43639}
                             idioma={'Español'}
                         />
-                    )}
-                    
-                    {curso && (
+
                         <div className='flotante'>
-                        <CuadroPortadaCurso
-                            fijar={true}
-                            precio={curso ? curso.precio : 0} // Ajusta esto según la estructura de tu objeto de curso
-                            img={curso.img}
-                        />
+                            <CuadroPortadaCurso
+                                fijar={true}
+                                precio={curso ? curso?.precio : 0} // Ajusta esto según la estructura de tu objeto de curso
+                                img={curso?.img}
+                            />
                         </div>
-                    )}
                     <div className='botonV'>
                         <BotonCurso
                             type="button"
                             style="bold"
                             block="full-width"
                             text="Publicar Reseña"
-                            page="/#"
+                            handleButton={() => handleButton()}
                         />
                     </div>
                 </div>

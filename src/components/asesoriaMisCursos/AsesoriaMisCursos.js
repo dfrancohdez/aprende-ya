@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import './_asesoriaMisCursos.scss';
 import { Blocks } from 'react-loader-spinner';
 
-const Asesoria = ({ nombreCurso, nombre, img, fijar, id }) => {
+const Asesoria = ({ nombreCurso, nombre, img, fijar, id,path}) => {
     const [cargando, setImg] = useState(true);
     const navigate = useNavigate(); // Obtener la función navigate de React Router DOM
-
+    console.log(path)
     const handleClick = () => {
         // Navegar a VisualizarCurso y pasar datos a través del estado de la ubicación
         navigate('/visualizarCurso', {
             state: {
-                id,
-                nombreCurso
+                id:id,
+                nombreCurso:nombreCurso
             }
         });
     };
