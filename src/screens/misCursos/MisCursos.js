@@ -87,7 +87,7 @@ function MisCursos() {
             </div>
             <Suspense fallback={<div></div>}>
                 <div className='misCursosScreen-container'>
-                    {cursosComprados.map((curso, index) => (
+                    {cursosComprados&&cursosComprados.map((curso, index) => (
                         <AsesoriaMisCursos
                             key={index}
                             fijar={true}

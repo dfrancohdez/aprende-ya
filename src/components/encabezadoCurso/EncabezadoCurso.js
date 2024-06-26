@@ -14,12 +14,14 @@ const TituloBarraNavegacion = ({ titulo, descripcionCorta, nombreAsesor, calific
                 
                 <div className='cont'>
                     <div>
-                        <p>{calificacion}</p>
+                        <p>{calificacion.toFixed(1)}</p>
                     </div>
                     <div>
                         <Rating 
+                        readOnly
                         name="size-medium" 
-                        defaultValue={calificacion}
+                        value={calificacion.toFixed(1)}
+                        precision={.5}
                         emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
                         />
                     </div>

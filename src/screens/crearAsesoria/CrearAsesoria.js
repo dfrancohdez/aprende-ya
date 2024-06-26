@@ -60,7 +60,8 @@ function CrearAsesoriaScreen() {
                     precio: precio,
                     categoria: categoria,
                     img: url,
-                    reviews:[]
+                    reviews:[],
+                    califAct:0,
 
                 });
                 for (const seccion of secciones)

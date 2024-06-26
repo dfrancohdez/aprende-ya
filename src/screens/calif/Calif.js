@@ -21,6 +21,7 @@ export const Calif = () => {
     const [data, setData] = useState("")
     const [calif, setCalif] = useState(0)
     const [sidebar, toggleSideBar] = useState(false)
+    const [actCalif,setActCalif] = useState(0)
     const handleToggleSidebar = () => {
         // console.log("hola")
         toggleSideBar(prev => !prev)
@@ -37,8 +38,13 @@ export const Calif = () => {
 
     }
     useEffect(() => {
-        if (curso)
+        if (curso){
             setData(curso)
+            const aux=curso.califAct/curso.reviews.length
+            console.log(aux)
+            setActCalif(aux)
+        }
+            
     }, [curso])
 
     const enviar = async (e) => {
@@ -59,11 +65,19 @@ export const Calif = () => {
                 let date_raw = newDate.getDate();
                 let month_raw = newDate.getMonth() + 1;
                 let year = newDate.getFullYear();
-                aux.push({ opinion: opinion, calif: calif, name: dataUser.firstName + " " + dataUser.lastName,date:date_raw+"/"+month_raw })
-                await updateDoc(ref, {
-                    reviews: aux
+                
+                aux.push({
+                    opinion: opinion, 
+                    calif: calif, 
+                    name: dataUser.firstName + " " + dataUser.lastName,
+                    date:date_raw+"/"+month_raw,
                 })
-                console.log(array)
+                const auxCalif=(data.califAct+calif);
+                await updateDoc(ref, {
+                    reviews: aux,
+                    califAct:auxCalif
+                })
+                console.log(auxCalif+"="+data.califAct+"+"+calif)
                 setText("Publicar")
             }
 
@@ -74,7 +88,7 @@ export const Calif = () => {
                 position: "bottom-center",
             });
 
-            handleButton()
+            //handleButton()
         } catch (e) {
             console.log(e)
         }
@@ -97,6 +111,7 @@ export const Calif = () => {
                             nombre={data.nombre}
                             precio={""}
                             type={"type2"}
+                            value={actCalif}
                         />
                         <div className="data-container">
                             <h6>Calificación</h6>

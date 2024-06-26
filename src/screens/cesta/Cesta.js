@@ -201,7 +201,14 @@ export const Cesta = () => {
 
                         <div className='asesorias'>
                             {data.length > 0 && data.map((asesoria, index) =>
-                                <Asesoria img={asesoria.img} nombreCurso={asesoria.nombreCurso} nombre={asesoria.nombre} precio={asesoria.precio} type={"type2"} eliminar={() => eliminar(index)} />
+                                <Asesoria 
+                                img={asesoria.img} 
+                                nombreCurso={asesoria.nombreCurso}
+                                nombre={asesoria.nombre} 
+                                precio={asesoria.precio} 
+                                type={"type2"} 
+                                value={asesoria?.califAct===0?0:asesoria?.califAct/asesoria?.reviews?.length}
+                                eliminar={() => eliminar(index)} />
                             )}
                             {carga &&
                                 <div className='loaderCes'>

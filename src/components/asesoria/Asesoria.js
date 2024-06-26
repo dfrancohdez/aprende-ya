@@ -8,7 +8,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Blocks } from 'react-loader-spinner'
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar }) => {
+const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar,value }) => {
     const [cargando, setImg] = useState(true);
     return (
 
@@ -48,13 +48,14 @@ const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar }) =>
                 <h6 className='regular'>{nombre}</h6>
                 <div className='rate'>
                     <div className='calif'>
-                        5.0
+                        {value?value?.toFixed(1):"0.0"}
                     </div>
                     <div className='estrellas'>
                         <Rating
+                            readOnly
                             name="size-medium"
-                            defaultValue={2}
-
+                            value={value?.toFixed(1)}
+                            precision={.5}
                             emptyIcon={<StarIcon style={{ color: '#ddd' }} />}
                         />
                     </div>

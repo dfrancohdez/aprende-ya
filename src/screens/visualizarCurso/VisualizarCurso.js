@@ -97,8 +97,8 @@ function MisCursos() {
                             titulo={curso?.nombreCurso}
                             descripcionCorta={curso?.descripcion} // Ajusta esto según la estructura de tu objeto de curso
                             nombreAsesor={curso?.nombreAsesor} // Ajusta esto según la estructura de tu objeto de curso
-                            calificacion={3}
-                            noCalificaciones={20398}
+                            calificacion={curso?.califAct===0?0:curso?.califAct/curso?.reviews?.length}
+                            noCalificaciones={curso?.reviews?.length}
                             noEstudiantes={43639}
                             idioma={'Español'}
                         />

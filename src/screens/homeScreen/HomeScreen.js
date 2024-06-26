@@ -257,6 +257,7 @@ function HomeScreen() {
                                         nombreCurso={prev.nombreCurso}
                                         nombre={prev.nombre}
                                         img={prev.img}
+                                        value={prev?.califAct===0?0:prev?.califAct/prev?.reviews?.length}
                                     />
                                 </div>
                             </Suspense>

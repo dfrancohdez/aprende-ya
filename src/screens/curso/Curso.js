@@ -44,8 +44,8 @@ function MisCursos() {
                         titulo={prev.nombreCurso}
                         descripcionCorta={prev.resumen}
                         nombreAsesor={prev.nombre}
-                        calificacion={3}
-                        noCalificaciones={20398}
+                        calificacion={prev?.califAct===0?0:prev?.califAct/prev.reviews.length}
+                        noCalificaciones={prev?.reviews?.length}
                         noEstudiantes={43639}
                         idioma={'Español'}
                     />
