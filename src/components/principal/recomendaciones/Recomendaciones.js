@@ -80,7 +80,7 @@ export const Recomendaciones = ({ text }) => {
                         <Suspense fallback={<div></div>}>
                             <div>
                                 <Asesoria
-                                    fijar={true}
+                                    
                                     precio={prev.precio}
                                     nombreCurso={prev.nombreCurso}
                                     nombre={prev.nombre}
