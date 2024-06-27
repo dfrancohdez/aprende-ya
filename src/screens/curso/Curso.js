@@ -8,7 +8,7 @@ import { BloqTxt } from '../../components/bloqTxt/BloqTxt';
 import { Accordion2 } from '../../components/accordion2/Accordion2'
 import { useLocation } from 'react-router-dom';
 import { db } from "../../components/auth/firebase";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection,doc } from "firebase/firestore";
 import ImgPrueba from "./img/Rectangle 30.png";
 import Reseña from '../../components/reseña/Reseña';
 import IconoPerfil from './img/inconoPerfil.png'
@@ -41,33 +41,25 @@ function MisCursos() {
             try {
                 const asesoriasSnapshot = await getDocs(collection(db, 'Asesorias'));
                 let seccionesList = [];
-
-                for (const asesoriaDoc of asesoriasSnapshot.docs) {
-                    const cursosCollectionRef = collection(asesoriaDoc.ref, 'Cursos');
-                    const cursosSnapshot = await getDocs(cursosCollectionRef);
-
-                    for (const cursoDoc of cursosSnapshot.docs) {
-                        if (cursoDoc.id === prev.nombreCurso) {
-                            const seccionesCollectionRef = collection(cursoDoc.ref, 'Secciones');
+                const path = prev.path.split('/')
+                const docRef = doc(db, path[0], path[1], path[2], path[3])
+                            const seccionesCollectionRef = collection(docRef, 'Secciones');
                             const seccionesSnapshot = await getDocs(seccionesCollectionRef);
 
                             seccionesSnapshot.forEach(doc => {
                                 seccionesList.push({ id: doc.id, ...doc.data() });
                             });
-                        }
-                    }
-                }
-
+                
                 setSecciones(seccionesList);
             } catch (error) {
                 console.error('Error al obtener las secciones:', error);
             }
         };
-
+        //if(secciones.length>0)
         fetchSecciones();
-    }, []);
+    }, [prev]);
 
-    console.log(secciones);
+    //console.log(secciones);
 
 
 
@@ -106,11 +98,11 @@ function MisCursos() {
 
                     <div className='contenedor-titulo'>
                         <h2 className='titulo-c'>Clases</h2>
-                        {secciones && secciones.map((doc) => (
+                        {secciones.map((doc) => (
                             <Accordion2
-                                title={doc.nombre}
-                                content={doc.clases}
-                                noClases={doc.clases.length}
+                                title={doc?.nombre}
+                                content={doc?.clases}
+                                noClases={doc?.clases.length}
                                 
                             />
                         ))}
