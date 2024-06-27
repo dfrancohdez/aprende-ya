@@ -68,6 +68,7 @@ function MisCursos() {
                 }));
 
                 setSecciones(seccionesList);
+                
             } catch (error) {
                 console.error('Error al obtener las secciones del curso:', error);
             }

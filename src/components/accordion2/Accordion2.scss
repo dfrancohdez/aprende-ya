@@ -50,20 +50,11 @@ h3 {
     }
 
     &-content.open {
-        max-height: 100px;
+        max-height: 500px;
         /* Ajusta esta altura según sea necesario */
         padding: 10px;
-        overflow: hidden;
-        .izq{
-            float: left;
-            .imagen{
-                width: 125px;
-            }
-        }
-        .der{
-            float: right;
-            width: 490px;
-        }
+        overflow: hidden
+        
         
     }
 }
