@@ -28,7 +28,7 @@ export const Calif = () => {
     }
     const [text, setText] = useState("Publicar")
     const handleButton = (page) => {
-        navigate(-1)
+        navigate(page)
     }
     const [opinion, setOpinion] = useState("")
     const onFormUpdate = (e) => {
@@ -88,7 +88,7 @@ export const Calif = () => {
                 position: "bottom-center",
             });
 
-            //handleButton()
+            handleButton("/home")
         } catch (e) {
             console.log(e)
         }

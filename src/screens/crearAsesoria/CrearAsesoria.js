@@ -133,6 +133,27 @@ function CrearAsesoriaScreen() {
     };
 
 
+    const uploadMaterial = async (file,name) => {
+        //console.log(imageUpload)
+        if (file === null) {
+            toast.error("Please select an image");
+            return;
+        }
+        //un usuario no puede subir en un mismo curso(asesoria) mas de un archivo con el mismo nombre
+        //independientemente de la clase, porque no conozco el nombre de la clase. Se tiene que hacer una lista
+        try{
+        const imageRef = storageRef(storage, `material/${user.uid}/${nombreCurso}/${name}`);
+        const snapshot=await uploadBytes(imageRef, file)
+        const url= await getDownloadURL(snapshot.ref)
+        return url;
+        }
+        catch(error) {
+            toast.error(error.message);
+        }
+            
+    };
+
+
 
 
 
@@ -153,7 +174,8 @@ function CrearAsesoriaScreen() {
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
-    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ categoria: "", value: "", material: [{ ruta: "", description: "" }] }] }])
+    //categoria no se utiliza
+    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ categoria: "", value: "", material: [{name:"", ruta: "", description: "" }] }] }])
 
 
     const [nombreCurso, SetNombreCurso] = useState("")
@@ -181,11 +203,11 @@ function CrearAsesoriaScreen() {
         toast.success("Sección agregada", {
             position: "bottom-center",
         })
-        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ categoria: "", value: "", material: [{ ruta: "", description: "" }] }] }
+        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ categoria: "", value: "", material: [{ name:"", ruta: "", description: "" }] }] }
         setSecciones(prev => [...prev, aux])
     }
     const handleMasClase = (i) => {
-        const newItem = { categoria: "", value: "", material: [{ ruta: "", description: "" }] }
+        const newItem = { categoria: "", value: "", material: [{name:"", ruta: "", description: "" }] }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
@@ -198,7 +220,7 @@ function CrearAsesoriaScreen() {
         console.log(i + " asesoria")
         console.log(j + " clase")
         console.log(z + "material")
-        const newItem = { ruta: "", description: "" }
+        const newItem = {name:"", ruta: "", description: "" }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         const aux2 = aux1[j].material
@@ -256,7 +278,7 @@ function CrearAsesoriaScreen() {
         setSecciones(aux)
     }
 
-    const onFormUpdate = (e) => {
+    const onFormUpdate = async (e) => {
         const { name, value, checked } = e.target
         let aux;
         if (name.endsWith("aprender")) {
@@ -291,7 +313,9 @@ function CrearAsesoriaScreen() {
             if (subString.length >= 6) {
                 if (subString[1] !== "descripcion") {
                     const aux1 = [...secciones]
-                    aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = value
+                    const ruta=await uploadMaterial(e.target.files[0],e.target.files[0].name)
+                    aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = ruta
+                    aux1[subString[4]].clases[subString[2]].material[subString[0]].name=e.target.files[0].name
                     //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
                     setSecciones(aux1)
                 } else {
@@ -304,14 +328,14 @@ function CrearAsesoriaScreen() {
 
             else if (subString.length === 4) {
                 const aux1 = [...secciones]
-                aux1[subString[2]].clases[subString[0]].value = value
+                aux1[subString[2]].clases[subString[0]].value = value //nombre de la clase
                 //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
                 setSecciones(aux1)
 
             } else {
 
                 const aux1 = [...secciones]
-                aux1[subString[0]].value = value
+                aux1[subString[0]].value = value //nombre de la seccion
                 console.log(aux1)
                 //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
                 setSecciones(aux1)

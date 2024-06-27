@@ -5,19 +5,19 @@ import React, { useEffect, useRef, useState } from "react"
 });*/
 import { PayPalScriptProvider,PayPalButtons } from '@paypal/react-paypal-js';
 const initialOptions = {
-    clientId: "ARQI_YnHnBkLBK8_vJg4uU5zX9ZoYt4FGqk9GJ-AEB0vYDW8hSZNM6cjQofWmf_AJSPcYICUtn9mAjfF",
+    "clientId": "ARQI_YnHnBkLBK8_vJg4uU5zX9ZoYt4FGqk9GJ-AEB0vYDW8hSZNM6cjQofWmf_AJSPcYICUtn9mAjfF",
     currency: "MXN",
-    intent: "capture",
+    intent: "capture"
 };
 
-export const Paypal = ({total}) => {
+export const Paypal = () => {
     const createOrder=(data,actions)=>{
         return actions.order.create({
             purchase_units:[
                 {
                     amount:{
                         currency_code:"MXN",
-                        value:{total}
+                        value:"0.01"
                     }
                 }
             ]
