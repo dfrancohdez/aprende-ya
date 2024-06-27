@@ -67,6 +67,7 @@ function MisCursos() {
                 }));
 
                 setSecciones(seccionesList);
+                
             } catch (error) {
                 console.error('Error al obtener las secciones del curso:', error);
             }
@@ -103,7 +104,7 @@ function MisCursos() {
                         <div className='flotante'>
                         <CuadroPortadaCurso
                             fijar={true}
-                            precio={curso ? curso.precio : 0} // Ajusta esto según la estructura de tu objeto de curso
+                            precio={curso.precio} // Ajusta esto según la estructura de tu objeto de curso
                             img={curso.img}
                         />
                         </div>

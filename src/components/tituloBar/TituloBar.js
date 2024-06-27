@@ -3,7 +3,7 @@ import './_tituloBar.scss';
 
 const TituloBarraNavegacion = () => {
   return (
-    <div className="titulo-barra-navegacion">
+    <div className="titulo-barra-navegacionn">
       <h1>Mis cursos</h1>
     </div>
   );

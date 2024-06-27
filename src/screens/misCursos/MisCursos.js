@@ -81,7 +81,7 @@ function MisCursos() {
             <div>
                 <Sidebar sidebar={sidebar} type1={true} type2={false} />
                 <div className={sidebar ? "blur" : ""}></div>
-                <div className='tituloBar'>
+                <div >
                     <TituloBar />
                 </div>
             </div>

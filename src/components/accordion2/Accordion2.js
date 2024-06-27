@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Accordion2.scss';
 
-export const Accordion2 = ({ title, content, tiempo , img}) => {
+export const Accordion2 = ({ title, content, noClases, img }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleAccordion = () => {
@@ -16,12 +16,17 @@ export const Accordion2 = ({ title, content, tiempo , img}) => {
                         {isOpen ? '▼' : '▼'}
                     </span>
                     <span>{title}</span>
-                    <span>{tiempo}min</span>
+                    <span>{noClases} clases</span>
                 </h4>
             </div>
             <div className={`accordion2-content ${isOpen ? 'open' : ''}`}>
-                <div className='izq'><img src={img} className='imagen'/></div>
-                <div className='der'>{content}</div>
+                {isOpen && (
+                    <ul>
+                        {content.map((item, index) => (
+                            <li key={index}>• {item.value}</li>
+                        ))}
+                    </ul>
+                )}
             </div>
         </div>
     );
