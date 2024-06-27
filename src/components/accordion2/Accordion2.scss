@@ -37,14 +37,14 @@ h3 {
         transition: max-height 0.4s ease, padding 0.4s ease;
         padding: 0 10px;
         overflow: hidden;
+        display: flex;
+        gap:10px;
         .izq{
-            float: left;
             .imagen{
                 width: 125px;
             }
         }
         .der{
-            float: right;
             width: 490px;
         }
     }

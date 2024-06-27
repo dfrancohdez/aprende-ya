@@ -8,7 +8,10 @@
         position: absolute;
         top: 150px;
         left: 65%;
-        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:20px;
     }
     .botonV{
         position: absolute;

@@ -109,16 +109,14 @@ function MisCursos() {
                                 precio={curso ? curso?.precio : 0} // Ajusta esto según la estructura de tu objeto de curso
                                 img={curso?.img}
                             />
-                        </div>
-                    <div className='botonV'>
-                        <BotonCurso
+                            <BotonCurso
                             type="button"
                             style="bold"
                             block="full-width"
                             text="Publicar Reseña"
                             handleButton={() => handleButton()}
                         />
-                    </div>
+                        </div>
                 </div>
             </div>
 

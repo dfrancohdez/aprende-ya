@@ -59,19 +59,19 @@ export const Sidebar = (props) => {
                 {props.type1 && 
                 <li>
                     
-                    <a href="#"><img src={message} alt=""></img><h6 className='regular'>Mensajes</h6></a>
+                    <a href="/chat"><img src={message} alt=""></img><h6 className='regular'>Mensajes</h6></a>
                     
                 </li>}
                 {props.type1 && 
                 <li>
                     
-                    <a href="#"><img src={cart} alt=""></img><h6 className='regular'>Carrito</h6></a>
+                    <a href="/cesta"><img src={cart} alt=""></img><h6 className='regular'>Carrito</h6></a>
                     
                 </li>}
 
                 {props.type1 &&
                 <li>
-                     <Boton text="Mis cursos" style="bold" />
+                     <Boton text="Mis cursos" style="bold" page="/misCursos"/>
                 </li>}
                 {props.type2 &&<li>
                      <Boton text="Crear cuenta" style="bold" page="/signup"/>

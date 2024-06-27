@@ -43,3 +43,12 @@
         }
     }
 }
+@media screen and (max-width:v.$breakpoint-medium) {
+    .cesta{
+    .cesta-container {
+        flex-wrap: wrap;
+        justify-content: center;
+
+    }
+    }
+}

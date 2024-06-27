@@ -61,7 +61,7 @@ function MisCursos() {
 
             </div>
             <div className='cursosScreen-container'>
-
+                <div className='cursosScreen-info'>
                 <div className='contenido-izquierda'>
                     <BloqTxt titulo="Lo que aprenderás" items={items} />
                     <div className='contenedor-titulo'>
@@ -80,6 +80,7 @@ function MisCursos() {
                         </p>                      
                     </div>
                 </div>
+                </div>
                 <div className='contenedor-titulo'>
                     <center><h2 className='titulo-c'>Reseñas del curso</h2></center>
                         <div className='cont-line'>
@@ -94,8 +95,10 @@ function MisCursos() {
                             )}
                         </div> 
                 </div>
+                </div>
+                
 
-            </div>
+            
             <Footer />
         </div>
     );
