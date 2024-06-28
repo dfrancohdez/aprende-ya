@@ -1,10 +1,11 @@
 @use '../../scss/base/variables' as v;
 
-h3 {
-    color: #000;
-}
 
 .accordion2 {
+    h3 {
+        color: #000;
+    }
+    
     background-color: #6C7D78;
     &-title {
         cursor: pointer;

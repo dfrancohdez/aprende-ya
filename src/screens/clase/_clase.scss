@@ -1,0 +1,49 @@
+@use '../../scss/base/variables' as v;
+
+.classScreen {
+
+    &-container {
+        background: v.$primary800;
+        padding: 150px 50px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    &-material {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            max-width: 300px;
+        }
+    }
+
+    &-info {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+        color: white;
+
+        a img {
+
+            max-width: 800px;
+        }
+    }
+
+    &-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    &-img {
+        h6 {
+            padding: 3px;
+        }
+    }
+}

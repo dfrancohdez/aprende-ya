@@ -57,7 +57,7 @@ function MisCursos() {
         };
         //if(secciones.length>0)
         fetchSecciones();
-    }, [prev]);
+    }, [prev]);//prev cambia, no es el mismo valor
 
     //console.log(secciones);
 

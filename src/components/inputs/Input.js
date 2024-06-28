@@ -7,11 +7,11 @@ import check from "../../assets/img/check.png"
 export const Input = (props) => {
 
     return (
-        
 
-            <div className={props.hover}>
-                <div className='input'>
-                {(props.label !== "" && props.hover=== "input-hover" || props.class === "seccion") ? <div className='line'></div> : <div></div>}
+
+        <div className={props.hover}>
+            <div className='input'>
+                {(props.label !== "" && props.hover === "input-hover" || props.class === "seccion") ? <div className='line'></div> : <div></div>}
                 {props.typelabel !== "mas" ? props.class !== "seccion" && <label id={props.id}><h6>{props.label}</h6></label> : props.class !== "seccion" && <label id={props.id}><h6>{props.label}</h6><img onClick={props.handleMas} src={mas}></img></label>}
 
 
@@ -48,11 +48,12 @@ export const Input = (props) => {
                                                     <img className="insertar-img-botton" onClick={() => props.handleMasMaterial(props.i, indexi, index)} src={mas}></img><img className="insertar-img-botton img-blanco" onClick={() => props.handleMenosMaterial(props.i, indexi, index)} src={menos}></img>
                                                     <div className='insertar-img'>
                                                         <div className='insertar-material'>
-                                                            <label id={props.id}><h6>{dato.name===""?"Insertar material":dato.name}</h6></label>
+                                                            <label id={props.id}><h6>{dato.name === "" ? "Insertar material" : dato.name}</h6></label>
                                                             <label for={`${props.i}+${indexi}+${index}`}>
-                                                            <img className='img-insertar' src={dato.name===""?insert:check}></img>
+                                                                <img className='img-insertar' src={dato.name === "" ? insert : check}></img>
                                                             </label>
-                                                            <input onChange={props.onFormUpdate} type='file' id={`${props.i}+${indexi}+${index}`} style={{display:"none"}} name={index + "-archivo-" + indexi + "-clase-" + props.nameSection}/>
+                                                            <input onChange={props.onFormUpdate} type='file' id={`${props.i}+${indexi}+${index}`} style={{ display: "none" }} name={index + "-archivo-" + indexi + "-clase-" + props.nameSection} />
+                                                            
                                                         </div>
                                                         <div>
                                                             <label id={props.id}><h6>Descripción</h6></label>
