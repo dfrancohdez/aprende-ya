@@ -11,39 +11,91 @@
     }
 
     &-material {
+
         display: flex;
         flex-direction: column;
-
         img {
-            max-width: 300px;
+            max-width: 100px;
+            width: 50%;
         }
     }
 
     &-info {
         width: 100%;
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: start;
+        align-items: start;
         flex-direction: column;
         gap: 30px;
         color: white;
 
-        a img {
-
-            max-width: 800px;
-        }
     }
 
     &-item {
+
         display: flex;
         align-items: center;
         gap: 20px;
-        padding: 30px 0;
+        padding: 30px 50px;
+
+        .classScreen-description {
+
+            flex-grow: 4;
+            flex-basis: 0;
+
+            //max-width: 70%;
+            //width: 100%;
+            p {
+                width: 100%;
+            }
+
+        }
     }
 
     &-img {
+        overflow: hidden;
+        flex-grow: 1;
+        flex-basis: 0;//is needed, we need the items get collapsed to its smallest possible width
+
         h6 {
             padding: 3px;
         }
+    }
+}
+
+@media (max-width:v.$breakpoint-medium) {
+    .classScreen {
+        &-container {
+            padding: 150px 10px;
+        }
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            padding: 30px 10px;
+            //justify-content: center;
+            .classScreen-description {
+                flex-grow: 1;
+                flex-basis: auto;
+            }
+
+            .classScreen-img {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex-grow: 1;
+                flex-basis: auto;//initial value
+
+                img {
+
+                    width: 100px;
+                    
+                }
+            }
+        }
+
+
+
+
     }
 }

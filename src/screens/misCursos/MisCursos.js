@@ -39,7 +39,7 @@ function MisCursos() {
                         const partes = curso.split('-');
                         const parte1 = partes[0]; // Id
                         const parte2 = partes[1]; // curso
-
+                        console.log(parte1+" "+parte2)
                         const asesoriasDocRef = doc(db, 'Asesorias', parte1);
                         const cursosCollectionRef = collection(asesoriasDocRef, 'Cursos');
                         const cursoDocRef = doc(cursosCollectionRef, parte2);
@@ -47,13 +47,14 @@ function MisCursos() {
 
                         if (cursoDocSnapshot.exists()) {
                             const cursoData = cursoDocSnapshot.data();
-                            return { ...cursoData, id: parte1,path:cursoDocSnapshot.ref }; // Devuelve el curso con su ID
+                            //no se obtienen las secciones
+                            return { ...cursoData, id: parte1,path:cursoDocSnapshot.ref.path }; // Devuelve el curso con su ID
                         } else {
                             console.log('El documento curso no existe');
                             return null;
                         }
                     }));
-
+                    console.log(cursosCompradosInfo)
                     setCursosComprados(cursosCompradosInfo.filter(curso => curso !== null)); // Filtrar nulos
                 } else {
                     console.log('El documento del usuario no existe');

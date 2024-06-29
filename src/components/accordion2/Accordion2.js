@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import './Accordion2.scss';
-
-export const Accordion2 = ({ title, content, noClases, img }) => {
+import { useNavigate } from "react-router-dom";
+export const Accordion2 = ({ title, content, noClases, img ,type}) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const navigate =useNavigate()
     const toggleAccordion = () => {
         setIsOpen(!isOpen);
     };
-
+    const handleButton = (item) => {
+        navigate('/clase', {
+            state: {
+                title,
+                item
+            }
+        })
+    }
+    
     return (
         <div className='accordion2'>
             <div className='accordion2-title' onClick={toggleAccordion}>
@@ -23,7 +31,8 @@ export const Accordion2 = ({ title, content, noClases, img }) => {
                 {isOpen && (
                     <ul>
                         {content.map((item, index) => (
-                            <li key={index}>• {item.value}</li>
+                            <li onClick={type==="2"?()=>handleButton(item):()=>{}} className={type==="2"?"accordion2-cursoComprado":""} 
+                            key={index}>{item.value}</li>//value es nombre de la clase
                         ))}
                     </ul>
                 )}

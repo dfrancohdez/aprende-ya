@@ -2,8 +2,8 @@ import { React, useState } from 'react'
 import "./_input.scss"
 import mas from "../../assets/img/mas.svg"
 import menos from "../../assets/img/menos.svg"
-import insert from "../../assets/img/inserteImg.png"
-import check from "../../assets/img/check.png"
+
+import { Material } from './Material'
 export const Input = (props) => {
 
     return (
@@ -48,11 +48,7 @@ export const Input = (props) => {
                                                     <img className="insertar-img-botton" onClick={() => props.handleMasMaterial(props.i, indexi, index)} src={mas}></img><img className="insertar-img-botton img-blanco" onClick={() => props.handleMenosMaterial(props.i, indexi, index)} src={menos}></img>
                                                     <div className='insertar-img'>
                                                         <div className='insertar-material'>
-                                                            <label id={props.id}><h6>{dato.name === "" ? "Insertar material" : dato.name}</h6></label>
-                                                            <label for={`${props.i}+${indexi}+${index}`}>
-                                                                <img className='img-insertar' src={dato.name === "" ? insert : check}></img>
-                                                            </label>
-                                                            <input onChange={props.onFormUpdate} type='file' id={`${props.i}+${indexi}+${index}`} style={{ display: "none" }} name={index + "-archivo-" + indexi + "-clase-" + props.nameSection} />
+                                                            <Material props={props}dato={dato}indexi={indexi}index={index}/>
                                                             
                                                         </div>
                                                         <div>

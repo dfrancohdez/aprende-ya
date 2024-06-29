@@ -38,7 +38,7 @@ function CrearAsesoriaScreen() {
     const [imageUpload, setImageUpload] = useState(null);
 
     const handleSubmit = async (url) => {
-        
+
         try {
             const user = auth.currentUser;
             console.log(user.uid);
@@ -60,8 +60,8 @@ function CrearAsesoriaScreen() {
                     precio: precio,
                     categoria: categoria,
                     img: url,
-                    reviews:[],
-                    califAct:0,
+                    reviews: [],
+                    califAct: 0,
 
                 });
                 for (const seccion of secciones)
@@ -88,7 +88,7 @@ function CrearAsesoriaScreen() {
 
             }
             console.log("User Registered Successfully!!");
-            
+
             toast.success("Publicado exitosamente", {
                 position: "bottom-center",
             });
@@ -116,10 +116,10 @@ function CrearAsesoriaScreen() {
             .then((snapshot) => {
                 getDownloadURL(snapshot.ref)
                     .then((url) => {
-                        
+
                         console.log(url)
                         const aux = url
-                        setImgURL(aux)  
+                        setImgURL(aux)
                         handleSubmit(url)
                     })
                     .catch((error) => {
@@ -129,11 +129,11 @@ function CrearAsesoriaScreen() {
             .catch((error) => {
                 toast.error(error.message);
             });
-            
+
     };
 
 
-    const uploadMaterial = async (file,name) => {
+    const uploadMaterial = async (file, name) => {
         //console.log(imageUpload)
         if (file === null) {
             toast.error("Please select an image");
@@ -141,16 +141,16 @@ function CrearAsesoriaScreen() {
         }
         //un usuario no puede subir en un mismo curso(asesoria) mas de un archivo con el mismo nombre
         //independientemente de la clase, porque no conozco el nombre de la clase. Se tiene que hacer una lista
-        try{
-        const imageRef = storageRef(storage, `material/${user.uid}/${nombreCurso}/${name}`);
-        const snapshot=await uploadBytes(imageRef, file)
-        const url= await getDownloadURL(snapshot.ref)
-        return url;
+        try {
+            const imageRef = storageRef(storage, `material/${user.uid}/${nombreCurso}/${name}`);
+            const snapshot = await uploadBytes(imageRef, file)
+            const url = await getDownloadURL(snapshot.ref)
+            return url;
         }
-        catch(error) {
+        catch (error) {
             toast.error(error.message);
         }
-            
+
     };
 
 
@@ -170,12 +170,12 @@ function CrearAsesoriaScreen() {
 
 
 
-    
+
     const [aprender, setAprender] = useState([{ i: 0, value: "", name: "0-aprender" }])
     const [requisitos, setRequisitos] = useState([{ i: 0, value: "", name: "0-requisitos" }])
     const [contenidoCurso, setContenidoCurso] = useState([{ i: 0, value: "", name: "0-contenidoCurso" }])
     //categoria no se utiliza
-    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ categoria: "", value: "", material: [{name:"", ruta: "", description: "" }] }] }])
+    const [secciones, setSecciones] = useState([{ i: 0, value: "", name: "0-section", clases: [{ categoria: "", value: "", material: [{ name: "", ruta: "", description: "" }] }] }])
 
 
     const [nombreCurso, SetNombreCurso] = useState("")
@@ -203,11 +203,11 @@ function CrearAsesoriaScreen() {
         toast.success("Sección agregada", {
             position: "bottom-center",
         })
-        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ categoria: "", value: "", material: [{ name:"", ruta: "", description: "" }] }] }
+        const aux = { i: secciones.length, value: "", name: secciones.length + "-section", clases: [{ categoria: "", value: "", material: [{ name: "", ruta: "", description: "" }] }] }
         setSecciones(prev => [...prev, aux])
     }
     const handleMasClase = (i) => {
-        const newItem = { categoria: "", value: "", material: [{name:"", ruta: "", description: "" }] }
+        const newItem = { categoria: "", value: "", material: [{ name: "", ruta: "", description: "" }] }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
@@ -220,7 +220,7 @@ function CrearAsesoriaScreen() {
         console.log(i + " asesoria")
         console.log(j + " clase")
         console.log(z + "material")
-        const newItem = {name:"", ruta: "", description: "" }
+        const newItem = { name: "", ruta: "", description: "" }
         const aux = [...secciones]
         const aux1 = aux[i].clases
         const aux2 = aux1[j].material
@@ -312,12 +312,23 @@ function CrearAsesoriaScreen() {
 
             if (subString.length >= 6) {
                 if (subString[1] !== "descripcion") {
-                    const aux1 = [...secciones]
-                    const ruta=await uploadMaterial(e.target.files[0],e.target.files[0].name)
-                    aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = ruta
-                    aux1[subString[4]].clases[subString[2]].material[subString[0]].name=e.target.files[0].name
-                    //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
-                    setSecciones(aux1)
+                    if (subString[1] === "archivo") {
+                        const aux1 = [...secciones]
+                        const ruta = await uploadMaterial(e.target.files[0], e.target.files[0].name)
+                        aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = ruta
+                        aux1[subString[4]].clases[subString[2]].material[subString[0]].name = e.target.files[0].name
+                        //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                        setSecciones(aux1)
+                    } else {
+                        const aux1 = [...secciones]
+                        aux1[subString[4]].clases[subString[2]].material[subString[0]].ruta = value//link
+                        const video=(parseInt(subString[0])+1)
+                        aux1[subString[4]].clases[subString[2]].material[subString[0]].name = "Video "+video
+                        //setSecciones(prev => [...{...prev[i],clases:[...prev[i].clases,aux]}])
+                        setSecciones(aux1)
+
+                    }
+
                 } else {
                     const aux1 = [...secciones]
                     aux1[subString[4]].clases[subString[2]].material[subString[0]].description = value

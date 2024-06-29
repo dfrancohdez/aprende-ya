@@ -35,27 +35,30 @@
     &-content {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-        padding: 0 10px;
-        overflow: hidden;
-        display: flex;
+        transition: max-height 0.4s ease, padding 0.6s ease;
+        padding: 0 7px;
+        //display: flex;
         gap:10px;
-        .izq{
-            .imagen{
-                width: 125px;
-            }
-        }
-        .der{
-            width: 490px;
+        li{
+            padding: 7px;
+            margin: 10px 0;
+            border:white solid 3px;
+            width: 100%;
         }
     }
 
     &-content.open {
         max-height: 500px;
         /* Ajusta esta altura según sea necesario */
-        padding: 10px;
+        padding: 7px 0px;
         overflow: hidden
         
         
+    }
+    &-cursoComprado{
+        cursor: pointer;
+        &:hover{
+            background-color: v.$primary800;
+        }
     }
 }

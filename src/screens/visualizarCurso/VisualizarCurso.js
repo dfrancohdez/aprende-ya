@@ -12,6 +12,7 @@ import ImgPort from '../../assets/img/principal/Rectangle 30.png'
 import { useLocation } from 'react-router-dom';
 import './_visualizarCurso.scss';
 import { useNavigate } from "react-router-dom";
+import { Accordion2 } from '../../components/accordion2/Accordion2';
 function MisCursos() {
     const navigate = useNavigate();
     const [sidebar, toggleSideBar] = useState(false);
@@ -33,6 +34,7 @@ function MisCursos() {
             }
 
             try {
+                console.log(id+" "+nombreCurso)
                 const asesoriasDocRef = doc(db, 'Asesorias', id);
                 const cursosCollectionRef = collection(asesoriasDocRef, 'Cursos');
                 const cursoDocRef = doc(cursosCollectionRef, nombreCurso);
@@ -126,12 +128,21 @@ function MisCursos() {
                     <h2 className='titulo-c'>Contenido del curso</h2>
                 </div>
                 <div className='resumenes'>
-                    <ResumenCapitulo
+                    {/* <ResumenCapitulo
                         img={ImgPort} // Ajusta esto según la estructura de tu objeto de sección
                         nomCap={'Programa un creador de nombres'} // Ajusta esto según la estructura de tu objeto de sección
                         duracion={60} // Ajusta esto según la estructura de tu objeto de sección
                         progreso={80} // Ajusta esto según la estructura de tu objeto de sección
-                    />
+                    /> */}
+                    {secciones.map((doc) => (
+                            <Accordion2
+                                title={doc?.nombre}
+                                content={doc?.clases}
+                                noClases={doc?.clases.length}
+                                type="2"
+                               
+                            />
+                        ))}
                 </div>
             </div>
             <Footer />
