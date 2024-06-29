@@ -48,7 +48,7 @@ const Asesoria = ({ nombreCurso, nombre, precio, img, fijar, type,eliminar,value
                 <h6 className='regular'>{nombre}</h6>
                 <div className='rate'>
                     <div className='calif'>
-                        {value?value?.toFixed(1):"0.0"}
+                        <h5 style={{fontWeight:"300"}}>{value?value?.toFixed(1):"0.0"}</h5>
                     </div>
                     <div className='estrellas'>
                         <Rating

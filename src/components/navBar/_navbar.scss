@@ -178,18 +178,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     border-color: transparent;
 }*/
 .container-nav {
-    padding: 20px 40px;
+    padding: 0 40px;
     display: flex;
     justify-content: start;
     width: 100%;
     background-color: v.$fondo1;
     align-items: center;
-
+    //padding-bottom: 10px;
+    //transition: border-bottom .5s ease;
+    
 }
-.nav{
+
+.nav {
     position: fixed;
     z-index: 1003;
     width: 100%;
+    
 }
 
 .navbar__menu {
@@ -215,14 +219,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
         font-size: 18px;
         opacity: 0.75;
     }
-   
+
 }
 
 .home-icon {
 
-    max-width: 80px;
+    max-width:70px;
     min-width: 60px;
-    margin: 0 500px 0 30px;
+    margin: 0 250px 0 30px;
 }
 
 @media(max-width:v.$breakpoint-medium) {
@@ -233,22 +237,34 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     .navbar__menu {
         display: block;
     }
+
     .home-icon {
 
-        max-width: 80px;
+        max-width:70px;
         min-width: 60px;
         margin: 0 0 0 30px;
     }
+
     .container-nav {
-        padding: 20px 40px;
+        padding: 0px 40px;
         display: flex;
         justify-content: space-between;
         width: 100%;
         background-color: v.$fondo1;
         align-items: center;
         flex-direction: row-reverse;
-        }
+        
+        //transition: border-bottom .8s ease;
+    }
 
 
 
+}
+
+.scrolled.nav {
+    
+    .container-nav {
+        //padding-bottom: 0;
+        //border-bottom:v.$fondo6 solid 3px
+    }
 }

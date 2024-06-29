@@ -103,6 +103,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 200px 0;
+  
 }
 
   .login-container{
@@ -111,7 +112,7 @@
     justify-content: center;
     width: 80%;
     height: 80%;
-    
+    border: white solid 5px;
     margin:0 auto;
     border-radius: 30px;
     background-color: v.$fondo1;
