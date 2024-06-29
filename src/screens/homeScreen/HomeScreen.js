@@ -94,6 +94,17 @@ function HomeScreen() {
         setAsesorias(newData)
         console.log(newData)
     }
+    const search = async (value) => {
+        let newData = []
+        const asesorias = query(collectionGroup(db, 'Cursos'), where("nombreCurso", "==", value))
+        const querySnapshot = await getDocs(asesorias);
+        querySnapshot.forEach((doc) => {
+            newData.push({ ...doc.data(), id: doc.id, path:doc.ref.path })
+        });
+
+        setAsesorias(newData)
+        console.log(newData)
+    }
 
     const [activeLink, setActiveLink] = useState("");
     const [activeLinkPrecio, setActiveLinkPrecio] = useState("");
@@ -129,6 +140,9 @@ function HomeScreen() {
         const { name, value } = e.target
         if (name === "buscar")
             setBuscar(value)
+        if(e?.code==="Enter"){
+            search(buscar)
+        }
     }
 
     const handleClick = (prev) => {
@@ -182,13 +196,14 @@ function HomeScreen() {
             <div className='busqueda-bar'>
 
                 <div className="input buscar-input">
-                    <div className='click-lupa' onClick={() => console.log("click")}>
+                    <div className='click-lupa' onClick={() => search(buscar)}>
                         <FaMagnifyingGlass size={28} />
                     </div>
 
 
                     <input
                         onChange={buscarUpdate}
+                        onKeyDown={buscarUpdate}
                         //error={props.validCorreo?"":"Correo no valido"} 
                         //label="Ingresar correo"
                         value={buscar}
