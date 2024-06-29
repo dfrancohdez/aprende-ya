@@ -7,12 +7,12 @@ import { Blocks } from 'react-loader-spinner';
 const Asesoria = ({ nombreCurso, nombre, img, fijar, id,path}) => {
     const [cargando, setImg] = useState(true);
     const navigate = useNavigate(); // Obtener la función navigate de React Router DOM
-    console.log(id)
+    console.log(id)//user
     const handleClick = () => {
         // Navegar a VisualizarCurso y pasar datos a través del estado de la ubicación
         navigate('/visualizarCurso', {
             state: {
-                id:id,
+                id:id,//user
                 nombreCurso:nombreCurso
             }
         });

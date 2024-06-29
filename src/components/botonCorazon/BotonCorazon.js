@@ -18,7 +18,7 @@ export const BotonCorazon = (props) => {
         <button 
             type="button" 
             className={buttonClasses} 
-            onClick={handleIconClick}
+            //onClick={handleIconClick}
         >
             <HeartFill size={24} className="button-iconCo" /> 
         </button>
