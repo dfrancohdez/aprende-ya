@@ -1,3 +1,4 @@
+@use '../../scss/base/variables' as v;
 .titulo-barra-navegacion {
     background-color: #2C3331;
     padding-left: 30px;
@@ -36,13 +37,27 @@
         }
     }
 }
-@media (max-width: 600px) {
+@media (max-width: v.$breakpoint-small) {
     .titulo-barra-navegacion {
         .contenido{
             width: 100%;
         }
     }
 }
-  
+
+@media (max-width:v.$breakpoint-small) {
+    .titulo-barra-navegacion {
+        background-color: #2C3331;
+        padding-left: 30px;
+        padding-top: 35px;
+        padding-bottom: 35px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        min-height: 380px;
+        .contenido{
+            text-align: left;
+            //width: 90%;
+        }
+    }
+}
 
   

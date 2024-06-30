@@ -10,7 +10,7 @@
     font-size: 25px;
     box-shadow: 6px 6px #fff7;
     overflow: hidden;
-    max-width: 300px;
+    max-width: 250px;
     position: relative;
     transition: background-color 0.5s ease;
 
@@ -43,7 +43,5 @@
 }
 
 @media (max-width: 600px) {
-    .asesoria2{
-        max-width: 75%;
-    }
+    
 }

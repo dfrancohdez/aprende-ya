@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { db } from "../../components/auth/firebase";
 import { getDocs, collection,doc } from "firebase/firestore";
 import ImgPrueba from "./img/Rectangle 30.png";
-import Reseña from '../../components/reseña/Reseña';
+import Resena from '../../components/resena/Resena';
 import IconoPerfil from './img/inconoPerfil.png'
 import './_curso.scss';
 
@@ -82,7 +82,7 @@ function MisCursos() {
                     />
                     <div className='flotante'>
                         <AsesoriaCurso
-                            fijar={true}
+                            fijar={false}
                             precio={prev.precio}
                             img={prev.img}
                             path={prev.path}
@@ -121,7 +121,7 @@ function MisCursos() {
                     <center><h2 className='titulo-c'>Reseñas del curso</h2></center>
                         <div className='cont-line'>
                             {prev.reviews.map(review=>
-                            <Reseña
+                            <Resena
                                 imagenRe={IconoPerfil}
                                 nombre={review?.name}
                                 calificacion={review?.calif}

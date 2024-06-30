@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-import './_reseña.scss'
+import './_resena.scss'
 
-const Reseña = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
+const Resena = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
 
     return (
         <div className='reseña'>
@@ -13,7 +13,7 @@ const Reseña = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
                     <img src={imagenRe} className='imagen'/>
                 </div>
                 <div className='derecha'>
-                    <h3>{nombre}</h3>
+                    <h5>{nombre}</h5>
                     <div>
                         <Rating 
                         name="size-medium" 
@@ -32,4 +32,4 @@ const Reseña = ({ nombre, calificacion, tiempoCali, opinion, imagenRe}) => {
         </div>
     )
 }
-export default Reseña
+export default Resena

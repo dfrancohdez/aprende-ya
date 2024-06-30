@@ -71,3 +71,31 @@
 .click-lupa{
     cursor: pointer;
 }
+@media (max-width:v.$breakpoint-small){
+    .homeScreen {
+        &-container{
+            flex-direction: column;
+            .homeScreen-busqueda{
+                //display: none;
+                padding: 150px 0 0px 0;
+                height: auto;
+                overflow-y:hidden;
+               
+                ul{
+                    display: flex;
+                    overflow-x:scroll;
+                    li{
+                        border: white solid 2px;
+                        border-radius: 30px;
+                        margin: 0 10px;
+                        white-space: nowrap; //el texto no hace wrap
+                        
+                    }
+                }
+            }
+            &-asesorias{
+                padding: 50px 0;
+            }
+        }
+    }
+}

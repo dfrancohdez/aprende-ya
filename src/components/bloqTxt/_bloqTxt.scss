@@ -1,3 +1,4 @@
+@use '../../scss/base/variables' as v;
 .bloq-txt {
     color: white;
 }
@@ -7,4 +8,10 @@
 }
 .conten{
     margin-left: 25px;
+}
+@media (max-width: v.$breakpoint-small) {
+    .conten{
+        margin: 10px;
+    }
+    
 }

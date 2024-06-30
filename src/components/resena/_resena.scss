@@ -1,13 +1,14 @@
 .reseña{
+    width: 400px;
     height: 300px;
     padding: 20px 20px 20px 20px;
     background-color: #555;
     margin:10px 20px;
     border-radius: 20px;
-    font-size: 25px;
+    //font-size: 25px;
     box-shadow: 6px 6px #fff7;
-    overflow: hidden;
-    width: 450px;
+    overflow-x: hidden;
+    
     position: relative;
     transition: background-color 0.5s ease;
     

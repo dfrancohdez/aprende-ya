@@ -3,6 +3,7 @@
 .visualizarCursoScreen {
     .encabezado{
         position: relative;
+        background-color: #2C3331;
     }
     .flotante{
         position: absolute;
@@ -38,24 +39,46 @@
         }
     }
 }
-
+@media (max-width: v.$breakpoint-small) {
+    .visualizarCursoScreen {
+        
+        .encabezado{
+            position: relative;
+            display: flex;
+        flex-direction: column;
+        }
+        .flotante{
+            position: static;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap:20px;
+        }
+        .botonV{
+            position: absolute;
+            top: 348px;
+            left: 71.5%;
+        }
+    }
+}
+/*
 @media (max-width: 600px) {
     .cursosScreen {
         .encabezado{
             position: relative;
-            height: 900px;
+            height: 600px;
             background-color: #2C3331;
         }
         .flotante{
             position: absolute;
-            top: 550px;
-            left: 0%;
+            
             
         }
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center; /* Centra horizontalmente */
+            justify-content: center; /* Centra horizontalmente 
             padding-top: 30px;
             padding-bottom: 30px;
             background-color: #407a6d; 
@@ -67,3 +90,4 @@
     }
 }
 
+*/
